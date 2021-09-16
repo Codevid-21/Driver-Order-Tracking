@@ -1,10 +1,16 @@
-## DIKKAT EDILECEK HUSUSLAR;
+## ATTENTION !!!!!;
 
-### commit islemleri her zaman en üst klasörden yapilacak (DriverAndOrderTracking)
+### A branch will be created for each ticket and a PR will be opened at the end of the ticket.
 
-### commit ve class isimleri w3c (w3school - florian) kritelerine göre ingilicce yazilacak
+### The branch names will be in the format --> feature/ticketname-id.
 
-### style isimleri özel olarak verilecek ve cakismalar önlenecek
+### tickets will comply with user story criteria
+
+### commit operations will always be made from the top folder (DriverAndOrderTracking)
+
+### commit and class names will be written in english according to w3c (w3school - florian) criteria
+
+### Style names will be given privately and conflicts will be avoided
 
 
 [Miro tasarim linki](https://miro.com/app/board/o9J_lxbdlh4=/)
