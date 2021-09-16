@@ -14,3 +14,6 @@
 
 
 [Miro tasarim linki](https://miro.com/app/board/o9J_lxbdlh4=/)
+
+
+[Renk Sablonumuz](https://coolors.co/092327-0b5351-f87060-cdd7d6-b3a394)
