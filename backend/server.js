@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 import express from "express";
 import database from "./lib/database.js";
 import ordersRouter from "./routers/orders.js";
+import errorHandling from "./middleware/errorHandling.js";
+
 dotenv.config();
 
 database.init();
@@ -16,3 +18,5 @@ server.use(express.urlencoded({extended: true}));
 server.use("/orders", ordersRouter);
 // server.use("/users", usersRouter);
 // server.use("/products", usersRouter);
+
+server.use(errorHandling);
