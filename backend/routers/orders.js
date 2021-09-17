@@ -6,10 +6,13 @@ const router = express.Router();
 
 router.post("/", validateOrder, ordersController.create);
 
-// Login yazildiktan sonra kontrol icin middleware yazilacak.
+// Login yazildiktan sonra kontrol icin middleware yazilacak.  
 router.get("/", ordersController.readAll);
-router.get("/:orderId", ordersController.readOne);
-router.put("/:orderId", ordersController.update);
-router.delete("/:orderId", ordersController.delete);
+
+router.get("/:orderID", ordersController.readOne);
+router.post("/:orderID", ordersController.addDriverToOrder);
+
+router.put("/:orderID", ordersController.update);
+router.delete("/:orderID", ordersController.delete);
 
 export default router;

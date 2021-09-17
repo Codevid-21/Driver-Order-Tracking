@@ -12,7 +12,8 @@ export default {
 
     readOne: async function (req, res, next) {
         try {
-            res.json({ msg: "Read One Success" });
+            const result = await Order.readOne(req.params.orderID);
+            res.json({ result });
         } catch (error) {
             next(error);
         }
@@ -29,7 +30,10 @@ export default {
 
     update: async function (req, res, next) {
         try {
-            res.json({ msg: "Update Success" });
+            const id = req.params.orderID;
+            const updatedOrder = req.body;
+            const result = await Order.updateByID(id, updatedOrder);
+            res.json(result);
         } catch (error) {
             next(error);
         }
@@ -37,9 +41,29 @@ export default {
 
     delete: async function (req, res, next) {
         try {
-            res.json({ msg: "Delete Success" });
+            const result = await Order.deleteByID(req.params.orderID);
+            res.json(result);
         } catch (error) {
             next(error);
         }
     },
+
+    addDriverToOrder: async function (req, res, next) {
+        try {
+            const result = await Order.addDriverToOrder(req.params.orderID, req.body.driverID);
+            res.json(result);
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    // markArticleAsRead: async function (req, res, next) {
+    //     try {
+    //         const result = await User.markArticleAsRead(req.params.userId, req.params.articleId);
+    //         res.json(result);
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // },
+
 };
