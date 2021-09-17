@@ -62,7 +62,6 @@ export default {
 		return await Order.deleteOne({_id: id});
 	},
 
-
 	addDriverToOrder: async function (id, driverID) {
 		const order = await Order.findById(id);
 		if (!order) throw new Error("order not found");
