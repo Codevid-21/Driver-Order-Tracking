@@ -1,6 +1,6 @@
 import express from "express";
 import ordersController from "../controllers/orders.js";
-import validateOrder from "../middleware/validateOrder.js";
+import validateOrder from "../middlewares/validateOrder.js";
 
 const router = express.Router();
 
