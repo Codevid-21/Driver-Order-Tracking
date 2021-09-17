@@ -3,10 +3,13 @@ import ordersController from "../controllers/orders.js";
 
 const router = express.Router();
 
-router.post("/", ordersController.create);
 router.get("/", ordersController.readAll);
-// router.get("/:orderId", ordersController.readOne);
-// router.put("/:orderId", ordersController.update);
-// router.delete("/:orderId", ordersController.delete);
+router.post("/", ordersController.create);
+
+router.get("/:orderID", ordersController.readOne);
+router.post("/:orderID", ordersController.addDriverToOrder);
+
+router.put("/:orderID", ordersController.update);
+router.delete("/:orderID", ordersController.delete);
 
 export default router;
