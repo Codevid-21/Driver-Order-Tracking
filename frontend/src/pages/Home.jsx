@@ -1,7 +1,12 @@
 import React from "react";
+import OrderCard from "../components/OrderCard.jsx";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <OrderCard />
+    </div>
+  );
 }
 
 export default Home;
