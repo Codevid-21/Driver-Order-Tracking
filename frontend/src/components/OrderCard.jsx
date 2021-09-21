@@ -1,29 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 function OrderCard() {
 
-
   const [orderInfo, setOrderInfo] = useState([])
-
 
   const url = 'http://localhost:2005/orders';
 
   useEffect(() => {
-      fetch(url).then((response) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((jsonData) => setOrderInfo(jsonData))
+      .catch((error) => console.log(error));
 
-          return response.json();
-      }).then((jsonData) => {
-
-          console.log(jsonData);
-          setOrderInfo(jsonData)
-
-      }).catch((error) => {
-
-          console.log(error);
-      });
-  }, [orderInfo]);
-
-
+    console.log(orderInfo);
+  }, []);
 
   return (
     <>
