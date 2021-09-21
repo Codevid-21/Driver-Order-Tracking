@@ -14,7 +14,7 @@ const ProductSchema = mongoose.Schema({
         required: true,
     },
     price: {
-        type: String,   //bu String mi olmali Number mi???
+        type: Number,
         required: true,
     }
 }, { versionKey: false });
