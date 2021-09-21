@@ -25,6 +25,10 @@ export default {
         return await Driver.findById(id);
     },
 
+    readByUserID: async function (id) {
+        return await Driver.find({userId: id});
+    },
+
     create: async function (userID) {
         console.log("Driver");
         const user = await User.readOne(userID);         
