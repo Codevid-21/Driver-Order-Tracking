@@ -6,12 +6,14 @@
   list-style: none;
   text-align: start;
 
+  li {
+    background: #092327;
+    cursor: pointer;
+  }
+
 }
 
-.dropdown-menu li {
-  background: #092327;
-  cursor: pointer;
-}
+
 
 .dropdown-menu li:hover {
   background: #F87060;
