@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import OrderCard from "../components/OrderCard.jsx";
 
 function Home() {
-  const [orderInfo, setOrderInfo] = useState([])
+  const [orderInfo, setOrderInfo] = useState([]);
 
-  const url = 'http://localhost:2005/orders';
+  const url = "http://localhost:2023/orders";
 
   useEffect(() => {
     fetch(url)
@@ -12,6 +12,7 @@ function Home() {
       .then((jsonData) => setOrderInfo(jsonData.result))
       .catch((error) => console.log(error));
   }, []);
+
   return (
     <div>
       <OrderCard orderInfo={orderInfo} />
