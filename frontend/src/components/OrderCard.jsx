@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ModalForDrivers from "./ModalForDrivers";
 
 function OrderCard({ orderInfo }) {
-  console.log("order", orderInfo);
-
   const [modalShow, setModalShow] = React.useState(false);
 
+  const [drivers, setDrivers] = useState([]);
 
+  const url = `http://localhost:2005/users`;
+
+  useEffect(() => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((jsonData) => {
+        const result = jsonData.result.filter(data => data.role === "Driver");
+        setDrivers(result)})
+      .catch((error) => console.log(error))
+  }, []);
+
+  // drivers.map(driver => {
+  //   const abc = users.filter(user => user._id == driver.userID)
+  //   driver.name = abc[0].name;
+  // })
 
   return (
     <>
@@ -37,11 +51,12 @@ function OrderCard({ orderInfo }) {
       })}
 
       <div className="modalWindows">
-      
-      <ModalForDrivers
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+
+        <ModalForDrivers
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          drivers={drivers}
+        />
       </div>
     </>
   );

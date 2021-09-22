@@ -3,17 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import { BsFillPersonFill } from "react-icons/bs";
 
 function ModalForDrivers(props) {
-  const [drivers, setDrivers] = useState([]);
-
-  const url = `http://localhost:${process.env.PORT}/drivers`;
-
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((jsonData) => setDrivers(jsonData.result))
-      .catch((error) => console.log(error));
-  }, []);
-
+  
   // const drivers = [
   //   { name: "Cafer", status: "assignable", img: "" },
   //   { name: "Galip", status: "assignable" },
@@ -35,7 +25,7 @@ function ModalForDrivers(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {drivers.map((driver, i) => {
+          {props.drivers.map((driver, i) => {
             return (
               <div className="driverCard">
                 <div className="driverPhoto">
