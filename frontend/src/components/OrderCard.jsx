@@ -24,7 +24,7 @@ function OrderCard({ orderInfo }) {
                 src="https://www.nicepng.com/png/detail/1010-10103271_chef-cook-cartoon-cute-kitchen-png-image-cooking.png"
                 alt=""
               />
-              <p>Driver : </p>
+              <p>Driver :{order.driver ? order.driver : "Not"}</p>
             </div>
           </div>
         );
