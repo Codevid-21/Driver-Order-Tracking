@@ -4,7 +4,7 @@ import OrderCard from "../components/OrderCard.jsx";
 function Home() {
   const [orderInfo, setOrderInfo] = useState([]);
 
-  const url = `http://localhost:2005/orders`;
+  const url = `http://localhost:2025/orders`;
 
   useEffect(() => {
     fetch(url)

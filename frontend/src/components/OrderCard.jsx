@@ -3,18 +3,18 @@ import ModalForDrivers from "./ModalForDrivers";
 
 function OrderCard({ orderInfo }) {
   const [modalShow, setModalShow] = React.useState(false);
-
   const [drivers, setDrivers] = useState([]);
 
-  const url = `http://localhost:2005/users`;
+  const url = `http://localhost:2025/users`;
 
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((jsonData) => {
-        const result = jsonData.result.filter(data => data.role === "Driver");
-        setDrivers(result)})
-      .catch((error) => console.log(error))
+        const result = jsonData.result.filter((data) => data.role === "Driver");
+        setDrivers(result);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   // drivers.map(driver => {
@@ -22,11 +22,16 @@ function OrderCard({ orderInfo }) {
   //   driver.name = abc[0].name;
   // })
 
+  const [selectedOrder, setSelectedOrder] = useState(null)
+
   return (
     <>
       {orderInfo.map((order, i) => {
         return (
-          <div key={i} className="orderCard" onClick={() => setModalShow(true)}>
+          <div key={i} className="orderCard" onClick={() => {
+            setModalShow(true);
+            setSelectedOrder(order)
+          }}>
             <div className="orderInfo">
               <h4>Order Information</h4>
               <p> Order ID : {order._id} </p>
@@ -51,11 +56,11 @@ function OrderCard({ orderInfo }) {
       })}
 
       <div className="modalWindows">
-
         <ModalForDrivers
           show={modalShow}
           onHide={() => setModalShow(false)}
           drivers={drivers}
+          selectedOrder={selectedOrder}
         />
       </div>
     </>

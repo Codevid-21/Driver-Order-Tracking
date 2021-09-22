@@ -3,13 +3,24 @@ import { Modal, Button } from "react-bootstrap";
 import { BsFillPersonFill } from "react-icons/bs";
 
 function ModalForDrivers(props) {
-  
   // const drivers = [
   //   { name: "Cafer", status: "assignable", img: "" },
   //   { name: "Galip", status: "assignable" },
   //   { name: "Mahmut", status: "on the way" },
   //   { name: "Feyzi", status: "assignable" },
   // ];
+
+  const addDrivertoOrder = (driver) => {
+    console.log(driver);
+
+    fetch(`http://localhost:2025/users:${driver._id}`, {
+      method: "PUT",
+      body: JSON.stringify({ ...driver, orders: [...driver.orders, props.selectedOrder] }),
+      headers: {
+        "Content-type": "application/json", // The type of data you're sending
+      },
+    });
+  };
 
   return (
     <div>
@@ -27,7 +38,11 @@ function ModalForDrivers(props) {
         <Modal.Body>
           {props.drivers.map((driver, i) => {
             return (
-              <div className="driverCard">
+              <div
+                className="driverCard"
+                key={i}
+                onClick={() => addDrivertoOrder(driver)}
+              >
                 <div className="driverPhoto">
                   <BsFillPersonFill size="2em" color="black" />
                 </div>

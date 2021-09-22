@@ -10,7 +10,7 @@ router.get("/", usersController.readAll);
 router.get("/:userID", usersController.readOne);
 // router.post("/:driverID", driversController.addOrderToDriver);
 
-// router.put("/:driverID", driversController.update);
+router.put("/:userID", usersController.update);
 // router.delete("/:driverID", driversController.delete);
 
 export default router;
