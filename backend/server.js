@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import database from "./lib/database.js";
 import ordersRouter from "./routers/orders.js";
-import usersRouter from "./routers/products.js";
+import usersRouter from "./routers/users.js";
 import driversRouter from "./routers/drivers.js";
 import errorHandling from "./middlewares/errorHandling.js";
 import cors from "cors";
@@ -21,7 +21,7 @@ server.use(express.urlencoded({ extended: true }));
 
 server.use("/orders", ordersRouter);
 server.use("/products", usersRouter);
-// server.use("/users", usersRouter);
+server.use("/users", usersRouter);
 server.use("/drivers", driversRouter);
 
 server.use(errorHandling);
