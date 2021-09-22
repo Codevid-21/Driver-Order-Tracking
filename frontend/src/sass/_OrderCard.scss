@@ -1,0 +1,35 @@
+$primaryColor : #CDD7D6;
+
+
+
+.orderCard {
+    background-color: $primaryColor;
+    border: 3px solid #0B5351;
+    width: 60%;
+    margin: 10px auto;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &:hover {
+        border: 3px solid #F87060;
+        background-color: #B3A394;
+    }
+
+    h4{
+        margin: 0 0 10px 0;
+    }
+
+    p{
+        margin: 5px 0;
+    }
+
+
+
+    .driverInfo {
+        img {
+            width: 50px;
+        }
+    }
+}

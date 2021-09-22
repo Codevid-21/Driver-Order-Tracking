@@ -5,6 +5,7 @@ import ordersRouter from "./routers/orders.js";
 import usersRouter from "./routers/products.js";
 import driversRouter from "./routers/drivers.js";
 import errorHandling from "./middlewares/errorHandling.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const server = express();
 
 server.listen(process.env.PORT, () => console.log(`server listening on port ${process.env.PORT}`));
 
+server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 

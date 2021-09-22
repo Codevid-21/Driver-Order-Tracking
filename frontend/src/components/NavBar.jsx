@@ -30,7 +30,7 @@ function Navbar() {
       <nav className="navbar">
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
           Order Tracking
-          <i class="fas fa-shipping-fast"></i>
+          <i className="fas fa-shipping-fast"></i>
         </Link>
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
