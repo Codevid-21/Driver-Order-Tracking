@@ -1,0 +1,15 @@
+.driverCard {
+    border: 3px solid #092327;
+    background-color: #F87060;
+    color: #FFF;
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &:hover {
+        border: 3px solid #F87060;
+        background-color: #0B5351;
+        color: #FFF;
+    }
+}
