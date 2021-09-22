@@ -13,6 +13,11 @@ function Home() {
       .catch((error) => console.log(error));
   }, []);
 
+
+  // const orderInfo = [
+  //   {_id : 500}, {_id : 500}, {_id : 500},
+  // ]
+
   return (
     <div>
       <OrderCard orderInfo={orderInfo} />

@@ -1,12 +1,18 @@
 import React from "react";
+import ModalForDrivers from "./ModalForDrivers";
 
 function OrderCard({ orderInfo }) {
   console.log("order", orderInfo);
+
+  const [modalShow, setModalShow] = React.useState(false);
+
+
+
   return (
     <>
       {orderInfo.map((order, i) => {
         return (
-          <div key={i} className="orderCard" onClick>
+          <div key={i} className="orderCard" onClick={() => setModalShow(true)}>
             <div className="orderInfo">
               <h4>Order Information</h4>
               <p> Order ID : {order._id} </p>
@@ -24,11 +30,19 @@ function OrderCard({ orderInfo }) {
                 src="https://www.nicepng.com/png/detail/1010-10103271_chef-cook-cartoon-cute-kitchen-png-image-cooking.png"
                 alt=""
               />
-              <p>Driver : </p>
+              <p>Driver :{order.driver ? order.driver : "Not"}</p>
             </div>
           </div>
         );
       })}
+
+      <div className="modalWindows">
+      
+      <ModalForDrivers
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+      </div>
     </>
   );
 }
