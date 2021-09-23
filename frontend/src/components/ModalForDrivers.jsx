@@ -47,7 +47,7 @@ function ModalForDrivers(props) {
                   <BsFillPersonFill size="2em" color="black" />
                 </div>
                 <driver className="info">
-                  <p>Name : {driver.name} </p>
+                  <p>Name : {driver.user.name} </p>
                   <p>Status : {driver.status} </p>
                 </driver>
               </div>

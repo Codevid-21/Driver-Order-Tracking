@@ -6,23 +6,16 @@ function OrderCard({ orderInfo }) {
   const [drivers, setDrivers] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null)
   
-  const url = `http://localhost:2005/users`;
+  const url = `http://localhost:2005/drivers`;
 
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((jsonData) => {
-        const result = jsonData.result.filter((data) => data.role === "Driver");
-        setDrivers(result);
+        setDrivers(jsonData.result);
       })
       .catch((error) => console.log(error));
   }, []);
-
-  // drivers.map(driver => {
-  //   const abc = users.filter(user => user._id == driver.userID)
-  //   driver.name = abc[0].name;
-  // })
-
 
   return (
     <>
