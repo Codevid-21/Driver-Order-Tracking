@@ -11,11 +11,11 @@ function ModalForDrivers(props) {
   // ];
 
   const addDrivertoOrder = (driver) => {
-    console.log(driver);
 
-    fetch(`http://localhost:2025/users:${driver._id}`, {
+    console.log("tiklandi", driver);
+    fetch(`http://localhost:2005/users/${driver._id}`, {
       method: "PUT",
-      body: JSON.stringify({ ...driver, orders: [...driver.orders, props.selectedOrder] }),
+      body: JSON.stringify({ status : "1240182ß043"  }),
       headers: {
         "Content-type": "application/json", // The type of data you're sending
       },

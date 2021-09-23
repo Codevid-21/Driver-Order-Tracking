@@ -31,16 +31,11 @@ export default {
 
     update: async function (req, res, next) {
         try {
-            // const id = req.params.userID;
-            // const user = await User.readOne(id);
-            // user found oder not found
-            // const driver = await Driver.readByUserID(id);
-            // console.log("Read By User ID", driver);
-            const ord = [];
-            console.log("body", req.body);
-            ord.push(req.body.orders);
-            // const updatedDriver = req.body;
-            const result = await Driver.updateByID(req.params.driverID, {orders : ord});
+            const id = req.params.driverID;
+            const updatedDriver = req.body;
+
+
+            const result = await Driver.updateByID(id, {orders : updatedDriver});
             res.json(result);
             // res.json("hier");
         } catch (error) {

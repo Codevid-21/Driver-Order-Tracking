@@ -33,10 +33,10 @@ export default {
         return await user.save();
     },
 
-    updateByID: async function (id, orderObject) {
+    updateByID: async function (id, userObject) {
         return await User.findByIdAndUpdate(
             id,
-            orderObject,
+            userObject,
             { new: true, runValidators: true }
         );
     },

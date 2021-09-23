@@ -4,8 +4,9 @@ import ModalForDrivers from "./ModalForDrivers";
 function OrderCard({ orderInfo }) {
   const [modalShow, setModalShow] = React.useState(false);
   const [drivers, setDrivers] = useState([]);
-
-  const url = `http://localhost:2025/users`;
+  const [selectedOrder, setSelectedOrder] = useState(null)
+  
+  const url = `http://localhost:2005/users`;
 
   useEffect(() => {
     fetch(url)
@@ -22,7 +23,6 @@ function OrderCard({ orderInfo }) {
   //   driver.name = abc[0].name;
   // })
 
-  const [selectedOrder, setSelectedOrder] = useState(null)
 
   return (
     <>
