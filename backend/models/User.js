@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import Order from "./Order.js";
+
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
@@ -9,7 +11,11 @@ const UserSchema = Schema({
     email: {
         type: String,
         required: true,
-    }
+    },
+    // orders: {
+    //     type: Array,
+    //     // ref: "Order",
+    // }
 }, { versionKey: false });
 
 const User = mongoose.model("User", UserSchema);
@@ -24,16 +30,19 @@ export default {
         return await User.findById(id);
     },
 
-    create: async function (name, email) {
+    create: async function (name, email, orders) {
         console.log("User");
         const user = new User({
             name,
             email,
+            orders
         });
         return await user.save();
     },
 
     updateByID: async function (id, userObject) {
+        console.log("user Object ", userObject);
+        // return await User.findById(id);
         return await User.findByIdAndUpdate(
             id,
             userObject,

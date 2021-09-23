@@ -13,7 +13,7 @@ export default {
 
     readOne: async function (req, res, next) {
         try {
-            const result = await Driver.readOne(req.params.orderID);
+            const result = await Driver.readOne(req.params.driverID);
             res.json({ result });
         } catch (error) {
             next(error);

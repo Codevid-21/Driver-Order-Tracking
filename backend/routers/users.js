@@ -3,7 +3,7 @@ import usersController from "../controllers/users.js";
 
 const router = express.Router();
 
-// router.post("/", driversController.create);
+router.post("/", usersController.create);
 
 router.get("/", usersController.readAll);
 

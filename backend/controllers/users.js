@@ -17,6 +17,14 @@ export default {
             next(error);
         }
     },
+    create: async function (req, res, next) {
+        try {
+            const result = await User.create(req.body.name, req.body.email, req.body.orders);
+            res.json({result});
+        } catch (error) {
+            next(error);
+        }
+    },
     update: async function (req, res, next) {
         try {
             const id = req.params.userID;
@@ -28,7 +36,7 @@ export default {
             const updatedUser = req.body;
             console.log("user update body", req.body);
             
-            const result = await User.updateByID({_id: id}, updatedUser);
+            const result = await User.updateByID(id, updatedUser);
             console.log("result", result)
             res.json(result);
         } catch (error) {

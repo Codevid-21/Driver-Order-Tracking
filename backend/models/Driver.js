@@ -4,12 +4,21 @@ import User from "./User.js";
 const Schema = mongoose.Schema;
 
 const DriverSchema = Schema({
-    userID: {
+    user: {
         type: Schema.Types.ObjectId,
-        ref: `${User}`
+        ref: "User",
     },
-    orders: {
+    deliveries: {
+        // array icindeki itemlarin idsi düzeltilecek
         type: Array,
+        required: true,
+    },
+    status: {
+        type: String,
+        required: true,
+    },
+    isWorking: {
+        type: Boolean,
         required: true,
     }
 });
@@ -18,11 +27,11 @@ const Driver = mongoose.model("Driver", DriverSchema);
 
 export default {
     readAll: async function () {
-        return await Driver.find();
+        return await Driver.find().populate("user");
     },
 
     readOne: async function (id) {
-        return await Driver.findById(id);
+        return await Driver.findById(id).populate("user");
     },
 
     readByUserID: async function (id) {
@@ -30,15 +39,12 @@ export default {
     },
 
     create: async function (userID) {
-        console.log("Driver");
-        const user = await User.readOne(userID);         
 
-        console.log(user);
-        const orders = [];
-        
         const driver = new Driver({
-            userID,
-            orders: orders,
+            user: userID,
+            deliveries: [],
+            status: "free",
+            isWorking: false,
         });
         return await driver.save();
     },
