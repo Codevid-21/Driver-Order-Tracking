@@ -23,7 +23,7 @@ export default {
     create: async function (req, res, next) {
         try {
             const result = await Driver.create(req.body.userID);
-            res.json({result});
+            res.json({ result });
         } catch (error) {
             next(error);
         }
@@ -35,7 +35,7 @@ export default {
             const updatedDriver = req.body;
 
 
-            const result = await Driver.updateByID(id, {orders : updatedDriver});
+            const result = await Driver.updateByID(id, updatedDriver);
             res.json(result);
             // res.json("hier");
         } catch (error) {
