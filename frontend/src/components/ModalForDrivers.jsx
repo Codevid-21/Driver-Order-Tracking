@@ -3,20 +3,20 @@ import { Modal, Button } from "react-bootstrap";
 import { BsFillPersonFill } from "react-icons/bs";
 
 function ModalForDrivers(props) {
-  
   const addDrivertoOrder = (driver) => {
-
     const url = `http://localhost:2005/drivers/${driver._id}/${props.selectedOrder._id}`;
     const options = {
       method: "PUT",
       headers: {
         "Content-type": "application/json", // The type of data you're sending
-      }
-    }
+      },
+    };
 
     fetch(url, options)
-      .then(response => response.json())
-      .then(result => console.log("Güncellenmis Driver", result));
+      .then((response) => response.json())
+      .then((result) => console.log("Güncellenmis Driver", result));
+
+    props.onHide();
   };
 
   return (
