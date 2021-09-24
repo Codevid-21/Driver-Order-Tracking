@@ -1,72 +1,75 @@
 import mongoose from "mongoose";
 import User from "./User.js";
+import Order from "./Order.js";
 
 const Schema = mongoose.Schema;
 
+const DeliveriesItemSchema = Schema(
+  {
+    orderID: {
+      type: Schema.Types.ObjectId,
+      ref: "Order",
+    },
+  }
+);
+
 const DriverSchema = Schema({
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-    },
-    deliveries: {
-        // array icindeki itemlarin idsi düzeltilecek
-        type: Array,
-        required: true,
-    },
-    status: {
-        type: String,
-        required: true,
-    },
-    isWorking: {
-        type: Boolean,
-        required: true,
-    }
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  deliveries: [DeliveriesItemSchema],
+  status: {
+    type: String,
+    required: true,
+  },
+  isWorking: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const Driver = mongoose.model("Driver", DriverSchema);
 
 export default {
-    readAll: async function () {
-        return await Driver.find().populate("user");
-    },
+  readAll: async function () {
+    return await Driver.find().populate("user");
+  },
 
-    readOne: async function (id) {
-        return await Driver.findById(id).populate("user");
-    },
+  readOne: async function (id) {
+    return await Driver.findById(id).populate("user");
+  },
 
-    readByUserID: async function (id) {
-        return await Driver.find({userId: id});
-    },
+  readByUserID: async function (id) {
+    return await Driver.find({ userId: id });
+  },
 
-    create: async function (userID) {
+  create: async function (userID) {
+    const driver = new Driver({
+      user: userID,
+      deliveries: [],
+      status: "free",
+      isWorking: false,
+    });
+    return await driver.save();
+  },
 
-        const driver = new Driver({
-            user: userID,
-            deliveries: [],
-            status: "free",
-            isWorking: false,
-        });
-        return await driver.save();
-    },
+  updateByID: async function (id, orderObject) {
+    return await Driver.findByIdAndUpdate(id, orderObject, {
+      new: true,
+      runValidators: true,
+    });
+  },
 
-    updateByID: async function (id, orderObject) {
-        return await Driver.findByIdAndUpdate(
-            id,
-            orderObject,
-            { new: true, runValidators: true }
-        );
-    },
+  deleteByID: async function (id) {
+    return await Driver.deleteOne({ _id: id });
+  },
 
-    deleteByID: async function (id) {
-        return await Driver.deleteOne({ _id: id });
-    },
-
-    addOrderToDriver: async function (id, driverID) {
-        const order = await Driver.findById(id);
-        if (!order) throw new Error("order not found");
-
-        order.driver = driverID;
-
-        return await order.save();
-    }
-}
+  addOrderToDriver: async function (id, orderID) {
+    const driver = await Driver.findById(id);
+    if (!driver) throw new Error("driver not found");
+    
+    driver.deliveries.push(orderID);
+    return await driver.save();
+  },
+};

@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react";
 import ModalForDrivers from "./ModalForDrivers";
+import api from "../api/fetchDataFromDB"
 
 function OrderCard({ orderInfo }) {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
   const [drivers, setDrivers] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null)
   
   const url = `http://localhost:2005/drivers`;
-
+  
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setDrivers(jsonData.result);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    api.fetchDataFromDB(url)
+      .then(result => setDrivers(result))
+  }, [url]);
 
   return (
     <>

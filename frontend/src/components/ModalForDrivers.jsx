@@ -3,18 +3,20 @@ import { Modal, Button } from "react-bootstrap";
 import { BsFillPersonFill } from "react-icons/bs";
 
 function ModalForDrivers(props) {
+  
   const addDrivertoOrder = (driver) => {
-    console.log("driver ekleme aktif");
 
-    console.log(driver._id);
-
-    fetch(`http://localhost:2005/drivers/${driver._id}`, {
+    const url = `http://localhost:2005/drivers/${driver._id}/${props.selectedOrder._id}`;
+    const options = {
       method: "PUT",
-      body: JSON.stringify({ deliveries: props.selectedOrder }),
       headers: {
         "Content-type": "application/json", // The type of data you're sending
-      },
-    });
+      }
+    }
+
+    fetch(url, options)
+      .then(response => response.json())
+      .then(result => console.log("Güncellenmis Driver", result));
   };
 
   return (
@@ -41,10 +43,10 @@ function ModalForDrivers(props) {
                 <div className="driverPhoto">
                   <BsFillPersonFill size="2em" color="black" />
                 </div>
-                <driver className="info">
+                <div className="info">
                   <p>Name : {driver.user.name} </p>
                   <p>Status : {driver.status} </p>
-                </driver>
+                </div>
               </div>
             );
           })}

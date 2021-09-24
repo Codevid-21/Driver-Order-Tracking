@@ -34,7 +34,7 @@ export default {
             const id = req.params.driverID;
             const updatedDriver = req.body;
 
-
+            console.log("id", id);
             const result = await Driver.updateByID(id, updatedDriver);
             res.json(result);
             // res.json("hier");
@@ -54,20 +54,10 @@ export default {
 
     addOrderToDriver: async function (req, res, next) {
         try {
-            const result = await Driver.addOrderToDriver(req.params.orderID, req.body.driverID);
+            const result = await Driver.addOrderToDriver(req.params.driverID, req.params.orderID);
             res.json(result);
         } catch (error) {
             next(error);
         }
     },
-
-    // markArticleAsRead: async function (req, res, next) {
-    //     try {
-    //         const result = await User.markArticleAsRead(req.params.userId, req.params.articleId);
-    //         res.json(result);
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // },
-
 };

@@ -30,6 +30,7 @@ const OrderSchema = mongoose.Schema({
 const Order = mongoose.model("Order", OrderSchema);
 
 export default {
+	Order,
 	readAll: async function () {
 		return await Order.find();
 	},

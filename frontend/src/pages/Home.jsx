@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import OrderCard from "../components/OrderCard.jsx";
+import api from "../api/fetchDataFromDB.js";
 
 function Home() {
   const [orderInfo, setOrderInfo] = useState([]);
@@ -7,17 +8,10 @@ function Home() {
   const url = `http://localhost:2005/orders`;
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((jsonData) => setOrderInfo(jsonData.result))
-      .catch((error) => console.log(error));
-  }, []);
+    api.fetchDataFromDB(url)
+      .then(result => setOrderInfo(result))
+  }, [url]);
 
-  console.log(orderInfo);
-
-  // const orderInfo = [
-  //   {_id : 500}, {_id : 500}, {_id : 500},
-  // ]
 
   return (
     <div>
