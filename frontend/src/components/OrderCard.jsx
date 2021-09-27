@@ -10,8 +10,12 @@ function OrderCard({ orderInfo }) {
   const url = `http://localhost:2005/drivers`;
 
   useEffect(() => {
-    api.fetchDataFromDB(url).then((result) => setDrivers(result));
-    console.log(drivers);
+    api.fetchDataFromDB(url).then((result) => {
+      const workingDrivers = result.filter(
+        (value, index) => value.isWorking === true
+      );
+      setDrivers(workingDrivers);
+    });
   }, [url]);
 
   return (
