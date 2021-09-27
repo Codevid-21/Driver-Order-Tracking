@@ -1,27 +1,31 @@
 import React, { useState, useEffect } from "react";
 import ModalForDrivers from "./ModalForDrivers";
-import api from "../api/fetchDataFromDB"
+import api from "../api/fetchDataFromDB";
 
 function OrderCard({ orderInfo }) {
   const [modalShow, setModalShow] = useState(false);
   const [drivers, setDrivers] = useState([]);
-  const [selectedOrder, setSelectedOrder] = useState(null)
-  
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
   const url = `http://localhost:2005/drivers`;
-  
+
   useEffect(() => {
-    api.fetchDataFromDB(url)
-      .then(result => setDrivers(result))
+    api.fetchDataFromDB(url).then((result) => setDrivers(result));
+    console.log(drivers);
   }, [url]);
 
   return (
     <>
       {orderInfo.map((order, i) => {
         return (
-          <div key={i} className="orderCard" onClick={() => {
-            setModalShow(true);
-            setSelectedOrder(order)
-          }}>
+          <div
+            key={i}
+            className="orderCard"
+            onClick={() => {
+              setModalShow(true);
+              setSelectedOrder(order);
+            }}
+          >
             <div className="orderInfo">
               <h4>Order Information</h4>
               <p> Order ID : {order._id} </p>
