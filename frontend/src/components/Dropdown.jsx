@@ -17,7 +17,6 @@ function Dropdown({ closeMobileMenu }) {
           return (
             <li key={index}>
               <Link
-                // onClick={closeMobileMenu}
                 className={item.cName}
                 to={item.path}
                 onClick={() => {
