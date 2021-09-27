@@ -24,6 +24,10 @@ const OrderSchema = mongoose.Schema({
 	driver: {
 		type: String,
 		required: true,
+	},
+	isDelivered: {
+		type: Boolean,
+		required: true,
 	}
 }, { versionKey: false });
 
@@ -39,14 +43,15 @@ export default {
 		return await Order.findById(id);
 	},
 
-	create: async function (name, detail, customerId, date, price, driver) {
+	create: async function (name, detail, customerId, date, price) {
 		const order = new Order({
 			name,
 			detail,
 			date,
 			customerId,
 			price,
-			driver,
+			driver: false,
+			isDelivered: false,
 		});
 		return await order.save();
 	},
@@ -60,7 +65,7 @@ export default {
 	},
 
 	deleteByID: async function (id) {
-		return await Order.deleteOne({_id: id});
+		return await Order.deleteOne({ _id: id });
 	},
 
 	addDriverToOrder: async function (id, driverID) {

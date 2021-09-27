@@ -1,10 +1,10 @@
 import express from "express";
 import ordersController from "../controllers/orders.js";
-import validateOrder from "../middlewares/validateOrder.js";
+// import validateOrder from "../middlewares/validateOrder.js";
 
 const router = express.Router();
 
-router.post("/", validateOrder, ordersController.create);
+router.post("/", ordersController.create);
 
 // Login yazildiktan sonra kontrol icin middleware yazilacak.  
 router.get("/", ordersController.readAll);
