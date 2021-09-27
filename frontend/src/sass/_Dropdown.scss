@@ -1,5 +1,4 @@
 .dropdown-menu {
-
   width: 144px;
   position: absolute;
   top: 80px;
@@ -9,28 +8,26 @@
   li {
     background: #092327;
     cursor: pointer;
+    
+    &:hover {
+      background: #F87060;
+    }
   }
-
+  
+  &.clicked {
+    display: none;
+  }
+  .dropdown-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    padding: 16px;
+  }
 }
 
 
-
-.dropdown-menu li:hover {
-  background: #F87060;
-}
-
-.dropdown-menu.clicked {
-  display: none;
-}
-
-.dropdown-link {
-  display: block;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
-  color: #fff;
-  padding: 16px;
-}
 
 @media screen and (max-width: 960px) {
   .fa-caret-down {
