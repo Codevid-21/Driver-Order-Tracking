@@ -24,6 +24,7 @@ function App() {
           <Route path="/summary"> <Summary /> </Route>
         </Switch>
       </BrowserRouter>
+  
     </div>
   );
 }
