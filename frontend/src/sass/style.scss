@@ -10,6 +10,13 @@
     clear: both;
 }
 
+.displayOrder {
+    display: none;
+}
+.hideOrder {
+    display: block;
+}
+
 a {
     text-decoration: none;
     transition: all 500ms ease;
@@ -25,6 +32,6 @@ a:hover {
 }
 
 @import "_NavBar.scss";
-@import "Dropdown.scss";
+@import "_Dropdown.scss";
 @import "_OrderCard.scss";
 @import "_ModalForDrivers.scss"
