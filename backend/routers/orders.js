@@ -4,7 +4,8 @@ import validateOrder from "../middlewares/validateOrder.js";
 
 const router = express.Router();
 
-router.post("/", validateOrder, ordersController.create);
+router.post("/", ordersController.create); // Buraya kullanici kontrol edilecek varsa idsi yoksa yeni kullanici olusturulacak ki orders create edilebilsin.
+// router.post("/", validateOrder, ordersController.create);
 
 // Login yazildiktan sonra kontrol icin middleware yazilacak.  
 router.get("/", ordersController.readAll);
