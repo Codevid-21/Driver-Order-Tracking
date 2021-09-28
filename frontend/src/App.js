@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import "./App.css";
 import NavBar from "./components/NavBar.jsx";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -9,12 +10,14 @@ import Summary from "./pages/Summary.jsx";
 
 
 function App() {
+  const [click, setClick] = useState(false);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
+        <NavBar click={click} setClick={setClick} />
         <Switch>
-          <Route exact path="/" > <Home /> </Route>
+          <Route exact path="/" > <Home click={click} /> </Route>
           <Route path="/orders"> <Orders /> </Route>
           <Route path="/newdriver"> <NewDriver /> </Route>
           <Route path="/selectdrivers"> <SelectDrivers /> </Route>

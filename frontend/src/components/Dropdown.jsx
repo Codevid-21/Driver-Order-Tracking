@@ -8,21 +8,20 @@ function Dropdown({ closeMobileMenu }) {
   const handleClick = () => setClick(!click);
 
   return (
-    <>
       <ul
         onClick={handleClick}
-        className={click ? "dropdown-menu clicked" : "dropdown-menu"}
+        // className={click ? "clicked" : ""}
       >
         {MenuItems.map((item, index) => {
           return (
             <li key={index}>
               <Link
-                className={item.cName}
                 to={item.path}
-                onClick={() => {
-                  setClick(false);
-                  closeMobileMenu();
-                }}
+                onClick={closeMobileMenu}
+              // onClick={() => {
+              //   setClick(false);
+              //   closeMobileMenu();
+              // }}
               >
                 {item.title}
               </Link>
@@ -30,7 +29,6 @@ function Dropdown({ closeMobileMenu }) {
           );
         })}
       </ul>
-    </>
   );
 }
 

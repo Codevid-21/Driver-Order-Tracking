@@ -2,69 +2,70 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 
-function Navbar() {
-  const [click, setClick] = useState(false);
+function Navbar({ click, setClick }) {
+  // const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
   const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(true);
-    } else {
-      setDropdown(true);
-    }
+    setDropdown(true);
   };
 
   const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
+    setDropdown(false);
   };
 
   return (
     <>
-      <nav className="navbar">
-        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+      <nav>
+        <Link to="/" className="nav-logo" onClick={closeMobileMenu}>
           Order Tracking
           <i className="fas fa-shipping-fast"></i>
         </Link>
+
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          {/* hamburger icon */}
         </div>
-        <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-              Home
-            </Link>
-          </li>
 
-          <li
-            className="nav-item"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
-            <Link to="#" className="nav-links" onClick={closeMobileMenu}>
-              Drivers <i className="fas fa-caret-down" />
-            </Link>
-            {dropdown && <Dropdown closeMobileMenu={closeMobileMenu} />}
-          </li>
+        <div className="menu">
+          <ul className={click ? "active" : ""}>
+            <li>
+              <Link to="/" onClick={closeMobileMenu}>
+                Home
+              </Link>
+            </li>
 
-          <li className="nav-item">
-            <Link to="/orders" className="nav-links" onClick={closeMobileMenu}>
-              Orders
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/summary" className="nav-links" onClick={closeMobileMenu}>
-              Summary
-            </Link>
-          </li>
-        </ul>
+            <li
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+            >
+              <Link to="#" onClick={closeMobileMenu}>
+                Drivers <i className="fas fa-caret-down" />
+              </Link>
+              <div className="dropdown" >
+                {/* <ul>
+                  <li>123</li>
+                  <li>456</li>
+                </ul> */}
+              {dropdown && <Dropdown closeMobileMenu={closeMobileMenu} />}
+              </div>
+            </li>
+
+            <li>
+              <Link to="/orders" onClick={closeMobileMenu}>
+                Orders
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/summary" onClick={closeMobileMenu}>
+                Summary
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     </>
   );
