@@ -21,7 +21,7 @@ export default {
 
     create: async function (req, res, next) {
         try {
-            const result = await Order.create(req.body.name, req.body.detail, req.body.customerId, req.body.date, req.body.price, req.body.driver );
+            const result = await Order.create(req.body.name, req.body.detail, req.body.customerId, req.body.date, req.body.price );
             res.json({result});
         } catch (error) {
             next(error);

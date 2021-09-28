@@ -8,10 +8,14 @@ function Home({click}) {
   const url = `http://localhost:2005/orders`;
 
   useEffect(() => {
-    api.fetchDataFromDB(url)
-      .then(result => setOrderInfo(result))
+    api.fetchDataFromDB(url).then((result) => {
+      console.log(result);
+      const deliveredOrders = result.filter(
+        (value, index) => value.isDelivered === false
+      );
+      setOrderInfo(deliveredOrders);
+    });
   }, [url]);
-
 
   return (
     <div className={!click ? "hideOrder" : "displayOrder"} >

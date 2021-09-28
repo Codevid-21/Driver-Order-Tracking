@@ -14,7 +14,7 @@ ajvFormats(ajv);
 const schema = {
     type: "object",
     additionalProperties: true,
-    required: ["name", "detail", "date", "customerId", "price", "driver"],
+    required: ["name", "detail", "date", "customerId", "price", "driver", "isDelivered"],
     properties: {
         name: {
             type: "string",
@@ -35,6 +35,9 @@ const schema = {
         },
         driver: {
             type: "string",
+        },
+        isDelivered: {
+            type: "string"
         }
     }
 };
