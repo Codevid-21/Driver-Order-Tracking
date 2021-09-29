@@ -3,6 +3,7 @@ $secondaryColor : #F87060;
 $thirdColor : #0B5351;
 $fourthColor : #092327;
 
+
 .allDrivers__container {
     height: 80vh;
     display: flex;
@@ -21,26 +22,33 @@ $fourthColor : #092327;
         .workingDrivers__card {
             display: flex;
             flex-direction: column;
+
+
             .header {
                 border: 3px solid $fourthColor;
+                padding: 10px;
+                background-color: $thirdColor;
+                color: white;
+
+            }
+
+            .workingDrivers__info {
+                margin-top: 20px;
+
+                p {
+                    border: 3px solid $fourthColor;
+                    padding: 10px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $secondaryColor;
+                        color: white;
+                    }
+                }
+
             }
         }
     }
 
-
-    .notWorkingDrivers {
-        border: 5px solid $thirdColor;
-        padding: 50px;
-        width: 500px;
-        background-color: $primaryColor;
-
-        .notWorkingDrivers__card {
-            display: flex;
-            flex-direction: column;
-            .header {
-                border: 3px solid $fourthColor;
-            }
-        }
-    }
 
 }
