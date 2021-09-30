@@ -2,8 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: none;
-    outline: none;
+
 }
 
 .clearfix {
@@ -34,4 +33,5 @@ a:hover {
 @import "_NavBar.scss";
 @import "_Dropdown.scss";
 @import "_OrderCard.scss";
-@import "_ModalForDrivers.scss"
+@import "_ModalForDrivers.scss";
+@import "_SelectDrivers.scss";
