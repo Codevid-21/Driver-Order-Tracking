@@ -15,8 +15,8 @@ function SelectDrivers() {
 
   return (
     <div className="allDrivers__container">
-      <IsDriverWorking drivers={drivers} isWorking={true} />
-      <IsDriverWorking drivers={drivers} isWorking={false} />
+      <IsDriverWorking drivers={drivers} isWorking={true} setDrivers={setDrivers} />
+      <IsDriverWorking drivers={drivers} isWorking={false} setDrivers={setDrivers}/>
     </div>
   );
 }

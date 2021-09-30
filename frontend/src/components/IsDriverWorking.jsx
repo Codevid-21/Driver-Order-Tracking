@@ -1,13 +1,11 @@
 import React from "react";
 
-function IsDriverWorking({ drivers, isWorking }) {
+function IsDriverWorking({ drivers, isWorking, setDrivers }) {
   const handleWorkingSituation = (value) => {
-   
-
     const url = `http://localhost:2005/drivers/${value._id}`;
     const options = {
       method: "PUT",
-      body : JSON.stringify({...value, isWorking : !isWorking}),
+      body: JSON.stringify({ ...value, isWorking: !isWorking }),
       headers: {
         "Content-type": "application/json", // The type of data you're sending
       },
@@ -16,10 +14,7 @@ function IsDriverWorking({ drivers, isWorking }) {
     fetch(url, options)
       .then((response) => response.json())
       .then((result) => console.log("Güncellenmis Driver", result));
-
   };
-
-  console.log(drivers);
 
   return (
     <>
