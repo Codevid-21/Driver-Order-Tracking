@@ -1,7 +1,7 @@
 import React from "react";
 
 function IsDriverWorking({ drivers, isWorking, setDrivers }) {
-  const handleWorkingSituation = (value) => {
+  const handleWorkingSituation = (value, i) => {
     const url = `http://localhost:2005/drivers/${value._id}`;
     const options = {
       method: "PUT",
@@ -13,7 +13,10 @@ function IsDriverWorking({ drivers, isWorking, setDrivers }) {
 
     fetch(url, options)
       .then((response) => response.json())
-      .then((result) => console.log("Güncellenmis Driver", result));
+      .then((result) => {
+        drivers[i] = result;
+        setDrivers(drivers);
+      });
   };
 
   return (
@@ -25,12 +28,12 @@ function IsDriverWorking({ drivers, isWorking, setDrivers }) {
           </div>
           <div className="workingDrivers__info">
             {drivers
-              .filter((driver, i) => {
+              .filter((driver) => {
                 return driver.isWorking === isWorking;
               })
               .map((value, i) => {
                 return (
-                  <p key={i} onClick={() => handleWorkingSituation(value)}>
+                  <p key={i} onClick={() => handleWorkingSituation(value, i)}>
                     {value.user.name}
                   </p>
                 );

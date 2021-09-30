@@ -11,12 +11,20 @@ function SelectDrivers() {
     api.fetchDataFromDB(url).then((result) => {
       setDrivers(result);
     });
-  }, [url]);
+  }, [url,drivers]);
 
   return (
     <div className="allDrivers__container">
-      <IsDriverWorking drivers={drivers} isWorking={true} setDrivers={setDrivers} />
-      <IsDriverWorking drivers={drivers} isWorking={false} setDrivers={setDrivers}/>
+      <IsDriverWorking
+        drivers={drivers}
+        isWorking={true}
+        setDrivers={setDrivers}
+      />
+      <IsDriverWorking
+        drivers={drivers}
+        isWorking={false}
+        setDrivers={setDrivers}
+      />
     </div>
   );
 }
