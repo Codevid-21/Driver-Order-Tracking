@@ -5,7 +5,7 @@ $fourthColor : #092327;
 
 
 .allDrivers__container {
-    height: 80vh;
+    height: 79vh;
     display: flex;
     justify-content: space-evenly;
     padding: 20px;
@@ -29,6 +29,8 @@ $fourthColor : #092327;
                 padding: 10px;
                 background-color: $thirdColor;
                 color: white;
+                display: flex;
+                justify-content: center;
 
             }
 

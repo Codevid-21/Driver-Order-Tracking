@@ -1,65 +1,102 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 function NewDriver() {
   let history = useHistory();
 
-  const submitForm = () => {
-    const url = `http://localhost:2005/orders`;
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "deneme name",
-        detail: "deneme detail",
-        customerId: "deneme id customer",
-        date: "deneme name",
-        price: "beles",
-        driver: "yok",
-      }),
-    };
+  const [newDriversInfo, setNewDriversInfo] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    tel: "",
+    address: "",
+    city: "",
+  });
 
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((result) => console.log("Gönderilen Order", result));
+  const addANewDriver = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:2005/drivers", {
+      method: "POST",
+      body: JSON.stringify(newDriversInfo),
+      headers: {
+        "Content-type": "application/json", // The type of data you're sending
+      },
+    });
 
     history.push("/");
   };
 
   return (
-    <div>
-      <form onSubmit={submitForm}>
-        <h1>Information of new Driver</h1>
+    <div className="newDriver__container">
+      <form onSubmit={addANewDriver} autoComplete="off">
+        <h2>Add a new Driver</h2>
         <label>
           Name:
-          <input type="text" name="name" />
+          <input
+            type="text"
+            name="name"
+            value={newDriversInfo.name}
+            onChange={(e) =>
+              setNewDriversInfo({ ...newDriversInfo, name: e.target.value })
+            }
+          />
         </label>
         <label>
           Surname:
-          <input type="text" name="surname" />
+          <input
+            type="text"
+            name="surname"
+            value={newDriversInfo.surname}
+            onChange={(e) =>
+              setNewDriversInfo({ ...newDriversInfo, surname: e.target.value })
+            }
+          />
         </label>
         <label>
           Email:
-          <input type="email" name="email" />
+          <input
+            type="email"
+            name="email"
+            value={newDriversInfo.email}
+            onChange={(e) =>
+              setNewDriversInfo({ ...newDriversInfo, email: e.target.value })
+            }
+          />
         </label>
         <label>
-          Telefonnummer:
-          <input type="text" name="telefon" />
+          Telephone:
+          <input
+            type="text"
+            name="telefon"
+            value={newDriversInfo.tel}
+            onChange={(e) =>
+              setNewDriversInfo({ ...newDriversInfo, tel: e.target.value })
+            }
+          />
         </label>
         <label>
-          Adress:
-          <input type="text" name="adress" />
+          Address:
+          <input
+            type="text"
+            name="adress"
+            value={newDriversInfo.address}
+            onChange={(e) =>
+              setNewDriversInfo({ ...newDriversInfo, address: e.target.value })
+            }
+          />
         </label>
         <label>
           City:
-          <input type="text" name="city" />
+          <input
+            type="text"
+            name="city"
+            value={newDriversInfo.city}
+            onChange={(e) =>
+              setNewDriversInfo({ ...newDriversInfo, city: e.target.value })
+            }
+          />
         </label>
-        {/* <label>
-          City:
-          <input type="text" name="city" />
-        </label> */}
         <label>
           <input type="submit" value="Submit" />
         </label>
