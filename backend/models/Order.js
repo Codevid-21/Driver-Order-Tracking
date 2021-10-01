@@ -1,12 +1,8 @@
 import mongoose from "mongoose";
 
 const OrderSchema = mongoose.Schema({
-	name: {
-		type: String,
-		required: true,
-	},
-	detail: {
-		type: String,
+	foods: {
+		type: Array,
 		required: true,
 	},
 	date: {
@@ -17,7 +13,7 @@ const OrderSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	price: {
+	total: {
 		type: String,
 		required: true,
 	},
@@ -43,14 +39,13 @@ export default {
 		return await Order.findById(id);
 	},
 
-	create: async function (name, detail, customerId, date, price) {
+	create: async function (food, customerId, total) {
 		const order = new Order({
-			name,
-			detail,
-			date,
+			food,
+			date: Date.now(),
 			customerId,
-			price,
-			driver: false,
+			total,
+			driver: "not yet",
 			isDelivered: false,
 		});
 		return await order.save();
