@@ -19,8 +19,8 @@ export default {
     },
     create: async function (req, res, next) {
         try {
-            const result = await User.create(req.body.name, req.body.email, req.body.orders);
-            res.json({result});
+            const result = await User.create(req.body.name, req.body.surname, req.body.email, req.body.tel, req.body.address, req.body.city);
+            res.json({ result });
         } catch (error) {
             next(error);
         }
@@ -35,7 +35,7 @@ export default {
             // console.log("Read By User ID", driver);
             const updatedUser = req.body;
             console.log("user update body", req.body);
-            
+
             const result = await User.updateByID(id, updatedUser);
             console.log("result", result)
             res.json(result);

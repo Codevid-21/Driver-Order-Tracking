@@ -8,20 +8,33 @@ const UserSchema = Schema({
         type: String,
         required: true,
     },
+    surname: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
     },
-    // orders: {
-    //     type: Array,
-    //     // ref: "Order",
-    // }
+    tel: {
+        type: Number,
+        required: true,
+    },
+    address: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+
 }, { versionKey: false });
 
 const User = mongoose.model("User", UserSchema);
 
 export default {
-    User, 
+    User,
     readAll: async function () {
         return await User.find();
     },
@@ -30,12 +43,16 @@ export default {
         return await User.findById(id);
     },
 
-    create: async function (name, email, orders) {
+    create: async function (name, surname, email, tel, address, city) {
         console.log("User");
         const user = new User({
             name,
+            surname,
             email,
-            orders
+            tel,
+            address,
+            city
+
         });
         return await user.save();
     },
