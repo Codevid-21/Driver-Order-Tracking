@@ -11,7 +11,7 @@ function SelectDrivers() {
     api.fetchDataFromDB(url).then((result) => {
       setDrivers(result);
     });
-  }, [url,drivers]);
+  }, [url]);
 
   return (
     <div className="allDrivers__container">
