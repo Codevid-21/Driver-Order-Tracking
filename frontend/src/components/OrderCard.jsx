@@ -33,8 +33,8 @@ function OrderCard({ orderInfo }) {
             <div className="orderInfo">
               <h4>Order Information</h4>
               <p> Order ID : {order._id} </p>
-              <p>Order Content : {order.detail} </p>
-              <p> Price : {order.price}€ </p>
+              <p>Order Date : {order.date} </p>
+              <p> Price : {order.total}€ </p>
             </div>
             <div className="clientInfo">
               <h4>Client Information</h4>
