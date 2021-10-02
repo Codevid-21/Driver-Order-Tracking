@@ -22,8 +22,31 @@ export default {
 
     create: async function (req, res, next) {
         try {
-            const result = await Driver.create(req.body.userID);
-            res.json({ result });
+            const user = await User.findByEmail(req.body.email);
+
+            if (user.length > 0) {
+                const userID = user[0]._id;
+                const driver = await Driver.findByUserID(userID)
+
+                if (driver.length > 0) {
+                    return res.json({ driver })
+                }
+
+                else {
+
+                    const result = await Driver.create(userID);
+                    return res.json({ result });
+                }
+
+            } else {
+                const user = await User.create(req.body.name, req.body.surname, req.body.email, req.body.tel, req.body.address, req.body.city);
+                const userID = user._id;
+                const result = await Driver.create(userID);
+                return res.json({ result });
+
+            }
+
+
         } catch (error) {
             next(error);
         }
