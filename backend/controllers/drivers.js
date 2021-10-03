@@ -52,12 +52,12 @@ export default {
         }
     },
 
-    addOrderToDriver: async function (req, res, next) {
-        try {
-            const result = await Driver.addOrderToDriver(req.params.driverID, req.params.orderID);
-            res.json(result);
-        } catch (error) {
-            next(error);
-        }
-    },
+    // addOrderToDriver: async function (req, res, next) {
+    //     try {
+    //         const result = await Driver.addOrderToDriver(req.params.driverID, req.params.orderID);
+    //         res.json(result);
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // },
 };
