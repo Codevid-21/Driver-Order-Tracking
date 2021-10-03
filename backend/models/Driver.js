@@ -55,6 +55,15 @@ export default {
     return await driver.save();
   },
 
+  findByEmail: async function (email) {
+    return await Driver.find({ email: email }).populate("user");
+  },
+
+  findByUserID: async function (id) {
+    return await Driver.find({ user: id }).populate("user");
+  },
+
+
   updateByID: async function (id, orderObject) {
     return await Driver.findByIdAndUpdate(id, orderObject, {
       new: true,
@@ -65,7 +74,6 @@ export default {
   deleteByID: async function (id) {
     return await Driver.deleteOne({ _id: id });
   },
-
   // addOrderToDriver: async function (id, orderID) {
   //   const driver = await Driver.findById(id);
   //   if (!driver) throw new Error("driver not found");

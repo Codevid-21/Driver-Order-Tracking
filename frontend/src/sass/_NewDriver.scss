@@ -22,7 +22,7 @@ $fifth-color: #B3A394;
         border: 3px solid $fourthColor;
         background-color: $primaryColor;
 
-        h2{
+        h2 {
             margin: 0 auto;
         }
 
@@ -62,12 +62,4 @@ $fifth-color: #B3A394;
     }
 
 
-}
-
-@media all and (max-width: 768px) {
-    form {
-        margin: 0;
-        padding: 0;
-        border: none;
-    }
 }
