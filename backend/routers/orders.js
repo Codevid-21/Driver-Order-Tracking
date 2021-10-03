@@ -11,7 +11,7 @@ router.post("/", ordersController.create); // Buraya kullanici kontrol edilecek 
 router.get("/", ordersController.readAll);
 
 router.get("/:orderID", ordersController.readOne);
-router.post("/:orderID", ordersController.addDriverToOrder);
+router.put("/:orderID/:driverID", ordersController.addDriverToOrder);
 
 router.put("/:orderID", ordersController.update);
 router.delete("/:orderID", ordersController.delete);

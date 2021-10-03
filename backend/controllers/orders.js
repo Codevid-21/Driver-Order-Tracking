@@ -50,7 +50,7 @@ export default {
 
     addDriverToOrder: async function (req, res, next) {
         try {
-            const result = await Order.addDriverToOrder(req.params.orderID, req.body.driverID);
+            const result = await Order.addDriverToOrder(req.params.orderID, req.params.driverID);
             res.json(result);
         } catch (error) {
             next(error);

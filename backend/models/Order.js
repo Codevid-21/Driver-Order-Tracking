@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Driver from "./Driver.js";
 
 const OrderSchema = mongoose.Schema({
 	foods: {
@@ -68,7 +69,12 @@ export default {
 		if (!order) throw new Error("order not found");
 
 		order.driver = driverID;
+		
+		const driver = await Driver.readOne(driverID);
+		if (!driver) throw new Error("driver not found");
+		
+		driver.deliveries.push(id);
 
-		return await order.save();
+		return await order.save() && await driver.save();
 	}
 }
