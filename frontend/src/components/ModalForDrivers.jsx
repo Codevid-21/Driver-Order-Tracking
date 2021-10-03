@@ -4,7 +4,8 @@ import { BsFillPersonFill } from "react-icons/bs";
 
 function ModalForDrivers(props) {
   const addDrivertoOrder = (driver) => {
-    const url = `http://localhost:2005/drivers/${driver._id}/${props.selectedOrder._id}`;
+    // Burada hem driver hem de order güncelleniyor.
+    const url = `http://localhost:2005/orders/${props.selectedOrder._id}/${driver._id}`;
     const options = {
       method: "PUT",
       headers: {

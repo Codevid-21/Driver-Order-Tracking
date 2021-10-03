@@ -32,6 +32,7 @@ const DriverSchema = Schema({
 const Driver = mongoose.model("Driver", DriverSchema);
 
 export default {
+  Driver,
   readAll: async function () {
     return await Driver.find().populate("user");
   },
@@ -73,12 +74,11 @@ export default {
   deleteByID: async function (id) {
     return await Driver.deleteOne({ _id: id });
   },
-
-  addOrderToDriver: async function (id, orderID) {
-    const driver = await Driver.findById(id);
-    if (!driver) throw new Error("driver not found");
-
-    driver.deliveries.push(orderID);
-    return await driver.save();
-  },
+  // addOrderToDriver: async function (id, orderID) {
+  //   const driver = await Driver.findById(id);
+  //   if (!driver) throw new Error("driver not found");
+    
+  //   driver.deliveries.push(orderID);
+  //   return await driver.save();
+  // },
 };
