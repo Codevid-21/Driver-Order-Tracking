@@ -16,18 +16,10 @@ const CustomerSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  address: {
-    type: String,
-    required: true,
-  },
-  city: {
-    type: String,
-    required: true,
-  },
-//   orders: [OrdersItemSchema],
+  //   orders: [OrdersItemSchema],
   orders: {
-      type: Array,
-      required: true,
+    type: Array,
+    required: true,
   },
 });
 
@@ -40,8 +32,6 @@ export default {
   create: async function (userID) {
     const customer = new Customer({
       user: userID,
-      address: "adress",
-      city: "Neumünster",
       orders: [],
     });
     return await customer.save();
