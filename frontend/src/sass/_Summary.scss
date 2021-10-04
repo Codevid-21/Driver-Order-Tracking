@@ -1,0 +1,24 @@
+.summary__container {
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .summary__drivers {
+
+
+        .drivers__endDayCard {
+
+            // background-color: yellow;
+            height: 50vh;
+            display: flex;
+            justify-content: space-around;
+
+            .card__items {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+            }
+        }
+    }
+}
