@@ -19,9 +19,9 @@ function Summary() {
     <>
       <div className="summary__container">
         <div className="summary__day">
-          <h4> `Toplam Kac Siparis Götürüldü?? : 5`</h4>
-          <h4> `Toplam Kac Söför calisti?? : 3`</h4>
-          <h4> `Toplam Kac Para toplandi?? : 500`</h4>
+          <h5> `Toplam Kac Siparis Götürüldü?? : 5`</h5>
+          <h5> `Toplam Kac Söför calisti?? : 3`</h5>
+          <h5> `Toplam Kac Para toplandi?? : 500`</h5>
         </div>
 
         <div className="summary__drivers">
@@ -29,11 +29,11 @@ function Summary() {
             {drivers.map((driver, i) => {
               return (
                 <div className="card__items">
-                  <p>
+                  <h6>
                     {driver.user.name} {console.log(driver.deliveries)}{" "}
-                  </p>
+                  </h6>
                   <p>
-                    {`Toplam Siparis Sayisi :  ${driver.deliveries.length}`}
+                    {`Toplam Teslim Ettigi Siparis :  ${driver.deliveries.length}`}
                   </p>
                   Toplam Siparis Tutari :
                   {driver.deliveries.reduce(
@@ -41,7 +41,7 @@ function Summary() {
                       previousValue + parseInt(currentValue.total),
                     0
                   )}
-                  €<p></p>
+                  €
                 </div>
               );
             })}

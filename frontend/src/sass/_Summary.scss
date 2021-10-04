@@ -1,23 +1,48 @@
 .summary__container {
     display: flex;
-    height: 80vh;
+    height: 90vh;
+    width: 100%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: red;
+
+    .summary__day {
+
+        height: 15vh;
+        width: 80vw;
+        background-color: #B3A394;
+    }
 
     .summary__drivers {
+        background-color: yellow;
 
 
         .drivers__endDayCard {
 
-            // background-color: yellow;
             height: 50vh;
-            display: flex;
-            justify-content: space-around;
+            // display: flex;
+            // align-items: center;
+            // justify-content: space-around;
+
+
+
 
             .card__items {
-                width: 200px;
+                // display: flex;
+                // flex-direction: column;
+                // justify-content: center;
+                // align-items: center;
+                width: 300px;
                 height: 200px;
-                background-color: red;
+                background-color: #F87060;
+                border: 3px solid #0B5351;
+
+                &:hover {
+
+                    cursor: pointer;
+                    background-color: #CDD7D6;
+                }
             }
         }
     }
