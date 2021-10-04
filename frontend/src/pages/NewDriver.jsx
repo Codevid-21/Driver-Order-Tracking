@@ -18,10 +18,19 @@ function NewDriver() {
 
     fetch("http://localhost:2005/drivers", {
       method: "POST",
-      body: JSON.stringify({...newDriversInfo}),
+      body: JSON.stringify({ ...newDriversInfo }),
       headers: {
         "Content-type": "application/json", // The type of data you're sending
       },
+    });
+
+    setNewDriversInfo({
+      name: "",
+      surname: "",
+      email: "",
+      tel: "",
+      address: "",
+      city: "",
     });
 
     // history.push("/");
