@@ -38,9 +38,9 @@ function OrderCard({ orderInfo }) {
             </div>
             <div className="clientInfo">
               <h4>Client Information</h4>
-              <p> Name : Uwe Smith </p>
-              <p>Address : Elisabeth street 1 </p>
-              <p> Phone : 0176 888 44 44 </p>
+              <p> Name : {order.customerId.user.name} </p>
+              <p>Address : {order.customerId.user.address} </p>
+              <p> Phone : {order.customerId.user.tel} </p>
             </div>
             <div className="driverInfo">
               <img

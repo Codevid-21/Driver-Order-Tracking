@@ -26,6 +26,7 @@ const CustomerSchema = Schema({
 const Customer = mongoose.model("Customer", CustomerSchema);
 
 export default {
+  Customer,
   readAll: async function () {
     return await Driver.find().populate("user");
   },

@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 import Driver from "./Driver.js";
+import Customer from "./Customer.js";
 
-const OrderSchema = mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const OrderSchema = Schema({
 	foods: {
 		type: Array,
 		required: true,
@@ -11,8 +14,8 @@ const OrderSchema = mongoose.Schema({
 		required: true,
 	},
 	customerId: {
-		type: String,
-		required: true,
+		type: Schema.Types.ObjectId,
+    	ref: "Customer",
 	},
 	total: {
 		type: String,
@@ -33,7 +36,7 @@ const Order = mongoose.model("Order", OrderSchema);
 export default {
 	Order,
 	readAll: async function () {
-		return await Order.find();
+		return await Order.find().populate({path: "customerId", populate: { path: "user"}});
 	},
 
 	readOne: async function (id) {
@@ -41,9 +44,18 @@ export default {
 	},
 
 	create: async function (food, customerId, total) {
+		let now = new Date();
+		
+		const ho = new Intl.DateTimeFormat('en', { hour: 'numeric', hour12: false }).format(now)
+		const mi = new Intl.DateTimeFormat('en', { minute: 'numeric' }).format(now)
+		
+		const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(now)
+		const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(now)
+		const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(now)
+
 		const order = new Order({
 			food,
-			date: Date.now(),
+			date: `${ho}:${mi} - ${da} ${mo} ${ye}`,
 			customerId,
 			total,
 			driver: "not yet",
