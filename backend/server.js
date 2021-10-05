@@ -4,6 +4,7 @@ import database from "./lib/database.js";
 import ordersRouter from "./routers/orders.js";
 import usersRouter from "./routers/users.js";
 import driversRouter from "./routers/drivers.js";
+import customersRouter from "./routers/customers.js";
 import errorHandling from "./middlewares/errorHandling.js";
 import cors from "cors";
 
@@ -23,5 +24,6 @@ server.use("/orders", ordersRouter);
 server.use("/products", usersRouter);
 server.use("/users", usersRouter);
 server.use("/drivers", driversRouter);
+server.use("/customers", customersRouter);
 
 server.use(errorHandling);

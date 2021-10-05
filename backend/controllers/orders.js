@@ -21,7 +21,7 @@ export default {
 
     create: async function (req, res, next) {
         try {
-            const result = await Order.create(req.body.name, req.body.detail, req.body.customerId, req.body.date, req.body.price );
+            const result = await Order.create(req.body.food, req.body.customerId, req.body.total );
             res.json({result});
         } catch (error) {
             next(error);
@@ -50,7 +50,7 @@ export default {
 
     addDriverToOrder: async function (req, res, next) {
         try {
-            const result = await Order.addDriverToOrder(req.params.orderID, req.body.driverID);
+            const result = await Order.addDriverToOrder(req.params.orderID, req.params.driverID);
             res.json(result);
         } catch (error) {
             next(error);

@@ -2,6 +2,7 @@ $primaryColor : #CDD7D6;
 $secondaryColor : #F87060;
 $thirdColor : #0B5351;
 $fourthColor : #092327;
+$fifthColor : #B3A394;
 
 
 .allDrivers__container {
@@ -42,9 +43,11 @@ $fourthColor : #092327;
                     padding: 10px;
                     cursor: pointer;
 
+
                     &:hover {
-                        background-color: $secondaryColor;
-                        color: white;
+                        background-color: $fifthColor;
+                        border: 3px solid $secondaryColor;
+
                     }
                 }
 

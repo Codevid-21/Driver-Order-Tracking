@@ -32,8 +32,10 @@ const DriverSchema = Schema({
 const Driver = mongoose.model("Driver", DriverSchema);
 
 export default {
+  Driver,
   readAll: async function () {
     return await Driver.find().populate("user");
+
   },
 
   readOne: async function (id) {
@@ -54,6 +56,15 @@ export default {
     return await driver.save();
   },
 
+  findByEmail: async function (email) {
+    return await Driver.find({ email: email }).populate("user");
+  },
+
+  findByUserID: async function (id) {
+    return await Driver.find({ user: id }).populate("user");
+  },
+
+
   updateByID: async function (id, orderObject) {
     return await Driver.findByIdAndUpdate(id, orderObject, {
       new: true,
@@ -64,12 +75,11 @@ export default {
   deleteByID: async function (id) {
     return await Driver.deleteOne({ _id: id });
   },
+  // addOrderToDriver: async function (id, orderID) {
+  //   const driver = await Driver.findById(id);
+  //   if (!driver) throw new Error("driver not found");
 
-  addOrderToDriver: async function (id, orderID) {
-    const driver = await Driver.findById(id);
-    if (!driver) throw new Error("driver not found");
-    
-    driver.deliveries.push(orderID);
-    return await driver.save();
-  },
+  //   driver.deliveries.push(orderID);
+  //   return await driver.save();
+  // },
 };
