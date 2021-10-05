@@ -64,6 +64,11 @@ function Navbar({ click, setClick }) {
                 Summary
               </Link>
             </li>
+            <li>
+              <Link to="/login" onClick={closeMobileMenu}>
+                Login
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
