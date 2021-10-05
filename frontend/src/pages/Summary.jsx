@@ -15,6 +15,10 @@ function Summary() {
     });
   }, [url]);
 
+  const showDetailsOfDriver = (driver, i) => {
+    console.log(driver, i);
+  };
+
   return (
     <>
       <div className="summary__container">
@@ -27,7 +31,10 @@ function Summary() {
         <div className="drivers__endDayCard">
           {drivers.map((driver, i) => {
             return (
-              <div className="card__items">
+              <div
+                className="card__items"
+                onClick={() => showDetailsOfDriver(driver, i)}
+              >
                 <h6>
                   {driver.user.name} {console.log(driver.deliveries)}{" "}
                 </h6>

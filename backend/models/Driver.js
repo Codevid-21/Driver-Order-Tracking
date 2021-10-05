@@ -35,6 +35,7 @@ export default {
   Driver,
   readAll: async function () {
     return await Driver.find().populate("user");
+
   },
 
   readOne: async function (id) {
@@ -77,7 +78,7 @@ export default {
   // addOrderToDriver: async function (id, orderID) {
   //   const driver = await Driver.findById(id);
   //   if (!driver) throw new Error("driver not found");
-    
+
   //   driver.deliveries.push(orderID);
   //   return await driver.save();
   // },
