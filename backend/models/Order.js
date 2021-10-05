@@ -22,8 +22,8 @@ const OrderSchema = Schema({
 		required: true,
 	},
 	driver: {
-		type: String,
-		required: true,
+		type: Schema.Types.ObjectId,
+    	ref: "Driver",
 	},
 	isDelivered: {
 		type: Boolean,
@@ -36,7 +36,7 @@ const Order = mongoose.model("Order", OrderSchema);
 export default {
 	Order,
 	readAll: async function () {
-		return await Order.find().populate({path: "customerId", populate: { path: "user"}});
+		return await Order.find().populate({path: "customerId", populate: { path: "user"}}).populate({path:"driver", populate: { path: "user"}});
 	},
 
 	readOne: async function (id) {

@@ -42,7 +42,7 @@ function Summary() {
                 Toplam Siparis Tutari :
                 {driver.deliveries.reduce(
                   (previousValue, currentValue) =>
-                    previousValue + parseInt(currentValue.total),
+                    previousValue + parseInt(currentValue._id.total),
                   0
                 )}
                 €

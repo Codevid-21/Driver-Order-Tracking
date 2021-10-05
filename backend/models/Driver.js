@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 const DeliveriesItemSchema = Schema(
   {
-    orderID: {
+    _id: {
       type: Schema.Types.ObjectId,
       ref: "Order",
     },
@@ -34,7 +34,8 @@ const Driver = mongoose.model("Driver", DriverSchema);
 export default {
   Driver,
   readAll: async function () {
-    return await Driver.find().populate("user");
+    return await Driver.find().populate("deliveries._id");
+    // return await Driver.find().populate({path: "deliveries", populate: { path: "_id"}});
 
   },
 
