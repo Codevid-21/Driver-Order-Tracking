@@ -15,8 +15,6 @@ function Summary() {
     });
   }, [url]);
 
-  console.log(drivers);
-
   const showDetailsOfDriver = (driver, i) => {
     console.log(driver, i);
   };
