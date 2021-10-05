@@ -1,0 +1,59 @@
+.summary__container {
+    display: flex;
+    height: 80vh;
+    // width: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 3px solid red;
+    background-color: #CDD7D6;
+    margin: 30px;
+
+
+    .summary__day {
+        background-color: white;
+        padding: 50px;
+        border: solid 5px;
+    }
+
+
+
+
+
+    .drivers__endDayCard {
+
+        // border: 5px solid #0B5351;
+        // background-color: white;
+        height: 50vh;
+        width: 80%;
+        display: flex;
+        padding: 50px;
+        justify-content: space-around;
+
+
+
+
+
+
+
+        .card__items {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 200px;
+            background-color: #F87060;
+            border: 3px solid #0B5351;
+
+            &:hover {
+
+                cursor: pointer;
+                background-color: #B3A394;
+                border: 3px solid #F87060;
+
+            }
+        }
+    }
+
+}
