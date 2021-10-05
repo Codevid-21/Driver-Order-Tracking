@@ -33,7 +33,6 @@ function Summary() {
       <div className="summary__container">
         <div className="summary__day">
           <h5>
-            {" "}
             Toplam Kac Siparis Götürüldü?? :{" "}
             {drivers.reduce(
               (previousValue, currentValue) =>
@@ -58,9 +57,7 @@ function Summary() {
                 Toplam Siparis Tutari :
                 {driver.deliveries.reduce(
                   (previousValue, currentValue) =>
-                    previousValue + parseInt(currentValue._id.total),
-                  0
-                )}
+                    previousValue + parseInt(currentValue._id.total),0)}
                 €
               </div>
             );

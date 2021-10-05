@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+
 
 function NewDriver() {
-  let history = useHistory();
+
 
   const [newDriversInfo, setNewDriversInfo] = useState({
     name: "",
