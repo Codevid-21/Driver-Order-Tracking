@@ -7,6 +7,7 @@ import Orders from "./pages/Orders.jsx";
 import NewDriver from "./pages/NewDriver.jsx";
 import SelectDrivers from "./pages/SelectDrivers.jsx";
 import Summary from "./pages/Summary.jsx";
+import Login from "./pages/Login.jsx";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/newdriver"> <NewDriver /> </Route>
           <Route path="/selectdrivers"> <SelectDrivers /> </Route>
           <Route path="/summary"> <Summary /> </Route>
+          <Route path="/login"> <Login/> </Route>
         </Switch>
       </BrowserRouter>
   
