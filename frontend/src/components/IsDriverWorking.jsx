@@ -34,6 +34,7 @@ function IsDriverWorking({ drivers, isWorking, setDrivers }) {
               .map((value, i) => {
                 return (
                   <p key={i} onClick={() => handleWorkingSituation(value, i)}>
+                    {console.log(value)}
                     {value.user.name}
                   </p>
                 );

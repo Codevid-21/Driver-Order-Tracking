@@ -58,7 +58,7 @@ export default {
 			date: `${ho}:${mi} - ${da} ${mo} ${ye}`,
 			customerId,
 			total,
-			driver: "not yet",
+			driver: null,
 			isDelivered: false,
 		});
 		return await order.save();

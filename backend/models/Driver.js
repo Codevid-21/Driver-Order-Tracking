@@ -34,7 +34,7 @@ const Driver = mongoose.model("Driver", DriverSchema);
 export default {
   Driver,
   readAll: async function () {
-    return await Driver.find().populate("deliveries._id");
+    return await Driver.find().populate("user").populate("deliveries._id");
     // return await Driver.find().populate({path: "deliveries", populate: { path: "_id"}});
 
   },
