@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Driver from "./Driver.js";
 import Customer from "./Customer.js";
+import date from "../lib/date.js";
 
 const Schema = mongoose.Schema;
 
@@ -43,19 +44,10 @@ export default {
 		return await Order.findById(id);
 	},
 
-	create: async function (food, customerId, total) {
-		let now = new Date();
-		
-		const ho = new Intl.DateTimeFormat('en', { hour: 'numeric', hour12: false }).format(now)
-		const mi = new Intl.DateTimeFormat('en', { minute: 'numeric' }).format(now)
-		
-		const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(now)
-		const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(now)
-		const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(now)
-
+	create: async function (foods, customerId, total) {
 		const order = new Order({
-			food,
-			date: `${ho}:${mi} - ${da} ${mo} ${ye}`,
+			foods,
+			date: date.getDate(),
 			customerId,
 			total,
 			driver: null,

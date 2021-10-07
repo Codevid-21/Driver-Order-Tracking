@@ -18,7 +18,7 @@ const UserSchema = Schema(
       required: true,
     },
     tel: {
-      type: Number,
+      type: String, // Girilen bilginin telefon numarasi olup olmadigi kontrol edilecek.
       required: true,
     },
     address: {
