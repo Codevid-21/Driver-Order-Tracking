@@ -5,7 +5,7 @@ import api from "../api/fetchDataFromDB";
 function OrderCard({ orderInfo }) {
   const [modalShow, setModalShow] = useState(false);
   const [drivers, setDrivers] = useState([]);
-  const [selectedOrder, setSelectedOrder] = useState({driver: {_id: ""}});
+  const [selectedOrder, setSelectedOrder] = useState({ driver: { _id: "" } });
 
   const url = `http://localhost:2005/drivers`;
 
@@ -25,10 +25,14 @@ function OrderCard({ orderInfo }) {
           <div
             key={i}
             className="orderCard"
-            onClick={() => {
-              setModalShow(true);
-              setSelectedOrder(order);
-            }}
+            onClick={
+              order.isDelivered
+                ? () => null
+                : () => {
+                    setModalShow(true);
+                    setSelectedOrder(order);
+                  }
+            }
           >
             <div className="orderInfo">
               <h4>Order Information</h4>
@@ -47,7 +51,10 @@ function OrderCard({ orderInfo }) {
                 src="https://www.nicepng.com/png/detail/1010-10103271_chef-cook-cartoon-cute-kitchen-png-image-cooking.png"
                 alt=""
               />
-              <p>Driver : {order.driver === null ? "No Driver " : order.driver.user.name}</p>
+              <p>
+                Driver :{" "}
+                {order.driver === null ? "No Driver " : order.driver.user.name}
+              </p>
             </div>
           </div>
         );
