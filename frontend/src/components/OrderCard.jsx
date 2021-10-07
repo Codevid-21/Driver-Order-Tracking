@@ -5,7 +5,7 @@ import api from "../api/fetchDataFromDB";
 function OrderCard({ orderInfo }) {
   const [modalShow, setModalShow] = useState(false);
   const [drivers, setDrivers] = useState([]);
-  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [selectedOrder, setSelectedOrder] = useState({driver: {_id: ""}});
 
   const url = `http://localhost:2005/drivers`;
 

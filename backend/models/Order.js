@@ -71,11 +71,19 @@ export default {
 	addDriverToOrder: async function (id, driverID) {
 		const order = await Order.findById(id);
 		if (!order) throw new Error("order not found");
-
-		order.driver = driverID;
 		
 		const driver = await Driver.readOne(driverID);
 		if (!driver) throw new Error("driver not found");
+		
+		if (order.driver == null) {
+			order.driver = driverID;
+		} else {
+			const preDriver = await Driver.readOne(order.driver);
+			const indexOfOrder = preDriver.deliveries.findIndex(obj => obj._id == id);
+			preDriver.deliveries.splice(indexOfOrder, 1);
+			order.driver = driverID;
+			await preDriver.save();
+		};
 		
 		driver.deliveries.push(id);
 

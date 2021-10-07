@@ -1,8 +1,10 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { BsFillPersonFill } from "react-icons/bs";
+import DriverCard from "./DriverCard";
 
 function ModalForDrivers(props) {
+
   const addDrivertoOrder = (driver) => {
     // Burada hem driver hem de order güncelleniyor.
     const url = `http://localhost:2005/orders/${props.selectedOrder._id}/${driver._id}`;
@@ -34,23 +36,21 @@ function ModalForDrivers(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {props.drivers.map((driver, i) => {
-            return (
-              <div
-                className="driverCard"
-                key={i}
-                onClick={() => addDrivertoOrder(driver)}
-              >
-                <div className="driverPhoto">
-                  <BsFillPersonFill size="2em" color="black" />
-                </div>
-                <div className="info">
-                  <p>Name : {driver.user.name} </p>
-                  <p>Status : {driver.status} </p>
-                </div>
-              </div>
-            );
-          })}
+          {
+            props.selectedOrder.driver == null ?
+
+              props.drivers.map((driver, i) => {
+                return (
+                  <DriverCard driver={driver} key={i} addDrivertoOrder={addDrivertoOrder} />
+                );
+              })
+              :
+              props.drivers.filter(value => value._id !== props.selectedOrder.driver._id).map((driver, i) => {
+                return (
+                  <DriverCard driver={driver} key={i} addDrivertoOrder={addDrivertoOrder} />
+                );
+              })
+          }
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Done</Button>
