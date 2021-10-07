@@ -1,35 +1,62 @@
 .summary__container {
     display: flex;
-    height: 80vh;
-    // width: 100%;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    border: 3px solid red;
-    background-color: #CDD7D6;
+
     margin: 30px;
 
 
+
+
+
     .summary__day {
-        background-color: white;
-        padding: 50px;
-        border: solid 5px;
+        // margin-top: 20px;
+        // background-color: red;
+        width: 100%;
+        // padding: 40px;
+        // border: solid 3px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .day__info {
+            // background-color: blue;
+            display: flex;
+            // flex-direction: column;
+            width: 80%;
+            justify-content: space-evenly;
+
+
+        }
+
+        .svgImg {
+            display: flex;
+            height: 120px;
+
+
+            img {
+                width: 300px;
+            }
+        }
+
+
+
     }
 
 
 
 
 
-    .drivers__endDayCard {
-
-        // border: 5px solid #0B5351;
-        // background-color: white;
-        height: 50vh;
-        width: 80%;
+    .drivers__container {
+        background-color: red;
+        width: 100%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
         padding: 50px;
-        justify-content: space-around;
-
+        // justify-content: space-around;
+        // align-items: center;
 
 
 
@@ -37,23 +64,62 @@
 
 
         .card__items {
+            width: 70%;
+            background-color: white;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 300px;
-            height: 200px;
-            background-color: #F87060;
+
+            margin: 20px;
+            padding: 10px;
+
+
+
+
             border: 3px solid #0B5351;
+
 
             &:hover {
 
                 cursor: pointer;
-                background-color: #B3A394;
                 border: 3px solid #F87060;
+                background-color: #fffaf0;
 
             }
+
+
+            .withoutClick {
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+
+
+
+
+
+            .withClick {
+                display: flex;
+                flex-direction: column;
+            }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 }
