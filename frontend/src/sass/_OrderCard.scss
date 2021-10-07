@@ -26,8 +26,21 @@ $primaryColor : #CDD7D6;
     }
 
     .driverInfo {
-        img {
-            width: 50px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+
+        .img {
+
+            margin-bottom: 15px;
+
+        }
+
+        p {
+            text-decoration: underline;
         }
     }
 }

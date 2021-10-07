@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ModalForDrivers from "./ModalForDrivers";
-import api from "../api/fetchDataFromDB";
+import { GiChefToque } from "react-icons/gi";
+import { FaShippingFast } from "react-icons/fa";
+import { GrCompliance } from "react-icons/gr";
 
 function OrderCard({ orderInfo }) {
   const [modalShow, setModalShow] = useState(false);
-  const [drivers, setDrivers] = useState([]);
+
   const [selectedOrder, setSelectedOrder] = useState({ driver: { _id: "" } });
-
-  const url = `http://localhost:2005/drivers`;
-
-  useEffect(() => {
-    api.fetchDataFromDB(url).then((result) => {
-      const workingDrivers = result.filter(
-        (value, index) => value.isWorking === true
-      );
-      setDrivers(workingDrivers);
-    });
-  }, [url]);
 
   return (
     <>
@@ -47,10 +38,16 @@ function OrderCard({ orderInfo }) {
               <p> Phone : {order.customerId.user.tel} </p>
             </div>
             <div className="driverInfo">
-              <img
-                src="https://www.nicepng.com/png/detail/1010-10103271_chef-cook-cartoon-cute-kitchen-png-image-cooking.png"
-                alt=""
-              />
+              <div className="img">
+                {order.isDelivered ? (
+                  <GrCompliance fontSize="30px" />
+                ) : order.driver ? (
+                  <FaShippingFast fontSize="30px" />
+                ) : (
+                  <GiChefToque fontSize="40px" />
+                )}
+              </div>
+
               <p>
                 Driver :{" "}
                 {order.driver === null ? "No Driver " : order.driver.user.name}
@@ -64,7 +61,6 @@ function OrderCard({ orderInfo }) {
         <ModalForDrivers
           show={modalShow}
           onHide={() => setModalShow(false)}
-          drivers={drivers}
           selectedOrder={selectedOrder}
         />
       </div>

@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { BsFillPersonFill } from "react-icons/bs";
 import DriverCard from "./DriverCard";
+import api from "../api/fetchDataFromDB";
 
 function ModalForDrivers(props) {
+  const [drivers, setDrivers] = useState([]);
+
+  const url = `http://localhost:2005/drivers`;
+
+  useEffect(() => {
+    api.fetchDataFromDB(url).then((result) => {
+      const workingDrivers = result.filter(
+        (value, index) => value.isWorking === true
+      );
+      setDrivers(workingDrivers);
+    });
+  }, [url]);
 
   const addDrivertoOrder = (driver) => {
     // Burada hem driver hem de order güncelleniyor.
@@ -36,21 +48,27 @@ function ModalForDrivers(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {
-            props.selectedOrder.driver == null ?
-
-              props.drivers.map((driver, i) => {
+          {props.selectedOrder.driver == null
+            ? drivers.map((driver, i) => {
                 return (
-                  <DriverCard driver={driver} key={i} addDrivertoOrder={addDrivertoOrder} />
+                  <DriverCard
+                    driver={driver}
+                    key={i}
+                    addDrivertoOrder={addDrivertoOrder}
+                  />
                 );
               })
-              :
-              props.drivers.filter(value => value._id !== props.selectedOrder.driver._id).map((driver, i) => {
-                return (
-                  <DriverCard driver={driver} key={i} addDrivertoOrder={addDrivertoOrder} />
-                );
-              })
-          }
+            : drivers
+                .filter((value) => value._id !== props.selectedOrder.driver._id)
+                .map((driver, i) => {
+                  return (
+                    <DriverCard
+                      driver={driver}
+                      key={i}
+                      addDrivertoOrder={addDrivertoOrder}
+                    />
+                  );
+                })}
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Done</Button>
