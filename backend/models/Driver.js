@@ -4,14 +4,12 @@ import Order from "./Order.js";
 
 const Schema = mongoose.Schema;
 
-const DeliveriesItemSchema = Schema(
-  {
-    _id: {
-      type: Schema.Types.ObjectId,
-      ref: "Order",
-    },
-  }
-);
+const DeliveriesItemSchema = Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
+    ref: "Order",
+  },
+});
 
 const DriverSchema = Schema({
   user: {
@@ -34,9 +32,10 @@ const Driver = mongoose.model("Driver", DriverSchema);
 export default {
   Driver,
   readAll: async function () {
-    return await Driver.find().populate("user").populate("deliveries._id");
-    // return await Driver.find().populate({path: "deliveries", populate: { path: "_id"}});
-
+    return await Driver.find()
+      .populate("user")
+      .populate({ path: "deliveries._id", populate: { path: "customerId" } })
+      .populate({ path: "deliveries._id", populate: { path: "customerId", populate: {path: "user"} } });
   },
 
   readOne: async function (id) {
@@ -64,7 +63,6 @@ export default {
   findByUserID: async function (id) {
     return await Driver.find({ user: id }).populate("user");
   },
-
 
   updateByID: async function (id, orderObject) {
     return await Driver.findByIdAndUpdate(id, orderObject, {
