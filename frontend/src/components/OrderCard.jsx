@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ModalForDrivers from "./ModalForDrivers";
-import { GiChefToque } from "react-icons/gi";
+import { GiHotMeal } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
 import { GrCompliance } from "react-icons/gr";
 
@@ -44,7 +44,7 @@ function OrderCard({ orderInfo }) {
                 ) : order.driver ? (
                   <FaShippingFast fontSize="30px" />
                 ) : (
-                  <GiChefToque fontSize="40px" />
+                  <GiHotMeal fontSize="40px" />
                 )}
               </div>
 
