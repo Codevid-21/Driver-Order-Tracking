@@ -31,6 +31,8 @@ function ModalForDrivers(props) {
       .then((response) => response.json())
       .then((result) => console.log("Güncellenmis Driver", result));
 
+   
+
     props.onHide();
   };
 

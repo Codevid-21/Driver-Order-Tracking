@@ -12,7 +12,6 @@ function OrderCard({ orderInfo }) {
   return (
     <>
       {orderInfo
-        .sort((a, b) => parseInt(b.date) - parseInt(a.date))
         .map((order, i) => {
           return (
             <div
@@ -59,7 +58,8 @@ function OrderCard({ orderInfo }) {
               </div>
             </div>
           );
-        })}
+        })
+        }
 
       <div className="modalWindows">
         <ModalForDrivers
