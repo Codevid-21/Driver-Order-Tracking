@@ -1,6 +1,5 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { BsFillPersonFill } from "react-icons/bs";
 import DriverCard from "./DriverCard";
 
 function ModalForDrivers(props) {

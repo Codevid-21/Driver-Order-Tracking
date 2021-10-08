@@ -1,125 +1,181 @@
 .summary__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 1.8rem;
+    padding: 30px 20px;
+  }
+
+  // AllDayInfo Component
+  .summary__day {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
-    margin: 30px;
+    .day__info {
+      display: flex;
+      justify-content: space-around;
+      width: 600px;
+      padding: 2vh;
+      //   background-color: darkseagreen;
 
+      //   .totalDrivers {
+      //       background-color: darksalmon;
+      //   }
 
+      h5 {
+        text-align: center;
+      }
 
+      p {
+        text-align: center;
+        font-size: 1.8rem;
+        color: $second-color;
+      }
+    }
 
-
-    .summary__day {
-        // margin-top: 20px;
-        // background-color: red;
+    .svgImg {
+      position: absolute;
+      width: 180px;
+      height: 240px;
+      img {
         width: 100%;
-        // padding: 40px;
-        // border: solid 3px;
+        height: 100%;
+      }
+    }
+
+    .ontheWay {
+      left: 4vh;
+      top: 12vh;
+    }
+    .money {
+      right: 4vh;
+      top: 12vh;
+    }
+  }
+
+  // DriverList Component
+  .drivers__container {
+    .card__items {
+      width: 720px;
+      border: 1px solid #0b5351;
+      margin: 0 0 5px 0;
+      padding: 2vh 0;
+      box-sizing: border-box;
+      text-align: center;
+      &:hover {
+        cursor: pointer;
+        border: 1px solid #f87060;
+      }
+
+      .withoutClick {
         display: flex;
         justify-content: space-evenly;
-        align-items: center;
+      }
 
-        .day__info {
-            // background-color: blue;
-            display: flex;
-            // flex-direction: column;
-            width: 80%;
-            justify-content: space-evenly;
-
-
-        }
-
-        .svgImg {
-            display: flex;
-            height: 120px;
-
-
-            img {
-                width: 300px;
-            }
-        }
-
-
-
-    }
-
-
-
-
-
-    .drivers__container {
-        background-color: red;
-        width: 100%;
+      // DeliveryDetail Component
+      .withClick {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 50px;
-        // justify-content: space-around;
-        // align-items: center;
+        text-align: center;
+        border-top: 1px solid $first-color;
+        margin: 1vh auto;
+        padding: 1vh;
+        width: 90%;
 
+        thead {
+          display: flex;
+          padding: 1vh;
 
-
-
-
-
-        .card__items {
-            width: 70%;
-            background-color: white;
+          tr {
             display: flex;
-            flex-direction: column;
+            flex: 1;
+            th {
+              font-size: 0.9rem;
+              flex: 6;
+              text-align: left;
 
-            margin: 20px;
-            padding: 10px;
-
-
-
-
-            border: 3px solid #0B5351;
-
-
-            &:hover {
-
-                cursor: pointer;
-                border: 3px solid #F87060;
-                background-color: #fffaf0;
-
+              &:first-child {
+                flex: 1;
+              }
+              &:last-child {
+                text-align: center;
+                flex: 2;
+              }
             }
-
-
-            .withoutClick {
-                display: flex;
-                justify-content: space-evenly;
-            }
-
-
-
-
-
-
-            .withClick {
-                display: flex;
-                flex-direction: column;
-            }
+          }
         }
 
+        tbody {
+          display: flex;
+          flex-direction: column;
+          padding: 1vh;
+          tr {
+            display: flex;
+            td {
+              font-size: 0.8rem;
+              flex: 6;
+              text-align: left;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              &:first-child {
+                flex: 1;
+              }
+              &:last-child {
+                text-align: center;
+                flex: 2;
+              }
+            }
+            &:nth-child(even) {
+              background-color: rgba(205, 215, 214, 20%);
+            }
+          }
+        }
+      }
     }
+  }
+}
 
+@media screen and (max-width: 960px) {
+  .summary__container {
+    // AllDayInfo Component
+    .summary__day {
+      // display: flex;
+      flex-direction: column;
+      align-items: center;
+      .day__info {
+        padding: 0 5vh;
+        width: 600px;
+        flex-wrap: wrap;
+        .totalOrders,
+        .totalDrivers,
+        .totalMoney {
+          flex: 40%;
+          margin: 1vh 0;
+          padding: 1vh 0;
+        }
+        .totalMoney {
+          flex: 70%;
+          order: -1;
+        }
+      }
+      .svgImg {
+        position: relative;
+        width: 180px;
+        height: 120px;
+        top: 0;
+        left: 0;
+        right: 0;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .money {
+        margin-bottom: 5vh;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
 }
