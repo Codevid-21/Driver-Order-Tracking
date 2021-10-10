@@ -1,6 +1,6 @@
 import React from 'react'
-import onTheWay from "../components/onTheWay.svg";
-import money from "../components/money.svg";
+import onTheWay from "../../components/onTheWay.svg";
+import money from "../../components/money.svg";
 
 export default function AllDayInfo({ drivers }) {
 

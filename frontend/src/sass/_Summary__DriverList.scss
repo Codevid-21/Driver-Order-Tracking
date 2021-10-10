@@ -1,0 +1,124 @@
+// MOBILE
+// DriverList Component
+.drivers__container {
+  display: flex;
+  flex-direction: column;
+  width: 98vw;
+
+  .card__items {
+    width: 100%;
+    margin: 0 0 2px 0;
+    border: 1px solid #0b5351;
+    padding: 2vh 0;
+    box-sizing: border-box;
+    text-align: center;
+    &:hover {
+      cursor: pointer;
+      border: 1px solid #f87060;
+    }
+
+    // DriverDetail Component
+    .withoutClick {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    // DeliveryDetail Component
+    .withClick {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      border-top: 1px solid $first-color;
+      margin: 1vh auto;
+      padding: 1vh;
+      width: 98%;
+
+      thead {
+        display: flex;
+        padding: 1vh;
+
+        tr {
+          display: flex;
+          flex: 1;
+          th {
+            font-size: 0.9rem;
+            flex: 5;
+            text-align: left;
+
+            &:first-child {
+              flex: 1;
+            }
+            &:nth-last-child(2) {
+              flex: 3;
+            }
+            &:last-child {
+              text-align: center;
+              flex: 1;
+            }
+          }
+        }
+      }
+
+      tbody {
+        display: flex;
+        flex-direction: column;
+        padding: 1vh;
+        tr {
+          display: flex;
+          td {
+            font-size: 0.8rem;
+            flex: 5;
+            text-align: left;
+
+            &:first-child {
+              flex: 1;
+            }
+            &:nth-last-child(2) {
+              flex: 3;
+            }
+            &:last-child {
+              text-align: center;
+              flex: 1;
+            }
+          }
+          &:nth-child(even) {
+            background-color: rgba(205, 215, 214, 20%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// TABLET
+@media screen and (min-width: 480px) and (max-width: 959px) {
+  // DriverList Component
+  .drivers__container {
+    width: 90vw;
+    .card__items {
+      margin: 0 0 5px 0;
+
+      // DeliveryDetail Component
+      .withClick {
+        width: 95%;
+      }
+    }
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 960px) {
+  // DriverList Component
+  .drivers__container {
+    width: 70vw;
+    
+    .card__items {
+      margin: 0 0 8px 0;
+
+      // DeliveryDetail Component
+      .withClick {
+        width: 90%;
+      }
+    }
+  }
+}

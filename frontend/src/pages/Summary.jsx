@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../api/fetchDataFromDB.js";
-import AllDayInfo from "../components/AllDayInfo.jsx";
-import DriverList from "../components/DriverList.jsx";
+import AllDayInfo from "../components/Summary/AllDayInfo.jsx";
+import DriverList from "../components/Summary/DriverList.jsx";
 
 function Summary() {
   const [drivers, setDrivers] = useState([]);
