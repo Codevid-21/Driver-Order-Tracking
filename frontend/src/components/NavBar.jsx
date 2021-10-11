@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 
-function Navbar({ click, setClick }) {
+function Navbar({ click, setClick, isLogin, setIsLogin, setNewUser }) {
   // const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
@@ -17,6 +17,14 @@ function Navbar({ click, setClick }) {
     setDropdown(false);
   };
 
+  const logoutfunction = () => {
+    setIsLogin(false);
+  }
+
+  const denemeFunction2 = () => {
+    setNewUser("User");
+    closeMobileMenu();
+  }
   return (
     <>
       <nav>
@@ -49,7 +57,7 @@ function Navbar({ click, setClick }) {
                   <li>123</li>
                   <li>456</li>
                 </ul> */}
-              {dropdown && <Dropdown closeMobileMenu={closeMobileMenu} />}
+                {dropdown && <Dropdown closeMobileMenu={closeMobileMenu} setNewUser={setNewUser} />}
               </div>
             </li>
 
@@ -59,15 +67,32 @@ function Navbar({ click, setClick }) {
               </Link>
             </li>
 
+            {isLogin ? (
+              <li>
+                <Link to="/summary" onClick={closeMobileMenu}>
+                  Summary
+                </Link>
+              </li>
+            )
+              : null
+            }
             <li>
-              <Link to="/summary" onClick={closeMobileMenu}>
-                Summary
-              </Link>
-            </li>
-            <li>
-              <Link to="/login" onClick={closeMobileMenu}>
-                Login
-              </Link>
+              {isLogin ? (
+                <>
+                  <Link to="/register" onClick={denemeFunction2}>
+                    New User
+                  </Link>
+                  <Link to="/" onClick={logoutfunction}>
+                    Logout
+                  </Link>
+                  <Link to="/newdriver" onClick={denemeFunction2}>
+                    +
+                  </Link>
+                </>) : (
+                <Link to="/login" onClick={closeMobileMenu}>
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

@@ -13,8 +13,9 @@ function Home({ click }) {
         (value, index) => value.isDelivered === false
       );
       setOrderInfo(deliveredOrders.reverse());
+      console.log("use Effect home.jsx")
     });
-  }, [url, orderInfo]);
+  }, [url]);
 
   return (
     <div className={!click ? "hideOrder" : "displayOrder"}>

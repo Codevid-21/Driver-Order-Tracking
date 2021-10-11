@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { MenuItems } from "./MenuItems";
 import { Link } from "react-router-dom";
 
-function Dropdown({ closeMobileMenu }) {
+function Dropdown({ closeMobileMenu, setNewUser }) {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
+
+  const denemeFunction = () => {
+    setNewUser("Driver");
+    closeMobileMenu();
+  }
 
   return (
       <ul
@@ -17,7 +22,7 @@ function Dropdown({ closeMobileMenu }) {
             <li key={index}>
               <Link
                 to={item.path}
-                onClick={closeMobileMenu}
+                onClick={denemeFunction}
               // onClick={() => {
               //   setClick(false);
               //   closeMobileMenu();

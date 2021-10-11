@@ -14,6 +14,7 @@ function Orders() {
         (value, index) => value.isDelivered === true
       );
       setOrderInfo(deliveredOrders);
+      console.log("useeffect orders.jsx")
     });
   }, [url]);
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-function NewDriver() {
+function NewDriver({ newUser }) {
 
 
   const [newDriversInfo, setNewDriversInfo] = useState({
@@ -15,14 +15,21 @@ function NewDriver() {
 
   const addANewDriver = (e) => {
     e.preventDefault();
-
-    fetch("http://localhost:2005/drivers", {
+    let fetchUrl = newUser === "User" ? "users" : "drivers";
+    const url = `http://localhost:2005/${fetchUrl}`;
+    const options = {
       method: "POST",
       body: JSON.stringify({ ...newDriversInfo }),
       headers: {
         "Content-type": "application/json", // The type of data you're sending
-      },
-    });
+      }
+    };
+    console.log("urlrlurlur", url);
+    console.log("driver form ", newDriversInfo);
+
+
+
+    fetch(url, options).then(result => console.log("sonuc", result));
 
     setNewDriversInfo({
       name: "",
@@ -39,7 +46,7 @@ function NewDriver() {
   return (
     <div className="newDriver__container">
       <form onSubmit={addANewDriver} autoComplete="off">
-        <h2>Add a new Driver</h2>
+        <h2>Add a new {newUser}</h2>
         <label>
           Name:
           <input

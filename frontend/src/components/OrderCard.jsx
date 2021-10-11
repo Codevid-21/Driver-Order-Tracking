@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ModalForDrivers from "./ModalForDrivers";
 import { GiHotMeal } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
