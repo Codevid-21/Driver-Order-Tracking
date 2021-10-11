@@ -5,13 +5,17 @@ import IsDriverWorking from "../components/IsDriverWorking.jsx";
 function SelectDrivers() {
   const [drivers, setDrivers] = useState([]);
 
-  const url = `http://localhost:2005/drivers`;
+  const callTheDriversApi = () => {
+    const url = `http://localhost:2005/drivers`;
 
-  useEffect(() => {
     api.fetchDataFromDB(url).then((result) => {
       setDrivers(result);
     });
-  }, [url]);
+  };
+
+  useEffect(() => {
+    callTheDriversApi();
+  }, []);
 
   return (
     <div className="allDrivers__container">
@@ -19,11 +23,13 @@ function SelectDrivers() {
         drivers={drivers}
         isWorking={true}
         setDrivers={setDrivers}
+        callTheDriversApi={callTheDriversApi}
       />
       <IsDriverWorking
         drivers={drivers}
         isWorking={false}
         setDrivers={setDrivers}
+        callTheDriversApi={callTheDriversApi}
       />
     </div>
   );

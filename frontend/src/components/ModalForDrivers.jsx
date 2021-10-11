@@ -29,9 +29,10 @@ function ModalForDrivers(props) {
 
     fetch(url, options)
       .then((response) => response.json())
-      .then((result) => console.log("Güncellenmis Driver", result));
-
-   
+      .then((result) => {
+        props.callTheApi();
+        console.log(result);
+      });
 
     props.onHide();
   };
