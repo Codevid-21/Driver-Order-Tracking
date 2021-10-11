@@ -63,7 +63,6 @@ export default {
     const isPasswordCorrect = (password === user[0].password);
     if (!isPasswordCorrect) throw new Error("password_incorrect");
 
-    // return { userId: user[0]._id, name: user[0].name, tip: user[0].tip };
     return { userId: user[0]._id, name: user[0].name, password: user[0].password };
   },
   findByEmail: async function (email) {
@@ -84,8 +83,6 @@ export default {
     return await user.save();
   },
   updateByID: async function (id, userObject) {
-    console.log("user Object ", userObject);
-    // return await User.findById(id);
     return await User.findByIdAndUpdate(id, userObject, {
       new: true,
       runValidators: true,
@@ -95,13 +92,4 @@ export default {
   deleteByID: async function (id) {
     return await User.deleteOne({ _id: id });
   },
-
-  // addDriverToUser: async function (id, driverID) {
-  //     const order = await User.findById(id);
-  //     if (!order) throw new Error("order not found");
-
-  //     order.driver = driverID;
-
-  //     return await order.save();
-  // }
 };
