@@ -17,38 +17,42 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <NavBar
-          click={click}
-          setClick={setClick}
-          isLogin={isLogin}
-          setIsLogin={setIsLogin}
-          setNewUser={setNewUser}
-        />
-        <Switch>
-          <Route exact path="/">
-            <Home click={click} />
-          </Route>
-          <Route path="/orders">
-            <Orders />
-          </Route>
-          <Route path="/newdriver">
-            <NewDriver newUser={newUser} />
-          </Route>
-          <Route path="/selectdrivers">
-            <SelectDrivers />
-          </Route>
-          <Route path="/summary">
-            <Summary />
-          </Route>
-          <Route path="/login">
-            <Login setIsLogin={setIsLogin} />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      {isLogin ? (
+        <BrowserRouter>
+          <NavBar
+            click={click}
+            setClick={setClick}
+            isLogin={isLogin}
+            setIsLogin={setIsLogin}
+            setNewUser={setNewUser}
+          />
+          <Switch>
+            <Route exact path="/">
+              <Home click={click} />
+            </Route>
+            <Route path="/orders">
+              <Orders />
+            </Route>
+            <Route path="/newdriver">
+              <NewDriver newUser={newUser} />
+            </Route>
+            <Route path="/selectdrivers">
+              <SelectDrivers />
+            </Route>
+            <Route path="/summary">
+              <Summary />
+            </Route>
+            <Route path="/login">
+              <Login setIsLogin={setIsLogin} />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      ) : (
+        <Login setIsLogin={setIsLogin} />
+      )}
     </div>
   );
 }

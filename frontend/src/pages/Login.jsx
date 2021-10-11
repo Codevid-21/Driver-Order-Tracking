@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
+import logo from "../images/login_logo.png";
 
 function Login({ setIsLogin }) {
   const [email, setEmail] = useState("");
@@ -17,9 +18,9 @@ function Login({ setIsLogin }) {
   };
   const isAdmin = () => {
     fetch(url, options).then(result => {
-      if(result.ok){
+      if (result.ok) {
         setIsLogin(true);
-        history.push("/");
+        // history.push("/");
       }
     });
   }
@@ -33,41 +34,21 @@ function Login({ setIsLogin }) {
   }
 
   return (
-    <div className="mainLogin">
-      <form className="container" onSubmit={submitForm}>
-        <label htmlFor="uname">
-          <b>Username</b>
-        </label>
+    <div className="login">
+      <div className="logo">
+        <img src={logo} alt="delivery_logo" />
+      </div>
+      <h1>Driver &amp; Order <br />Tracking</h1>
 
-        <input type="text" placeholder="Enter Username" name="uname" required value={email} onChange={(e) => setEmail(e.target.value)} />
+      <form onSubmit={submitForm}>
 
-        <label htmlFor="psw">
-          <b>Password</b>
-        </label>
+        <input type="email" placeholder="Enter Email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
 
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <input type="password" placeholder="Enter Password" name="psw" required value={password} onChange={(e) => setPassword(e.target.value)} />
 
-        <button type="submit" className="loginButton" >Login</button>
+        <input type="submit" className="loginButton" value="Login" />
 
-        {/* <label>
-          Remember me:
-          <input type="checkbox" checked="checked" name="remember" />
-        </label> */}
       </form>
-
-      {/* <div class="container">
-        <button type="button" class="cancelbtn">
-          Cancel
-        </button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div> */}
     </div>
   )
 }
