@@ -39,7 +39,7 @@ export default {
                 }
 
             } else {
-                const user = await User.create(req.body.name, req.body.surname, req.body.email, req.body.tel, req.body.address, req.body.city);
+                const user = await User.create(req.body);
                 const userID = user._id;
                 const result = await Driver.create(userID);
                 return res.json({ result });
