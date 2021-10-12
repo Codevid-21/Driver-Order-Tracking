@@ -1,10 +1,20 @@
 export const MenuItems = [
   {
-    title: "New Driver",
+    name: "User",
+    title: "New Admin",
     path: "/newdriver",
+    fetch: "users"
   },
   {
-    title: "Select Driver",
-    path: "/selectdrivers",
+    name: "Driver",
+    title: "New Driver",
+    path: "/newdriver",
+    fetch: "drivers"
   },
+  // {
+  //   name: "Staff",
+  //   title: "New Staff",
+  //   path: "/newdriver",
+  //   fetch: "users" // burasi sikintili
+  // }
 ];

@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Redirect } from 'react-router';
 import logo from "../images/login_logo.png";
 
 function Login({ setIsLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  let history = useHistory();
 
   const url = `http://localhost:2005/users/login`;
   const options = {
@@ -20,7 +19,7 @@ function Login({ setIsLogin }) {
     fetch(url, options).then(result => {
       if (result.ok) {
         setIsLogin(true);
-        // history.push("/");
+        <Redirect to="/" />;
       }
     });
   }
@@ -31,6 +30,7 @@ function Login({ setIsLogin }) {
     setEmail("");
     setPassword("");
     isAdmin();
+    
   }
 
   return (

@@ -7,33 +7,26 @@ function Dropdown({ closeMobileMenu, setNewUser }) {
 
   const handleClick = () => setClick(!click);
 
-  const denemeFunction = () => {
-    setNewUser("Driver");
-    closeMobileMenu();
-  }
-
   return (
-      <ul
-        onClick={handleClick}
-        // className={click ? "clicked" : ""}
-      >
-        {MenuItems.map((item, index) => {
-          return (
-            <li key={index}>
-              <Link
-                to={item.path}
-                onClick={denemeFunction}
-              // onClick={() => {
-              //   setClick(false);
-              //   closeMobileMenu();
-              // }}
-              >
-                {item.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+    <ul
+      onClick={handleClick}
+    >
+      {MenuItems.map((item, index) => {
+        return (
+          <li key={index}>
+            <Link
+              to={item.path}
+              onClick={() => {
+                setNewUser(item);
+                closeMobileMenu();
+              }}
+            >
+              {item.title}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 

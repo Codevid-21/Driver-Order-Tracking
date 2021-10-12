@@ -3,28 +3,22 @@ import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 
 function Navbar({ click, setClick, isLogin, setIsLogin, setNewUser }) {
-  // const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const onMouseEnter = () => {
-    setDropdown(true);
-  };
-
-  const onMouseLeave = () => {
+  const closeMobileMenu = () => {
+    setClick(false);
     setDropdown(false);
   };
 
-  const logoutfunction = () => {
+  const toggleDropdown = () => {
+    setDropdown(!dropdown);
+  }
+
+  const logoutUser = () => {
     setIsLogin(false);
   }
 
-  const denemeFunction2 = () => {
-    setNewUser("User");
-    closeMobileMenu();
-  }
   return (
     <>
       <nav>
@@ -45,20 +39,10 @@ function Navbar({ click, setClick, isLogin, setIsLogin, setNewUser }) {
               </Link>
             </li>
 
-            <li
-              onMouseEnter={onMouseEnter}
-              onMouseLeave={onMouseLeave}
-            >
-              <Link to="#" onClick={closeMobileMenu}>
-                Drivers <i className="fas fa-caret-down" />
+            <li>
+              <Link to="/selectdrivers" onClick={closeMobileMenu}>
+                Select Driver
               </Link>
-              <div className="dropdown" >
-                {/* <ul>
-                  <li>123</li>
-                  <li>456</li>
-                </ul> */}
-                {dropdown && <Dropdown closeMobileMenu={closeMobileMenu} setNewUser={setNewUser} />}
-              </div>
             </li>
 
             <li>
@@ -76,24 +60,32 @@ function Navbar({ click, setClick, isLogin, setIsLogin, setNewUser }) {
             )
               : null
             }
-            <li>
-              {isLogin ? (
+
+            {isLogin ?
+              (
                 <>
-                  <Link to="/register" onClick={denemeFunction2}>
-                    New User
-                  </Link>
-                  <Link to="/" onClick={logoutfunction}>
-                    Logout
-                  </Link>
-                  <Link to="/newdriver" onClick={denemeFunction2}>
-                    +
-                  </Link>
-                </>) : (
+                  <li onClick={toggleDropdown}>
+                    <Link to="#" onClick={closeMobileMenu}>
+                      <i className="fas fa-user-plus"></i>
+                    </Link>
+                    <div className="dropdown" >
+                      {dropdown && <Dropdown closeMobileMenu={closeMobileMenu} setNewUser={setNewUser} />}
+                    </div>
+                  </li>
+                  <li>
+                    <Link to="/" onClick={logoutUser}>
+                      <i class="fas fa-sign-out-alt"></i>
+                    </Link>
+                  </li>
+                </>
+              )
+              :
+              (
                 <Link to="/login" onClick={closeMobileMenu}>
                   Login
                 </Link>
-              )}
-            </li>
+              )
+            }
           </ul>
         </div>
       </nav>

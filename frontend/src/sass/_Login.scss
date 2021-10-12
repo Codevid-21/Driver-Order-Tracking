@@ -24,6 +24,7 @@
   }
 
   h1 {
+    color: $first-color;
     text-align: center;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
@@ -60,6 +61,7 @@
 // TABLET
 @media screen and (min-width: 480px) and (max-width: 959px) {
   .login {
+    width: 70vw;
     justify-content: space-evenly;
     .logo {
       display: flex;
@@ -70,8 +72,8 @@
         width: 200px;
       }
     }
-    h1 {
-      color: red;
+    form {
+      width: 90%;
     }
   }
 }
