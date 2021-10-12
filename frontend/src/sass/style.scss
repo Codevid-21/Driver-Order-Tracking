@@ -37,17 +37,17 @@ a:hover {
     outline: none;
 }
 
-@import "_Home.scss";
+
 @import "_NavBar.scss";
 @import "_Dropdown.scss";
 @import "_OrderCard.scss";
 @import "_ModalForDrivers.scss";
 @import "_SelectDrivers.scss";
 @import "_NewDriver.scss";
+@import "_NewDriverAvatar.scss";
 @import "_Login.scss";
 
 // Summary
 @import "_Summary.scss";
 @import "_Summary__AllDayInfo.scss";
 @import "_Summary__DriverList.scss";
-
