@@ -1,8 +1,3 @@
-body {
-    background: whitesmoke;
-    font-family: 'Open Sans', sans-serif;
-}
-
 .container {
     max-width: 960px;
     margin: 30px auto;
@@ -13,23 +8,12 @@ body {
     color: red;
 }
 
-h1 {
-    font-size: 20px;
-    text-align: center;
-    margin: 20px 0 20px;
-}
 
-h1 small {
-    display: block;
-    font-size: 15px;
-    padding-top: 8px;
-    color: gray;
-}
 
 .avatar-upload {
     position: relative;
     max-width: 205px;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 
 .avatar-upload .avatar-edit {
@@ -44,6 +28,7 @@ h1 small {
 }
 
 .avatar-upload .avatar-edit input+label {
+    text-align: center;
     display: inline-block;
     width: 34px;
     height: 34px;
@@ -79,7 +64,7 @@ h1 small {
     height: 192px;
     position: relative;
     border-radius: 100%;
-    border: 6px solid #F6B21B;
+    border: 6px solid;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     background-size: cover;
     background-repeat: no-repeat;
