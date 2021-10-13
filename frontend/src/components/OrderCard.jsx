@@ -4,7 +4,7 @@ import { GiHotMeal } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
 import { GrCompliance } from "react-icons/gr";
 
-function OrderCard({ orderInfo }) {
+function OrderCard({ orderInfo, callTheApi }) {
   const [modalShow, setModalShow] = useState(false);
 
   const [selectedOrder, setSelectedOrder] = useState({ driver: { _id: "" } });
@@ -63,6 +63,7 @@ function OrderCard({ orderInfo }) {
 
       <div className="modalWindows">
         <ModalForDrivers
+        callTheApi={callTheApi}
           show={modalShow}
           onHide={() => setModalShow(false)}
           selectedOrder={selectedOrder}

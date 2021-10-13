@@ -5,20 +5,25 @@ import api from "../api/fetchDataFromDB.js";
 function Home({ click }) {
   const [orderInfo, setOrderInfo] = useState([]);
 
-  const url = `http://localhost:2005/orders`;
+  const callTheApi = () => {
+    const url = `http://localhost:2005/orders`;
 
-  useEffect(() => {
     api.fetchDataFromDB(url).then((result) => {
       const deliveredOrders = result.filter(
         (value, index) => value.isDelivered === false
       );
       setOrderInfo(deliveredOrders.reverse());
+      // console.log(orderInfo);
     });
-  }, [url, orderInfo]);
+  };
+
+  useEffect(() => {
+    callTheApi();
+  }, []);
 
   return (
     <div className={!click ? "hideOrder" : "displayOrder"}>
-      <OrderCard orderInfo={orderInfo} />
+      <OrderCard orderInfo={orderInfo} callTheApi={callTheApi} />
     </div>
   );
 }

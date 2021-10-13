@@ -1,6 +1,11 @@
 import React from "react";
 
-function IsDriverWorking({ drivers, isWorking, setDrivers }) {
+function IsDriverWorking({
+  drivers,
+  isWorking,
+  setDrivers,
+  callTheDriversApi,
+}) {
   const handleWorkingSituation = (value, i) => {
     const url = `http://localhost:2005/drivers/${value._id}`;
     const options = {
@@ -16,6 +21,7 @@ function IsDriverWorking({ drivers, isWorking, setDrivers }) {
       .then((result) => {
         drivers[i] = result;
         setDrivers(drivers);
+        callTheDriversApi();
       });
   };
 
@@ -34,7 +40,6 @@ function IsDriverWorking({ drivers, isWorking, setDrivers }) {
               .map((value, i) => {
                 return (
                   <p key={i} onClick={() => handleWorkingSituation(value, i)}>
-                    {console.log(value)}
                     {value.user.name}
                   </p>
                 );
