@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 import Order from "./Order.js";
+import bcrypt from 'bcrypt';
+import dotenv from "dotenv";
+dotenv.config();
 
 const Schema = mongoose.Schema;
 
@@ -18,7 +21,7 @@ const UserSchema = Schema(
       required: true,
     },
     password: {
-      type: String
+      type: String,
     },
     tel: {
       type: String, // Girilen bilginin telefon numarasi olup olmadigi kontrol edilecek.
@@ -53,23 +56,24 @@ export default {
     return await User.findById(id);
   },
   login: async function ({ email, password }) {
-    const user = await User.find({ email: email });
+    let user = await this.findByEmail(email);
     if (!user) throw new Error("user_not_found");
-    
-    if (!user[0].isAdmin) throw new Error("user_not_admin");
-    
-    console.log("user bulundu", user)
-    // const isPasswordCorrect = await bcrypt.compare(password.toString() + process.env.PEPPER, user.password);
-    const isPasswordCorrect = (password === user[0].password);
+
+    user = user.toObject();
+    if (!user.isAdmin) throw new Error("user_not_admin");
+    // Mutfakci da daha sonra login olacak ????
+
+    const isPasswordCorrect = await bcrypt.compare(password.toString() + process.env.SALT + process.env.PEPPER, user.password);
     if (!isPasswordCorrect) throw new Error("password_incorrect");
 
-    return { userId: user[0]._id, name: user[0].name, password: user[0].password };
+    return { userId: user._id, name: user.name };
   },
   findByEmail: async function (email) {
-    return await User.find({ email: email });
+    let user = await User.find({email: email});
+    if (user.length < 1) null;
+    return user[0];
   },
   create: async function ({name, surname, email, password, tel, address, city, isAdmin}) {
-    console.log("User");
     const user = new User({
       name,
       surname,
@@ -78,7 +82,7 @@ export default {
       tel,
       address,
       city,
-      isAdmin
+      isAdmin,
     });
     return await user.save();
   },
