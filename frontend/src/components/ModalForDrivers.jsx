@@ -29,6 +29,7 @@ function ModalForDrivers(props) {
 
     fetch(url, options)
       .then((response) => response.json())
+
       .then((result) => {
         props.callTheApi();
         console.log(result);
@@ -74,7 +75,9 @@ function ModalForDrivers(props) {
                 })}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Done</Button>
+          <Button size="lg" onClick={props.onHide}>
+            Done
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

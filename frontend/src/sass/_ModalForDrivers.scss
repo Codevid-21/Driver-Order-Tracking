@@ -4,12 +4,21 @@
     color: #FFF;
     margin: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     &:hover {
         border: 3px solid #F87060;
         background-color: #0B5351;
         color: #FFF;
+    }
+
+    * {
+        margin: 10px 20px;
+    }
+
+    img {
+        border-radius: 20%;
+        border: 2px solid white;
     }
 }

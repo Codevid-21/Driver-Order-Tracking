@@ -25,6 +25,10 @@ const DriverSchema = Schema({
     type: Boolean,
     required: true,
   },
+  img: {
+    type: String,
+    required: true
+  }
 });
 
 const Driver = mongoose.model("Driver", DriverSchema);
@@ -35,7 +39,7 @@ export default {
     return await Driver.find()
       .populate("user")
       .populate({ path: "deliveries._id", populate: { path: "customerId" } })
-      .populate({ path: "deliveries._id", populate: { path: "customerId", populate: {path: "user"} } });
+      .populate({ path: "deliveries._id", populate: { path: "customerId", populate: { path: "user" } } });
   },
 
   readOne: async function (id) {
@@ -46,12 +50,13 @@ export default {
     return await Driver.find({ userId: id });
   },
 
-  create: async function (userID) {
+  create: async function (userID, img) {
     const driver = new Driver({
       user: userID,
       deliveries: [],
       status: "free",
       isWorking: false,
+      img,
     });
     return await driver.save();
   },

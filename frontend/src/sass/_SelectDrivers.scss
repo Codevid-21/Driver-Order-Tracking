@@ -18,7 +18,7 @@ $fifthColor : #B3A394;
         border: 5px solid $thirdColor;
         padding: 50px;
         width: 500px;
-        background-color: $primaryColor;
+        // background-color: $primaryColor;
 
         .workingDrivers__card {
             display: flex;
@@ -36,7 +36,7 @@ $fifthColor : #B3A394;
             }
 
             .workingDrivers__info {
-                margin-top: 20px;
+                margin-top: 10px;
 
                 p {
                     border: 3px solid $fourthColor;
@@ -45,7 +45,7 @@ $fifthColor : #B3A394;
 
 
                     &:hover {
-                        background-color: $fifthColor;
+                        // background-color: $fifthColor;
                         border: 3px solid $secondaryColor;
 
                     }
