@@ -31,8 +31,6 @@ function ModalForDrivers(props) {
       .then((response) => response.json())
       .then((result) => console.log("Güncellenmis Driver", result));
 
-   
-
     props.onHide();
   };
 
@@ -73,7 +71,9 @@ function ModalForDrivers(props) {
                 })}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Done</Button>
+          <Button size="lg" onClick={props.onHide}>
+            Done
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>
