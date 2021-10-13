@@ -21,6 +21,7 @@ export default {
     },
 
     create: async function (req, res, next) {
+        console.log(req.body);
         try {
             const user = await User.findByEmail(req.body.email);
 
@@ -34,14 +35,14 @@ export default {
 
                 else {
 
-                    const result = await Driver.create(userID);
+                    const result = await Driver.create(userID, req.body.img);
                     return res.json({ result });
                 }
 
             } else {
                 const user = await User.create(req.body.name, req.body.surname, req.body.email, req.body.tel, req.body.address, req.body.city);
                 const userID = user._id;
-                const result = await Driver.create(userID);
+                const result = await Driver.create(userID, req.body.img);
                 return res.json({ result });
 
             }

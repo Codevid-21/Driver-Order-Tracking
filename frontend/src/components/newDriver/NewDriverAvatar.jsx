@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-function NewDriverAvatar({
-  uploadedImg,
-  setUploadedImg,
-  setImgPreviewUrl,
-  imgPreviewUrl,
-}) {
-  console.log(uploadedImg);
+function NewDriverAvatar({ onImageSelect }) {
+  const [file, setFile] = useState(null);
+
+  const onImageChange = event => {
+    const url = URL.createObjectURL(event.target.files[0]);
+    setFile(url);
+    onImageSelect(event.target.files[0]);
+  }
+
   return (
     <div class="container">
       <div class="avatar-upload">
@@ -15,16 +17,14 @@ function NewDriverAvatar({
             type="file"
             id="imageUpload"
             accept=".png, .jpg, .jpeg"
-            onChange={(e) => {
-              setUploadedImg(e.target.files[0]);
-            }}
+            onChange={onImageChange}
           />
           <label for="imageUpload"></label>
         </div>
 
         <div class="avatar-preview">
           <div id="imagePreview">
-            <img src={imgPreviewUrl} alt="" />
+            <img src={file ?? "/avatar.png"} alt="" />
           </div>
         </div>
       </div>

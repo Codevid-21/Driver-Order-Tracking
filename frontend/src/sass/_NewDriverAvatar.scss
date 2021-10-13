@@ -62,17 +62,17 @@ h1 small {
     border-color: #d6d6d6;
 }
 
-// .avatar-upload .avatar-edit input+label:after {
-//     content: "\f040";
-//     font-family: 'FontAwesome';
-//     color: #F6B21B;
-//     position: absolute;
-//     top: 10px;
-//     left: 0;
-//     right: 0;
-//     text-align: center;
-//     margin: auto;
-// }
+.avatar-upload .avatar-edit input+label:after {
+    content: "\f040";
+    font-family: 'FontAwesome';
+    color: #F6B21B;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+}
 
 .avatar-upload .avatar-preview {
     width: 192px;

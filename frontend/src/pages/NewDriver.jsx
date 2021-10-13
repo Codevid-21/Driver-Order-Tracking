@@ -1,67 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import NewDriverAvatar from "../components/newDriver/NewDriverAvatar";
 import Axios from "axios";
 
+const INITIAL_DRIVER = {
+  name: "",
+  surname: "",
+  email: "",
+  tel: "",
+  address: "",
+  city: "",
+};
+
 function NewDriver() {
-  const [uploadedImg, setUploadedImg] = useState(null);
-  const [imgPreviewUrl, setImgPreviewUrl] = useState(
-    "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?b=1&k=20&m=1300845620&s=170667a&w=0&h=JbOeyFgAc6-3jmptv6mzXpGcAd_8xqkQa_oUK2viFr8="
-  );
+  const [selectedImg, setSelectedImg] = useState(null); // Image that user selected (local)
+  const [newDriversInfo, setNewDriversInfo] = useState(INITIAL_DRIVER);
+  const imgRef = useRef(null); // URL from Cloudinary
 
-  const [newDriversInfo, setNewDriversInfo] = useState({
-    name: "",
-    surname: "",
-    email: "",
-    tel: "",
-    address: "",
-    city: "",
-  });
-
-  const addANewDriver = (e) => {
-    e.preventDefault();
-
-    // fetch("http://localhost:2005/drivers", {
-    //   method: "POST",
-    //   body: JSON.stringify({ ...newDriversInfo }),
-    //   headers: {
-    //     "Content-type": "application/json", // The type of data you're sending
-    //   },
-    // });
-
-    // setNewDriversInfo({
-    //   name: "",
-    //   surname: "",
-    //   email: "",
-    //   tel: "",
-    //   address: "",
-    //   city: "",
-    // });
-
-    // Upload an Image to Cloud
-
+  const uploadImg = (image) => {
     const formData = new FormData();
-    formData.append("file", uploadedImg);
+    formData.append("file", image);
     formData.append("upload_preset", "dmcrz5sg");
 
-    Axios.post(
+    return Axios.post(
       "https://api.cloudinary.com/v1_1/driverandordertracking/image/upload",
       formData
-    ).then((response) => {
-      setImgPreviewUrl(response.data.url);
-      console.log(response.data.url);
-    });
+    );
+  };
+
+  const addDriver = async (e) => {
+    e.preventDefault();
+    const isFieldsMissing = Object.keys(INITIAL_DRIVER).some((key) => newDriversInfo[key] === "");
+
+    if (isFieldsMissing && !selectedImg) {
+      alert("All fields are required.");
+      return;
+    }
+
+    try {
+      if (!imgRef.current) {
+        imgRef.current = (await uploadImg(selectedImg)).data.url;
+      }
+
+
+      //Send all data to Database
+
+      await fetch("http://localhost:2005/drivers", {
+        method: "POST",
+        body: JSON.stringify({ ...newDriversInfo, img: imgRef.current }),
+        headers: {
+          "Content-type": "application/json", // The type of data you're sending
+        },
+      });
+    } catch (err) {
+      console.log({ err });
+    }
   };
 
   return (
     <div className="newDriver__container">
-      <form onSubmit={addANewDriver} autoComplete="off">
+      <form onSubmit={addDriver} autoComplete="off">
         <h2>Add a new Driver</h2>
-        <NewDriverAvatar
-          uploadedImg={uploadedImg}
-          setUploadedImg={setUploadedImg}
-          imgPreviewUrl={imgPreviewUrl}
-          setImgPreviewUrl={setImgPreviewUrl}
-        />
+        <NewDriverAvatar onImageSelect={setSelectedImg} />
         <label>
           <input
             placeholder=" Name..."
