@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ModalForDrivers from "./ModalForDrivers";
 import { GiHotMeal } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
@@ -28,15 +28,15 @@ function OrderCard({ orderInfo, callTheApi }) {
             >
               <div className="orderInfo">
                 <h4>Order Information</h4>
-                <p> Order ID : {order._id} </p>
-                <p>Order Date : {order.date} </p>
-                <p> Price : {order.total}€ </p>
+                <p>Order Name: {order.food} </p>
+                <p>Order Date: {order.date} </p>
+                <p>Price: {order.total}€ </p>
               </div>
               <div className="clientInfo">
                 <h4>Client Information</h4>
-                <p> Name : {order.customerId.user.name} </p>
-                <p>Address : {order.customerId.user.address} </p>
-                <p> Phone : {order.customerId.user.tel} </p>
+                <p>Name: {order.customerId.user.name} </p>
+                <p>Address: {order.customerId.user.address} </p>
+                <p>Phone: {order.customerId.user.tel} </p>
               </div>
               <div className="driverInfo">
                 <div className="img">

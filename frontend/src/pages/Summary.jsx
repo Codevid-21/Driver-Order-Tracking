@@ -15,6 +15,7 @@ function Summary() {
         return value.deliveries.length > 0;
       });
       setDrivers(workedDrivers);
+      console.log("useeffect summary.jsx");
     });
   }, [url]);
 

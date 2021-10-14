@@ -1,42 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Redirect } from 'react-router';
 
-function Login() {
-    return (
-      <div class="mainLogin">
-      <div class="container">
-        <label for="uname">
-          <b>Username</b>
-        </label>
+function Login({ setIsLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-        <input type="text" placeholder="Enter Username" name="uname" required />
+  const url = `http://localhost:2005/users/login`;
+  const options = {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+    headers: {
+      "Content-type": "application/json", // The type of data you're sending
+    },
+    credentials: 'include',
+  };
+  const isAdmin = () => {
+    fetch(url, options).then(result => {
+      if (result.ok) {
+        setIsLogin(true);
+        <Redirect to="/" />;
+      }
+    });
+  }
 
-        <label for="psw">
-          <b>Password</b>
-        </label>
+  const submitForm = (e) => {
+    e.preventDefault();
+    setEmail("");
+    setPassword("");
+    isAdmin();
+  }
 
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          required
-        />
-
-        <button type="submit" className="loginButton" >Login</button>
-
-        <label>
-          Remember me:
-          <input type="checkbox" checked="checked" name="remember" />
-        </label>
+  return (
+    <div className="login">
+      <div className="logo">
+        <img src={"/images/login_logo.png"} alt="delivery_logo" />
       </div>
+      <h1>Driver &amp; Order <br />Tracking</h1>
 
-      <div class="container">
-        <button type="button" class="cancelbtn">
-          Cancel
-        </button>
-        {/* <span class="psw">Forgot <a href="#">password?</a></span> */}
-      </div>
+      <form onSubmit={submitForm}>
+        <input type="email" placeholder="Enter Email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="password" placeholder="Enter Password" name="psw" required value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input type="submit" className="loginButton" value="Login" />
+      </form>
     </div>
-    )
+  )
 }
 
 export default Login;

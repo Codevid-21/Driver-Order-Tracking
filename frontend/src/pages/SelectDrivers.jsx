@@ -10,6 +10,7 @@ function SelectDrivers() {
 
     api.fetchDataFromDB(url).then((result) => {
       setDrivers(result);
+      console.log("useeffect selectdrivers.jsx");
     });
   };
 

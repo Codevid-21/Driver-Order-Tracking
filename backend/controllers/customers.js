@@ -19,7 +19,7 @@ export default {
         console.log("user vardi da customer olustu sanki");
         return res.json({result});
       } else {
-        const newUser = await User.create(req.body.name, req.body.surname, req.body.email, req.body.tel, req.body.address, req.body.city);
+        const newUser = await User.create(req.body);
         const result = await Customer.create(newUser._id);
         console.log("new user ", newUser);
         console.log("yeni user olusturuldu ", result);

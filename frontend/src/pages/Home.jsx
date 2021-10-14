@@ -13,7 +13,6 @@ function Home({ click }) {
         (value, index) => value.isDelivered === false
       );
       setOrderInfo(deliveredOrders.reverse());
-      // console.log(orderInfo);
     });
   };
 
