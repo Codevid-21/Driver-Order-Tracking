@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import tokenHandler from "../lib/token.js";
-import bcrypt from "bcrypt";
+import passwordHandler from "../lib/password.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -73,7 +73,9 @@ export default {
 
       var _user = user.toObject();
       const id = _user._id;
-      const updatedUser = { isAdmin: true };
+      
+      const newBcrypt = passwordHandler.createHashedPassword(req.body.password);
+      const updatedUser = { isAdmin: true, password: newBcrypt };
 
       const result = await User.updateByID(id, updatedUser);
       res.json(result);
@@ -91,12 +93,7 @@ export default {
       user = user.toObject();
       const id = user._id;
 
-      const SALT_ROUNDS = 12;
-      const newBcrypt = bcrypt.hashSync(
-        req.body.password + process.env.SALT + process.env.PEPPER,
-        SALT_ROUNDS
-      );
-
+      const newBcrypt = passwordHandler.createHashedPassword(req.body.password);
       const updatedUser = { password: newBcrypt };
 
       const result = await User.updateByID(id, updatedUser);
