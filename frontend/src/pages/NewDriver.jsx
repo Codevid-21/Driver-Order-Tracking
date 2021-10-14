@@ -35,11 +35,9 @@ function NewDriver() {
       (key) => newDriversInfo[key] === ""
     );
 
-    console.log(isFieldsMissing);
-    console.log(selectedImg);
-
-    if (isFieldsMissing && !selectedImg) {
-      toast.error(" All fields are required...");
+    if (isFieldsMissing || !selectedImg) {
+      const customId = "custom-id-no";
+      toast.error(" All fields are required...", { toastId: customId });
 
       return;
     }
@@ -153,6 +151,7 @@ function NewDriver() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        limit={1}
       />
     </div>
   );
