@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import NewDriverAvatar from "../components/newDriver/NewDriverAvatar";
 import Axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const INITIAL_DRIVER = {
   name: "",
@@ -29,10 +31,16 @@ function NewDriver() {
 
   const addDriver = async (e) => {
     e.preventDefault();
-    const isFieldsMissing = Object.keys(INITIAL_DRIVER).some((key) => newDriversInfo[key] === "");
+    const isFieldsMissing = Object.keys(INITIAL_DRIVER).some(
+      (key) => newDriversInfo[key] === ""
+    );
+
+    console.log(isFieldsMissing);
+    console.log(selectedImg);
 
     if (isFieldsMissing && !selectedImg) {
-      alert("All fields are required.");
+      toast.error(" All fields are required...");
+
       return;
     }
 
@@ -40,7 +48,6 @@ function NewDriver() {
       if (!imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;
       }
-
 
       //Send all data to Database
 
@@ -51,6 +58,8 @@ function NewDriver() {
           "Content-type": "application/json", // The type of data you're sending
         },
       });
+
+      toast.success(" New Driver added successfully..");
     } catch (err) {
       console.log({ err });
     }
@@ -132,6 +141,19 @@ function NewDriver() {
           <input type="submit" value="Submit" />
         </label>
       </form>
+
+      <ToastContainer
+        theme="colored"
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
