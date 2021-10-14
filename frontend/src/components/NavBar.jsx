@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 
-function Navbar({ click, setClick, isLogin, setIsLogin, setNewUser }) {
+function Navbar({ click, setClick, isLogin, setIsLogin }) {
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -51,14 +51,13 @@ function Navbar({ click, setClick, isLogin, setIsLogin, setNewUser }) {
               </Link>
             </li>
 
-            {isLogin ? (
+            {isLogin && (
               <li>
                 <Link to="/summary" onClick={closeMobileMenu}>
                   Summary
                 </Link>
               </li>
             )
-              : null
             }
 
             {isLogin ?
@@ -69,7 +68,7 @@ function Navbar({ click, setClick, isLogin, setIsLogin, setNewUser }) {
                       <i className="fas fa-user-plus"></i>
                     </Link>
                     <div className="dropdown" >
-                      {dropdown && <Dropdown closeMobileMenu={closeMobileMenu} setNewUser={setNewUser} />}
+                      {dropdown && <Dropdown closeMobileMenu={closeMobileMenu} />}
                     </div>
                   </li>
                   <li>

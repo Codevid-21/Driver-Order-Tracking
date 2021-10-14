@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import api from "../api/fetchDataFromDB";
 
 function NewUser({ newUser }) {
-  const userTemplate = { name: "", surname: "", email: "", tel: "", address: "", city: "" };
+  const userTemplate = { name: "", surname: "", email: "", tel: "", address: "", city: "", type: "" };
   const [newUsersInfo, setNewUsersInfo] = useState(userTemplate);
   const [password, setPassword] = useState("");
   const isUser = newUser.name === "User" ? true : false;
@@ -9,16 +10,18 @@ function NewUser({ newUser }) {
   const addANewDriver = (e) => {
     e.preventDefault();
     const body = isUser ? { ...newUsersInfo, password } : { ...newUsersInfo };
-    const url = `http://localhost:2005/${newUser.fetch}`;
-    const options = {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-type": "application/json",
-      }
-    };
+    const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
+    console.log("det", fetchUrl);
+    const url = `http://localhost:2005/${fetchUrl}`;
+    console.log("url", url);
+    api.postDataFromDB(url, body).then(result => {
+      console.log("buraya geldi mi ", result)
+      // isUser ?
+      //   api.putDataFromDB(result.email)
+      //   :
+      //   console.log(result)
+    });
 
-    fetch(url, options).then(result => console.log("sonuc", result));
     if (isUser) {
       setNewUsersInfo(userTemplate);
       setPassword("");
@@ -31,6 +34,13 @@ function NewUser({ newUser }) {
     <div className="newDriver__container">
       <form onSubmit={addANewDriver} autoComplete="off">
         <h2>Add a new {newUser.name}</h2>
+        {isUser && (
+          <div onChange={(e) => setNewUsersInfo({ ...newUsersInfo, type: e.target.value })}>
+            User type:
+            <input type="radio" value="Staff" name="newUser" defaultChecked/> Staff
+            <input type="radio" value="Admin" name="newUser" /> Admin
+          </div>
+        )}
         <label>
           Name:
           <input

@@ -2,14 +2,12 @@ export const MenuItems = [
   {
     name: "User",
     title: "New Admin",
-    path: "/newdriver",
-    fetch: "users"
+    path: "/newuser",
   },
   {
     name: "Driver",
     title: "New Driver",
     path: "/newdriver",
-    fetch: "drivers"
   },
   // {
   //   name: "Staff",

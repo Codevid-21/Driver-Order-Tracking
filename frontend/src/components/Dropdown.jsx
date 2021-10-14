@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MenuItems } from "./MenuItems";
 import { Link } from "react-router-dom";
 
-function Dropdown({ closeMobileMenu, setNewUser }) {
+function Dropdown({ closeMobileMenu }) {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -17,7 +17,6 @@ function Dropdown({ closeMobileMenu, setNewUser }) {
             <Link
               to={item.path}
               onClick={() => {
-                setNewUser(item);
                 closeMobileMenu();
               }}
             >

@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       {isLogin ? (
-        <Admin isLogin={isLogin} setIsLogin={setIsLogin} />
+        <Admin setIsLogin={setIsLogin} />
       ) : (
         <Login setIsLogin={setIsLogin} />
       )}

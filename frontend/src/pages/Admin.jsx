@@ -8,19 +8,18 @@ import SelectDrivers from "../pages/SelectDrivers.jsx";
 import Summary from "../pages/Summary.jsx";
 import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
+import { MenuItems } from "../components/MenuItems.jsx";
 
-function Admin({ isLogin, setIsLogin }) {
+function Admin({ setIsLogin }) {
     const [click, setClick] = useState(false);
-    const [newUser, setNewUser] = useState(null);
 
     return (
         <BrowserRouter>
             <NavBar
                 click={click}
                 setClick={setClick}
-                isLogin={isLogin}
+                isLogin={true}
                 setIsLogin={setIsLogin}
-                setNewUser={setNewUser}
             />
             <Switch>
                 <Route exact path="/">
@@ -29,8 +28,11 @@ function Admin({ isLogin, setIsLogin }) {
                 <Route path="/orders">
                     <Orders />
                 </Route>
+                <Route path="/newuser">
+                    <NewUser newUser={MenuItems[0]} />
+                </Route>
                 <Route path="/newdriver">
-                    <NewUser newUser={newUser} />
+                    <NewUser newUser={MenuItems[1]} />
                 </Route>
                 <Route path="/selectdrivers">
                     <SelectDrivers />
