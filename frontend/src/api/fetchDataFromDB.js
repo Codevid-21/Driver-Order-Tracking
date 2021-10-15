@@ -18,7 +18,8 @@ const postDataFromDB = async function (url, body) {
       body: JSON.stringify(body),
       headers: {
         "Content-type": "application/json",
-      }
+      },
+      credentials: 'include',
     };
     return await fetch(url, options)
       .then((response) => response.json())

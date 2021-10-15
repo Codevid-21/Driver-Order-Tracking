@@ -5,7 +5,7 @@ import Axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const INITIAL_USER = { name: "", surname: "", email: "", tel: "", address: "", city: "", type: "" };
+const INITIAL_USER = { name: "", surname: "", email: "", tel: "", address: "", city: "", type: "Staff" };
 
 function NewUser({ newUser }) {
   const [newUsersInfo, setNewUsersInfo] = useState(INITIAL_USER);
@@ -29,16 +29,23 @@ function NewUser({ newUser }) {
     const isFieldsMissing = Object.keys(INITIAL_USER).some(
       (key) => newUsersInfo[key] === ""
     );
-    if (isFieldsMissing && !selectedImg) {
+
+    if (isUser && (isFieldsMissing || password === "")) {
+      console.log("burasi mi");
+      toast.error(" All fields are required...");
+      return;
+    } else if (!isUser && (isFieldsMissing || !selectedImg)) {
+      console.log("burasi mi veya");
       toast.error(" All fields are required...");
       return;
     }
+
     const body = isUser ? { ...newUsersInfo, password } : { ...newUsersInfo, img: imgRef.current };
     const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
     const url = `http://localhost:2005/${fetchUrl}`;
 
     try {
-      if (!imgRef.current) {
+      if (!isUser && !imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;
       }
 
@@ -47,7 +54,7 @@ function NewUser({ newUser }) {
         // isUser ?
         //   api.putDataFromDB(result.email)
         //   :
-        //   console.log(result)
+        console.log(result)
       });
 
       toast.success(`New ${newUser.name} added successfully..`);
