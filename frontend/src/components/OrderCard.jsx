@@ -42,11 +42,11 @@ function OrderCard({ orderInfo, callTheApi }) {
               <div className="driverInfo">
                 <div className="img">
                   {order.isDelivered ? (
-                    <GrCompliance/>
+                    <GrCompliance />
                   ) : order.driver ? (
-                    <FaShippingFast/>
+                    <FaShippingFast />
                   ) : (
-                    <GiHotMeal/>
+                    <GiHotMeal />
                   )}
                 </div>
 
