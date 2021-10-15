@@ -20,20 +20,45 @@ server.listen(process.env.PORT, () =>
   console.log(`server listening on port ${process.env.PORT}`)
 );
 
-const config = {
-  origin: 'http://localhost:3000', // zugriff auf cookie des backendserver ermöglichen
-  credentials: true, // JS kann Credentials zugreifen. Credentials are cookies, authorization headers, or TLS client certificates.
-};
-server.use(cors(config));
+var whitelist = ['http://localhost:3000', 'http://localhost:3001']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true
+}
+server.use(cors(corsOptions));
+
+// const config = {
+//   origin: "http://localhost:3000", "http://localhost:3001", // zugriff auf cookie des backendserver ermöglichen
+//   credentials: true, // JS kann Credentials zugreifen. Credentials are cookies, authorization headers, or TLS client certificates.
+// };
+// server.use(cors(config));
+
 
 server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
+// GET oder POST ?????
+server.get("/auth", checkAuth, async function (req, res, next) {
+  try {
+    const token = req.cookies;
+    console.log("auth token", token)
+    res.json({result: token});
+  } catch (error) {
+    next(error);
+  }
+});
+
 server.use("/orders", ordersRouter);
 server.use("/products", usersRouter);
 server.use("/users", usersRouter);
-server.use("/drivers", checkAuth, driversRouter);
+server.use("/drivers", driversRouter);
 server.use("/customers", customersRouter);
 
 server.use(errorHandling);

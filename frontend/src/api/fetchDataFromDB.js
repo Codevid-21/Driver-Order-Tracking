@@ -1,6 +1,9 @@
 const fetchDataFromDB = async function (url) {
   try {
-    return await fetch(url)
+    const options = {
+      credentials: 'include',
+    };
+    return await fetch(url, options)
       .then((response) => response.json())
       .then((jsonData) => jsonData.result);
   } catch (error) {

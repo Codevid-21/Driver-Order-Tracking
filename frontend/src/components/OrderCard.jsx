@@ -21,16 +21,17 @@ function OrderCard({ orderInfo, callTheApi }) {
                 order.isDelivered
                   ? () => null
                   : () => {
-                      setModalShow(true);
-                      setSelectedOrder(order);
-                    }
+                    setModalShow(true);
+                    setSelectedOrder(order);
+                  }
               }
             >
               <div className="orderInfo">
                 <h4>Order Information</h4>
-                <p>Order Name: {order.food} </p>
-                <p>Order Date: {order.date} </p>
-                <p>Price: {order.total}€ </p>
+                <p>Order Name: {order.food}</p>
+                <p className="date">{order.date}</p>
+                {/* <p>Price: {order.total}€</p> */}
+                <p>{order.total}€</p>
               </div>
               <div className="clientInfo">
                 <h4>Client Information</h4>
@@ -41,29 +42,28 @@ function OrderCard({ orderInfo, callTheApi }) {
               <div className="driverInfo">
                 <div className="img">
                   {order.isDelivered ? (
-                    <GrCompliance fontSize="30px" />
+                    <GrCompliance/>
                   ) : order.driver ? (
-                    <FaShippingFast fontSize="30px" />
+                    <FaShippingFast/>
                   ) : (
-                    <GiHotMeal fontSize="40px" />
+                    <GiHotMeal/>
                   )}
                 </div>
 
                 <p>
-                  Driver :{" "}
                   {order.driver === null
-                    ? "No Driver "
-                    : order.driver.user.name}
+                    ? "There is no driver yet!"
+                    : `Driver: ${order.driver.user.name}`}
                 </p>
               </div>
             </div>
           );
         })
-        }
+      }
 
       <div className="modalWindows">
         <ModalForDrivers
-        callTheApi={callTheApi}
+          callTheApi={callTheApi}
           show={modalShow}
           onHide={() => setModalShow(false)}
           selectedOrder={selectedOrder}

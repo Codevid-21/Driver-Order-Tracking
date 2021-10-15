@@ -16,9 +16,12 @@ function Login({ setIsLogin }) {
   };
   const isAdmin = () => {
     fetch(url, options).then(result => {
+      console.log("isadminfunction", result);
       if (result.ok) {
         setIsLogin(true);
         <Redirect to="/" />;
+      } else {
+        setIsLogin(false);
       }
     });
   }

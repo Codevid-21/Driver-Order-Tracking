@@ -30,7 +30,8 @@ export default {
         httpOnly: true,
         sameSite: "Strict",
       });
-      res.json({ user });
+      // res.json({ user });
+      res.json({token});
     } catch (error) {
       res.status(401).send();
       next(error);
@@ -54,10 +55,8 @@ export default {
       // const driver = await Driver.readByUserID(id);
       // console.log("Read By User ID", driver);
       const updatedUser = req.body;
-      console.log("user update body", req.body);
 
       const result = await User.updateByID(id, updatedUser);
-      console.log("result", result);
       res.json(result);
     } catch (error) {
       next(error);
@@ -73,7 +72,7 @@ export default {
 
       var _user = user.toObject();
       const id = _user._id;
-      
+
       const newBcrypt = passwordHandler.createHashedPassword(req.body.password);
       const updatedUser = { isAdmin: true, password: newBcrypt };
 

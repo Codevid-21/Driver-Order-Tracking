@@ -9,7 +9,6 @@ function Orders() {
 
   useEffect(() => {
     api.fetchDataFromDB(url).then((result) => {
-      console.log(result);
       const deliveredOrders = result.filter(
         (value, index) => value.isDelivered === true
       );

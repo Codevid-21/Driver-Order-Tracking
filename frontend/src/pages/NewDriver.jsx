@@ -35,12 +35,8 @@ function NewDriver() {
       (key) => newDriversInfo[key] === ""
     );
 
-    console.log(isFieldsMissing);
-    console.log(selectedImg);
-
     if (isFieldsMissing && !selectedImg) {
       toast.error(" All fields are required...");
-
       return;
     }
 

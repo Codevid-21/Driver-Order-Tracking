@@ -73,7 +73,7 @@ function Navbar({ click, setClick, isLogin, setIsLogin }) {
                   </li>
                   <li>
                     <Link to="/" onClick={logoutUser}>
-                      <i class="fas fa-sign-out-alt"></i>
+                      <i className="fas fa-sign-out-alt"></i>
                     </Link>
                   </li>
                 </>

@@ -1,64 +1,159 @@
-$primaryColor : #CDD7D6;
-
-
-
+// MOBILE
 .orderCard {
-    // background-color: $primaryColor;
-    border: 3px solid #0B5351;
-    width: 60%;
-    margin: 10px auto;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  border: 1px solid #0b5351;
+  width: 100%;
+  margin: 1vh auto;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
 
-    &:hover {
-        border: 3px solid #F87060;
-        // background-color: #B3A394;
+  &:hover {
+    border: 1px solid $second-color;
+    .driverInfo {
+      .img {
+        color: $second-color;
+      }
     }
+  }
+
+  .orderInfo,
+  .clientInfo,
+  .driverInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1vh 0;
 
     h4 {
-        margin: 0 0 10px 0;
+      margin: 0;
+      text-transform: uppercase;
+      color: $second-color;
+      text-align: center;
+      order: -2;
+      font-size: 18px;
+    }
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .date {
+      font-size: 12px;
+      text-align: right;
+      order: -1;
+      color: $first-color;
+    }
+  }
+
+  .orderInfo,
+  .clientInfo {
+    flex: 2;
+    width: 100%;
+  }
+
+  .orderInfo {
+    p {
+      &:last-child {
+        text-align: right;
+        color: $first-color;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .driverInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 2; // desktop 1
+    order: -1; // burasi 0 olacak
+    .img {
+      * {
+        font-size: 50px; // desktop icin 40 30 olacak
+      }
+    }
+    p {
+      text-decoration: underline;
+    }
+  }
+}
+
+// TABLET
+@media screen and (min-width: 480px) and (max-width: 959px) {
+  .orderCard {
+    width: 90%; // %60
+    flex-direction: row; // row
+    flex-wrap: wrap;
+    align-items: center;
+    height: 60vh;
+
+    .orderInfo,
+    .clientInfo {
+      flex: 1;
+      width: 100%;
     }
 
-    p {
-        margin: 5px 0;
+    .orderInfo {
+      order: 1;
+      p {
+        &:last-child {
+          text-align: right;
+          color: $first-color;
+          font-size: 1.1rem;
+        }
+      }
     }
 
     .driverInfo {
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-
-
-        .img {
-
-            margin-bottom: 15px;
-
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      flex: 76vw; // desktop 1
+      order: -1; // burasi 0 olacak
+      .img {
+        * {
+          font-size: 50px; // desktop icin 40 30 olacak
         }
-
-        p {
-            text-decoration: underline;
-        }
+      }
+      p {
+        text-decoration: underline;
+      }
     }
+  }
 }
 
-@media screen and (max-width: 960px) {
+// DESKTOP
+@media screen and (min-width: 960px) {
+  .orderCard {
+    width: 60%;
+    flex-direction: row;
+    height: 25vh;
 
-    .orderCard {
-        background-color: $primaryColor;
-        border: 3px solid #0B5351;
-        width: 60%;
-        margin: 10px auto;
-        padding: 10px 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-
+    .orderInfo {
+      order: 1;
+      p {
+        &:last-child {
+          font-size: 1rem;
+        }
+      }
     }
 
+    .driverInfo {
+      flex: 1;
+      order: 2;
+      .img {
+        * {
+          font-size: 50px;
+        }
+      }
+      p {
+        font-size: 0.9rem;
+        text-align: center;
+        text-decoration: underline;
+      }
+    }
+  }
 }

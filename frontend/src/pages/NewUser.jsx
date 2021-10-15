@@ -1,49 +1,82 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import api from "../api/fetchDataFromDB";
+import NewDriverAvatar from "../components/newDriver/NewDriverAvatar";
+import Axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const INITIAL_USER = { name: "", surname: "", email: "", tel: "", address: "", city: "", type: "" };
 
 function NewUser({ newUser }) {
-  const userTemplate = { name: "", surname: "", email: "", tel: "", address: "", city: "", type: "" };
-  const [newUsersInfo, setNewUsersInfo] = useState(userTemplate);
+  const [newUsersInfo, setNewUsersInfo] = useState(INITIAL_USER);
+  const [selectedImg, setSelectedImg] = useState(null); // Image that user selected (local)
+  const imgRef = useRef(null); // URL from Cloudinary
   const [password, setPassword] = useState("");
   const isUser = newUser.name === "User" ? true : false;
 
-  const addANewDriver = (e) => {
+  const uploadImg = (image) => {
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", "dmcrz5sg");
+
+    return Axios.post(
+      "https://api.cloudinary.com/v1_1/driverandordertracking/image/upload",
+      formData
+    );
+  };
+  const addANewUser = async (e) => {
     e.preventDefault();
-    const body = isUser ? { ...newUsersInfo, password } : { ...newUsersInfo };
+    const isFieldsMissing = Object.keys(INITIAL_USER).some(
+      (key) => newUsersInfo[key] === ""
+    );
+    if (isFieldsMissing && !selectedImg) {
+      toast.error(" All fields are required...");
+      return;
+    }
+    const body = isUser ? { ...newUsersInfo, password } : { ...newUsersInfo, img: imgRef.current };
     const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
-    console.log("det", fetchUrl);
     const url = `http://localhost:2005/${fetchUrl}`;
-    console.log("url", url);
-    api.postDataFromDB(url, body).then(result => {
-      console.log("buraya geldi mi ", result)
-      // isUser ?
-      //   api.putDataFromDB(result.email)
-      //   :
-      //   console.log(result)
-    });
+
+    try {
+      if (!imgRef.current) {
+        imgRef.current = (await uploadImg(selectedImg)).data.url;
+      }
+
+      //Send all data to Database
+      api.postDataFromDB(url, body).then(result => {
+        // isUser ?
+        //   api.putDataFromDB(result.email)
+        //   :
+        //   console.log(result)
+      });
+
+      toast.success(`New ${newUser.name} added successfully..`);
+    } catch (err) {
+      console.log({ err });
+    }
 
     if (isUser) {
-      setNewUsersInfo(userTemplate);
+      setNewUsersInfo(INITIAL_USER);
       setPassword("");
     } else {
-      setNewUsersInfo(userTemplate);
+      setNewUsersInfo(INITIAL_USER);
     }
   };
 
   return (
     <div className="newDriver__container">
-      <form onSubmit={addANewDriver} autoComplete="off">
+      <form onSubmit={addANewUser} autoComplete="off">
         <h2>Add a new {newUser.name}</h2>
-        {isUser && (
+        {isUser ? (
           <div onChange={(e) => setNewUsersInfo({ ...newUsersInfo, type: e.target.value })}>
             User type:
-            <input type="radio" value="Staff" name="newUser" defaultChecked/> Staff
+            <input type="radio" value="Staff" name="newUser" defaultChecked /> Staff
             <input type="radio" value="Admin" name="newUser" /> Admin
           </div>
-        )}
+        ) : <NewDriverAvatar onImageSelect={setSelectedImg} />}
         <label>
-          Name:
           <input
+            placeholder=" Name..."
             type="text"
             name="name"
             value={newUsersInfo.name}
@@ -53,8 +86,8 @@ function NewUser({ newUser }) {
           />
         </label>
         <label>
-          Surname:
           <input
+            placeholder="Surname..."
             type="text"
             name="surname"
             value={newUsersInfo.surname}
@@ -64,8 +97,8 @@ function NewUser({ newUser }) {
           />
         </label>
         <label>
-          Email:
           <input
+            placeholder="Email..."
             type="email"
             name="email"
             value={newUsersInfo.email}
@@ -76,8 +109,8 @@ function NewUser({ newUser }) {
         </label>
         {isUser ? (
           <label>
-            Password:
             <input
+              placeholder="Password..."
               type="password"
               name="password"
               value={password}
@@ -88,8 +121,8 @@ function NewUser({ newUser }) {
           </label>
         ) : null}
         <label>
-          Telephone:
           <input
+            placeholder="Telephone..."
             type="text"
             name="telefon"
             value={newUsersInfo.tel}
@@ -99,8 +132,8 @@ function NewUser({ newUser }) {
           />
         </label>
         <label>
-          Address:
           <input
+            placeholder="Address..."
             type="text"
             name="adress"
             value={newUsersInfo.address}
@@ -110,8 +143,8 @@ function NewUser({ newUser }) {
           />
         </label>
         <label>
-          City:
           <input
+            placeholder="City..."
             type="text"
             name="city"
             value={newUsersInfo.city}
@@ -124,6 +157,18 @@ function NewUser({ newUser }) {
           <input type="submit" value="Submit" />
         </label>
       </form>
+      <ToastContainer
+        theme="colored"
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
