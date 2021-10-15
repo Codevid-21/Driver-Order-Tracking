@@ -1,6 +1,44 @@
 const fetchDataFromDB = async function (url) {
   try {
-    return await fetch(url)
+    const options = {
+      credentials: 'include',
+    };
+    return await fetch(url, options)
+      .then((response) => response.json())
+      .then((jsonData) => jsonData.result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const postDataFromDB = async function (url, body) {
+  try {
+    const options = {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-type": "application/json",
+      }
+    };
+    return await fetch(url, options)
+      .then((response) => response.json())
+      .then((jsonData) => jsonData.result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const putDataFromDB = async function (email) {
+  try {
+    const url = `http://localhost:2005/users/${email}`;
+    const options = {
+      method: "PUT",
+      body: "",
+      headers: {
+        "Content-type": "application/json",
+      }
+    };
+    return await fetch(url, options)
       .then((response) => response.json())
       .then((jsonData) => jsonData.result);
   } catch (error) {
@@ -9,7 +47,9 @@ const fetchDataFromDB = async function (url) {
 };
 
 const api = {
-    fetchDataFromDB
+    fetchDataFromDB,
+    postDataFromDB,
+    putDataFromDB
 }
 
 export default api;

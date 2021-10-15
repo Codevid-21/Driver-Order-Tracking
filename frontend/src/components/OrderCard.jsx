@@ -11,52 +11,55 @@ function OrderCard({ orderInfo, callTheApi }) {
 
   return (
     <>
-      {orderInfo.map((order, i) => {
-        return (
-          <div
-            key={i}
-            className="orderCard"
-            onClick={
-              order.isDelivered
-                ? () => null
-                : () => {
+      {orderInfo
+        .map((order, i) => {
+          return (
+            <div
+              key={i}
+              className="orderCard"
+              onClick={
+                order.isDelivered
+                  ? () => null
+                  : () => {
                     setModalShow(true);
                     setSelectedOrder(order);
                   }
-            }
-          >
-            <div className="orderInfo">
-              <h4>Order Information</h4>
-              <p> Order ID : {order._id} </p>
-              <p>Order Date : {order.date} </p>
-              <p> Price : {order.total}€ </p>
-            </div>
-            <div className="clientInfo">
-              <h4>Client Information</h4>
-              <p> Name : {order.customerId.user.name} </p>
-              <p>Address : {order.customerId.user.address} </p>
-              <p> Phone : {order.customerId.user.tel} </p>
-            </div>
-            <div className="driverInfo">
-              <div className="img">
-                {order.isDelivered ? (
-                  <GrCompliance fontSize="30px" />
-                ) : order.driver ? (
-                  <FaShippingFast fontSize="30px" />
-                ) : (
-                  <GiHotMeal fontSize="40px" />
-                )}
+              }
+            >
+              <div className="orderInfo">
+                <h4>Order Information</h4>
+                <p>Order Name: {order.food}</p>
+                <p className="date">{order.date}</p>
+                {/* <p>Price: {order.total}€</p> */}
+                <p>{order.total}€</p>
               </div>
+              <div className="clientInfo">
+                <h4>Client Information</h4>
+                <p>Name: {order.customerId.user.name} </p>
+                <p>Address: {order.customerId.user.address} </p>
+                <p>Phone: {order.customerId.user.tel} </p>
+              </div>
+              <div className="driverInfo">
+                <div className="img">
+                  {order.isDelivered ? (
+                    <GrCompliance />
+                  ) : order.driver ? (
+                    <FaShippingFast />
+                  ) : (
+                    <GiHotMeal />
+                  )}
+                </div>
 
-              <p>
-                Driver :{" "}
-                {order.driver === null ? "No Driver " : order.driver.user.name}
-              </p>
+                <p>
+                  {order.driver === null
+                    ? "There is no driver yet!"
+                    : `Driver: ${order.driver.user.name}`}
+                </p>
+              </div>
             </div>
-          </div>
-        );
-      })}
-
+          );
+        })
+      }
       <div className="modalWindows">
         <ModalForDrivers
           callTheApi={callTheApi}

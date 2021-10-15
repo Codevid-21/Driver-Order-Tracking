@@ -21,7 +21,7 @@ function NewDriverAvatar({ onImageSelect }) {
             onChange={onImageChange}
           />
           <label htmlFor="imageUpload">
-            <FiUpload fontSize="20px" />
+            <FiUpload fontSize="20px"  />
           </label>
         </div>
 

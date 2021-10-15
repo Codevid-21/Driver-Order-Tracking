@@ -13,7 +13,6 @@ function Home({ click }) {
         (value, index) => value.isDelivered === false
       );
       setOrderInfo(deliveredOrders.reverse());
-      // console.log(orderInfo);
     });
   };
 
@@ -23,7 +22,14 @@ function Home({ click }) {
 
   return (
     <div className={!click ? "hideOrder" : "displayOrder"}>
-      <OrderCard orderInfo={orderInfo} callTheApi={callTheApi} />
+      {orderInfo.length === 1
+        ?
+        "orderInfo bos buraya bos komponent eklenecek"
+        :
+        (
+          <OrderCard orderInfo={orderInfo} callTheApi={callTheApi} />
+        )
+      }
     </div>
   );
 }

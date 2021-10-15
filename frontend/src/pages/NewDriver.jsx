@@ -38,7 +38,6 @@ function NewDriver() {
     if (isFieldsMissing || !selectedImg) {
       const customId = "custom-id-no";
       toast.error(" All fields are required...", { toastId: customId });
-
       return;
     }
 

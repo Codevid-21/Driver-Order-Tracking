@@ -8,16 +8,20 @@ import "react-toastify/dist/ReactToastify.css";
 function ModalForDrivers(props) {
   const [drivers, setDrivers] = useState([]);
 
-  const url = `http://localhost:2005/drivers`;
-
-  useEffect(() => {
+  
+  const callTheDriversApi = () => {
+    const url = `http://localhost:2005/drivers`;
     api.fetchDataFromDB(url).then((result) => {
+      console.log("callthedriversapi", result)
       const workingDrivers = result.filter(
         (value, index) => value.isWorking === true
       );
       setDrivers(workingDrivers);
     });
-  }, [url]);
+  }
+  useEffect(() => {
+    callTheDriversApi();
+  }, []);
 
   const addDrivertoOrder = (driver) => {
     // Burada hem driver hem de order güncelleniyor.
@@ -31,7 +35,6 @@ function ModalForDrivers(props) {
 
     fetch(url, options)
       .then((response) => response.json())
-
       .then((result) => {
         props.callTheApi();
         const customId = "custom-id-assign";
@@ -40,7 +43,6 @@ function ModalForDrivers(props) {
         });
         console.log(result);
       });
-
     props.onHide();
   };
 
@@ -60,6 +62,17 @@ function ModalForDrivers(props) {
         <Modal.Body>
           {props.selectedOrder.driver == null
             ? drivers.map((driver, i) => {
+              return (
+                <DriverCard
+                  driver={driver}
+                  key={i}
+                  addDrivertoOrder={addDrivertoOrder}
+                />
+              );
+            })
+            : drivers
+              .filter((value) => value._id !== props.selectedOrder.driver._id)
+              .map((driver, i) => {
                 return (
                   <DriverCard
                     driver={driver}
@@ -67,18 +80,7 @@ function ModalForDrivers(props) {
                     addDrivertoOrder={addDrivertoOrder}
                   />
                 );
-              })
-            : drivers
-                .filter((value) => value._id !== props.selectedOrder.driver._id)
-                .map((driver, i) => {
-                  return (
-                    <DriverCard
-                      driver={driver}
-                      key={i}
-                      addDrivertoOrder={addDrivertoOrder}
-                    />
-                  );
-                })}
+              })}
         </Modal.Body>
         <Modal.Footer>
           <Button size="lg" onClick={props.onHide}>

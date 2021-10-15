@@ -8,27 +8,24 @@ function Dropdown({ closeMobileMenu }) {
   const handleClick = () => setClick(!click);
 
   return (
-      <ul
-        onClick={handleClick}
-        // className={click ? "clicked" : ""}
-      >
-        {MenuItems.map((item, index) => {
-          return (
-            <li key={index}>
-              <Link
-                to={item.path}
-                onClick={closeMobileMenu}
-              // onClick={() => {
-              //   setClick(false);
-              //   closeMobileMenu();
-              // }}
-              >
-                {item.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+    <ul
+      onClick={handleClick}
+    >
+      {MenuItems.map((item, index) => {
+        return (
+          <li key={index}>
+            <Link
+              to={item.path}
+              onClick={() => {
+                closeMobileMenu();
+              }}
+            >
+              {item.title}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
