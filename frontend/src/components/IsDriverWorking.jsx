@@ -24,8 +24,8 @@ function IsDriverWorking({
         drivers[i] = result;
         setDrivers(drivers);
         callTheDriversApi();
-        const customId = "custom-id-status";
-        toast.info(" Driver Work Status Changed...", { toastId: customId });
+        // const customId = "custom-id-status";
+        toast.info(`${value.user.name}'s Work Status Changed... `);
       });
   };
 
@@ -63,7 +63,7 @@ function IsDriverWorking({
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        limit={1}
+        // limit={1}
       />
     </>
   );
