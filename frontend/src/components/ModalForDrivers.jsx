@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import DriverCard from "./DriverCard";
 import api from "../api/fetchDataFromDB";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ModalForDrivers(props) {
   const [drivers, setDrivers] = useState([]);
@@ -35,13 +37,17 @@ function ModalForDrivers(props) {
       .then((response) => response.json())
       .then((result) => {
         props.callTheApi();
+        const customId = "custom-id-assign";
+        toast.success(" Driver Has Assigned to Order...", {
+          toastId: customId,
+        });
         console.log(result);
       });
     props.onHide();
   };
 
   return (
-    <div>
+    <>
       <Modal
         {...props}
         size="md"
@@ -82,7 +88,21 @@ function ModalForDrivers(props) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+
+      <ToastContainer
+        theme="colored"
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        limit={1}
+      />
+    </>
   );
 }
 

@@ -1,4 +1,6 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function IsDriverWorking({
   drivers,
@@ -22,6 +24,8 @@ function IsDriverWorking({
         drivers[i] = result;
         setDrivers(drivers);
         callTheDriversApi();
+        const customId = "custom-id-status";
+        toast.info(" Driver Work Status Changed...", { toastId: customId });
       });
   };
 
@@ -47,6 +51,20 @@ function IsDriverWorking({
           </div>
         </div>
       </div>
+
+      <ToastContainer
+        theme="colored"
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        limit={1}
+      />
     </>
   );
 }

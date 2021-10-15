@@ -60,7 +60,6 @@ function OrderCard({ orderInfo, callTheApi }) {
           );
         })
       }
-
       <div className="modalWindows">
         <ModalForDrivers
           callTheApi={callTheApi}
