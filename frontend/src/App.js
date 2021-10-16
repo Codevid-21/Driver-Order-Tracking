@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from "react";
 import Login from "./pages/Login.jsx";
 import Admin from "./pages/Admin.jsx";
-// import api from "./api/fetchDataFromDB.js";
 import "./App.css";
-import api from "./api/fetchDataFromDB.js";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(() => {
+    const lcSt = JSON.parse(localStorage.getItem("isLoggedIn"));
+    return lcSt ? lcSt : false;
+  });
 
-  // const checkAuth = async () => {
-  //   const url = `http://localhost:2005/auth`;
-  //   const result = await api.fetchDataFromDB(url);
-  //   return result;
-  // };
-
-  // const [isLogin, setIsLogin] = useState(async () => {
-  //   const result = await checkAuth().then((result) => {
-  //     return result;
-  //   });
-  //   return result;
-  // });
-  const checkAuth = () => {
+  const checkAuth = async () => {
     const url = `http://localhost:2005/auth`;
-    api.fetchDataFromDB(url).then((result) => {
-      console.log("token deneme", result);
+    const options = {
+      credentials: "include",
+    };
+    const data = await fetch(url, options);
+    const res = await data.json();
+    if (res.token) {
+      localStorage.setItem("isLoggedIn", JSON.stringify(true));
       setIsLogin(true);
-    });
+    } else if (data.status === 401) {
+      setIsLogin(false);
+    }
   };
+
   useEffect(() => {
-    checkAuth();
+    const lcSt = JSON.parse(localStorage.getItem("isLoggedIn"));
+    if (lcSt === null) {
+      checkAuth();
+    } else if (lcSt) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
   }, []);
 
   return (

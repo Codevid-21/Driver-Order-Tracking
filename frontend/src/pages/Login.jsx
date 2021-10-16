@@ -19,6 +19,7 @@ function Login({ setIsLogin }) {
       console.log("isadminfunction", result);
       if (result.ok) {
         setIsLogin(true);
+        localStorage.setItem("isLoggedIn", JSON.stringify(true));
         <Redirect to="/" />;
       } else {
         setIsLogin(false);

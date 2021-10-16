@@ -16,6 +16,7 @@ function Navbar({ click, setClick, isLogin, setIsLogin }) {
   }
 
   const logoutUser = () => {
+    localStorage.setItem("isLoggedIn", JSON.stringify(false))
     setIsLogin(false);
   }
 
