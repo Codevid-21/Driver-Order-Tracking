@@ -5,7 +5,15 @@ import Axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const INITIAL_USER = { name: "", surname: "", email: "", tel: "", address: "", city: "", type: "Staff" };
+const INITIAL_USER = {
+  name: "",
+  surname: "",
+  email: "",
+  tel: "",
+  address: "",
+  city: "",
+  type: "Staff",
+};
 
 function NewUser({ newUser }) {
   const [newUsersInfo, setNewUsersInfo] = useState(INITIAL_USER);
@@ -40,21 +48,28 @@ function NewUser({ newUser }) {
       return;
     }
 
-    const body = isUser ? { ...newUsersInfo, password } : { ...newUsersInfo, img: imgRef.current };
-    const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
+    const fetchUrl =
+      newUser.name === "Driver"
+        ? "drivers"
+        : newUsersInfo.type === "Admin"
+        ? "users/admin"
+        : "users/register";
     const url = `http://localhost:2005/${fetchUrl}`;
 
     try {
       if (!isUser && !imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;
       }
+      const body = isUser
+        ? { ...newUsersInfo, password }
+        : { ...newUsersInfo, img: imgRef.current };
 
       //Send all data to Database
-      api.postDataFromDB(url, body).then(result => {
+      api.postDataFromDB(url, body).then((result) => {
         // isUser ?
         //   api.putDataFromDB(result.email)
         //   :
-        console.log(result)
+        console.log(result);
       });
 
       toast.success(`New ${newUser.name} added successfully..`);
@@ -75,12 +90,24 @@ function NewUser({ newUser }) {
       <form onSubmit={addANewUser} autoComplete="off">
         <h2>Add a new {newUser.name}</h2>
         {isUser ? (
-          <div onChange={(e) => setNewUsersInfo({ ...newUsersInfo, type: e.target.value })}>
+          <div
+            onChange={(e) =>
+              setNewUsersInfo({ ...newUsersInfo, type: e.target.value })
+            }
+          >
             User type:
-            <input type="radio" value="Staff" name="newUser" defaultChecked /> Staff
+            <input
+              type="radio"
+              value="Staff"
+              name="newUser"
+              defaultChecked
+            />{" "}
+            Staff
             <input type="radio" value="Admin" name="newUser" /> Admin
           </div>
-        ) : <NewDriverAvatar onImageSelect={setSelectedImg} />}
+        ) : (
+          <NewDriverAvatar onImageSelect={setSelectedImg} />
+        )}
         <label>
           <input
             placeholder=" Name..."
@@ -121,9 +148,7 @@ function NewUser({ newUser }) {
               type="password"
               name="password"
               value={password}
-              onChange={(e) =>
-                setPassword(e.target.value)
-              }
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
         ) : null}
