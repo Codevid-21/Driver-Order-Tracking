@@ -9,15 +9,6 @@
   align-items: center;
   height: 70vh;
 
-  &:hover {
-    border: 1px solid $second-color;
-    .driverInfo {
-      .img {
-        color: $second-color;
-      }
-    }
-  }
-
   .orderInfo,
   .clientInfo,
   .driverInfo {
@@ -54,23 +45,35 @@
   }
 
   .orderInfo {
+    &:hover {
+      cursor: pointer;
+    }
     p {
       &:last-child {
         text-align: right;
         color: $first-color;
-        font-size: 18px;
+        font-size: 16px;
       }
     }
   }
 
   .driverInfo {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     flex: 2; // desktop 1
     order: -1; // burasi 0 olacak
+
+    &:hover {
+      cursor: pointer;
+      .img {
+        color: $second-color;
+      }
+    }
     .img {
+      margin-bottom: 2vh;
       * {
         font-size: 50px; // desktop icin 40 30 olacak
       }

@@ -1,0 +1,42 @@
+.modal-header {
+  button {
+    background-color: #fff;
+    color: $first-color;
+    border: none;
+    &:hover {
+      color: $second-color;
+    }
+    span {
+      font-size: 26px;
+    }
+  }
+}
+.modal-body {
+  table {
+    width: 100%;
+    tr {
+        &:not(:first-child):hover {
+            color: $second-color;
+        }
+      &:nth-child(even) {
+        background-color: rgba(205, 215, 214, 20%);
+      }
+      th {
+        padding: 5px 0;
+        border-bottom: 1px solid $text-color;
+      }
+      td {
+        padding: 2px 0;
+      }
+      th,
+      td {
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6) {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,4 @@
 import React from 'react'
-import onTheWay from "../../components/onTheWay.svg";
-import money from "../../components/money.svg";
 
 export default function AllDayInfo({ drivers }) {
 
@@ -16,7 +14,7 @@ export default function AllDayInfo({ drivers }) {
     return (
         <div className="summary__day">
             <div className="svgImg ontheWay">
-                <img src={onTheWay} alt="" />
+                <img src="/images/onTheWay.svg" alt="ontheway" />
             </div>
 
             <div className="day__info">
@@ -41,7 +39,7 @@ export default function AllDayInfo({ drivers }) {
             </div>
 
             <div className="svgImg money">
-                <img src={money} alt="" />
+                <img src="/images/money.svg" alt="money" />
             </div>
         </div>
     )

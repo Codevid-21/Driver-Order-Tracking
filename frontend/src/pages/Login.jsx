@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login({ setIsLogin }) {
   const [email, setEmail] = useState("");
@@ -21,8 +23,10 @@ function Login({ setIsLogin }) {
         setIsLogin(true);
         localStorage.setItem("isLoggedIn", JSON.stringify(true));
         <Redirect to="/" />;
-      } else {
+      } else if (result.status === 401) {
         setIsLogin(false);
+        toast.error("Username or password is incorrect.");
+        return
       }
     });
   }
@@ -46,6 +50,18 @@ function Login({ setIsLogin }) {
         <input type="password" placeholder="Enter Password" name="psw" required value={password} onChange={(e) => setPassword(e.target.value)} />
         <input type="submit" className="loginButton" value="Login" />
       </form>
+      <ToastContainer
+        theme="colored"
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import OrderCard from "../components/OrderCard.jsx";
+import OrderCard from "../components/Orders/OrderCard.jsx";
 import api from "../api/fetchDataFromDB.js";
 
 function Home({ click }) {
