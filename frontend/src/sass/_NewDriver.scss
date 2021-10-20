@@ -13,17 +13,25 @@ $fifth-color: #B3A394;
 
     form {
         max-width: 600px;
+        max-height: 80vh;
         display: flex;
         flex-direction: column;
         align-items: stretch;
         justify-content: center;
         margin: 4% auto;
         padding: 2% 0;
-        border: 3px solid $fourthColor;
+        border: 1px solid $fourthColor;
 
 
         h2 {
             margin: 0 auto;
+        }
+
+
+        .userType {
+
+            margin: 15px auto;
+
         }
 
 

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 
-function NewDriverAvatar({ onImageSelect }) {
-  const [file, setFile] = useState(null);
+function NewDriverAvatar({ setSelectedImg, preview, setPreview }) {
 
   const onImageChange = (event) => {
     const url = URL.createObjectURL(event.target.files[0]);
-    setFile(url);
-    onImageSelect(event.target.files[0]);
+    setPreview(url);
+    setSelectedImg(event.target.files[0]);
   };
 
   return (
@@ -21,13 +20,13 @@ function NewDriverAvatar({ onImageSelect }) {
             onChange={onImageChange}
           />
           <label htmlFor="imageUpload">
-            <FiUpload fontSize="20px"  />
+            <FiUpload fontSize="20px" />
           </label>
         </div>
 
         <div className="avatar-preview">
           <div id="imagePreview">
-            <img src={file ?? "/avatar.jpeg"} alt="" />
+            <img src={preview ?? "/images/avatar.jpeg"} alt="" />
           </div>
         </div>
       </div>

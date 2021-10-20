@@ -22,16 +22,22 @@ export default {
     try {
       const user = await User.findByEmail(req.body.email);
 
-      if (user) {
-        const userID = user[0]._id;
-        const driver = await Driver.findByUserID(userID);
 
+      if (user) {
+        const userID = user._id;
+
+        const driver = await Driver.findByUserID(userID);
+        console.log(driver);
         if (driver.length > 0) return res.json({ driver });
-      } 
+
+        else {
+          const result = await Driver.create(userID, req.body.img);
+          return res.json({ result });
+        }
+      }
       else {
         const user = await User.create(req.body);
         const userID = user._id;
-        console.log("burasi img", req.body.img);
         const result = await Driver.create(userID, req.body.img);
         return res.json({ result });
       }

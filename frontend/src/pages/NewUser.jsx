@@ -21,6 +21,7 @@ function NewUser({ newUser }) {
   const imgRef = useRef(null); // URL from Cloudinary
   const [password, setPassword] = useState("");
   const isUser = newUser.name === "User" ? true : false;
+  const [preview, setPreview] = useState(null);
 
   const uploadImg = (image) => {
     const formData = new FormData();
@@ -43,23 +44,19 @@ function NewUser({ newUser }) {
       toast.error(" All fields are required...");
       return;
     } else if (!isUser && (isFieldsMissing || !selectedImg)) {
-      console.log("burasi mi veya");
       toast.error(" All fields are required...");
       return;
     }
 
-    const fetchUrl =
-      newUser.name === "Driver"
-        ? "drivers"
-        : newUsersInfo.type === "Admin"
-        ? "users/admin"
-        : "users/register";
-    const url = `http://localhost:2005/${fetchUrl}`;
-
     try {
-      const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
+      const fetchUrl =
+        newUser.name === "Driver"
+          ? "drivers"
+          : newUsersInfo.type === "Admin"
+          ? "users/admin"
+          : "users/register";
       const url = `http://localhost:2005/${fetchUrl}`;
-      
+
       if (!isUser && !imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;
       }
@@ -73,9 +70,11 @@ function NewUser({ newUser }) {
         //   api.putDataFromDB(result.email)
         //   :
         console.log(result);
-      });
 
-      toast.success(`New ${newUser.name} added successfully..`);
+        result.result
+          ? toast.success(`New ${newUser.name} added successfully..`)
+          : toast.error(`This driver already exists`);
+      });
     } catch (err) {
       console.log({ err });
     }
@@ -83,8 +82,10 @@ function NewUser({ newUser }) {
     if (isUser) {
       setNewUsersInfo(INITIAL_USER);
       setPassword("");
+      setPreview(null);
     } else {
       setNewUsersInfo(INITIAL_USER);
+      setPreview(null);
     }
   };
 
@@ -94,6 +95,7 @@ function NewUser({ newUser }) {
         <h2>Add a new {newUser.name}</h2>
         {isUser ? (
           <div
+            className="userType"
             onChange={(e) =>
               setNewUsersInfo({ ...newUsersInfo, type: e.target.value })
             }
@@ -109,7 +111,11 @@ function NewUser({ newUser }) {
             <input type="radio" value="Admin" name="newUser" /> Admin
           </div>
         ) : (
-          <NewDriverAvatar onImageSelect={setSelectedImg} />
+          <NewDriverAvatar
+            setSelectedImg={setSelectedImg}
+            preview={preview}
+            setPreview={setPreview}
+          />
         )}
         <label>
           <input

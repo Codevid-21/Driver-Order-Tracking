@@ -23,7 +23,10 @@ const postDataFromDB = async function (url, body) {
     };
     return await fetch(url, options)
       .then((response) => response.json())
-      .then((jsonData) => jsonData.result);
+      .then((jsonData) => {
+        console.log(" postData ", jsonData);
+        return jsonData
+      });
   } catch (error) {
     console.log(error);
   }
@@ -48,9 +51,9 @@ const putDataFromDB = async function (email) {
 };
 
 const api = {
-    fetchDataFromDB,
-    postDataFromDB,
-    putDataFromDB
+  fetchDataFromDB,
+  postDataFromDB,
+  putDataFromDB
 }
 
 export default api;
