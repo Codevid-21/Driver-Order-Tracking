@@ -9,6 +9,7 @@ import errorHandling from "./middlewares/errorHandling.js";
 import cookieParser from "cookie-parser";
 import checkAuth from "./middlewares/checkAuth.js";
 import cors from "cors";
+import path from "path";
 
 dotenv.config();
 
@@ -20,7 +21,7 @@ server.listen(process.env.PORT, () =>
   console.log(`server listening on port ${process.env.PORT}`)
 );
 
-var whitelist = ['http://localhost:3000', 'http://localhost:3001']
+var whitelist = ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:2005']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -31,7 +32,8 @@ var corsOptions = {
   },
   credentials: true
 }
-server.use(cors(corsOptions));
+// server.use(cors(corsOptions));
+server.use(cors());
 
 // const config = {
 //   origin: "http://localhost:3000", "http://localhost:3001", // zugriff auf cookie des backendserver ermöglichen
@@ -60,5 +62,12 @@ server.use("/products", usersRouter);
 server.use("/users", usersRouter);
 server.use("/drivers", driversRouter);
 server.use("/customers", customersRouter);
+
+
+server.use(express.static("./app/deliciousThings"));
+server.use(express.static("./app/driverOrderTracking"));
+
+server.use((req, res) => res.sendFile("./app/deliciousThings/index.html"));
+server.use((req, res) => res.sendFile("./app/driverOrderTracking/index.html"));
 
 server.use(errorHandling);

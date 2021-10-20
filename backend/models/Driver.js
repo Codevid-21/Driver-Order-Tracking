@@ -50,13 +50,13 @@ export default {
     return await Driver.find({ userId: id });
   },
 
-  create: async function (userID, img) {
+  create: async function (userID, imgUrl) {
     const driver = new Driver({
       user: userID,
       deliveries: [],
       status: "free",
       isWorking: false,
-      img,
+      img: imgUrl,
     });
     return await driver.save();
   },

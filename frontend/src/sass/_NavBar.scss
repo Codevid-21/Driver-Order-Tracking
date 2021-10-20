@@ -90,11 +90,10 @@ nav {
         text-align: center;
         position: relative;
         height: 100%;
-        left: -100%;
-        opacity: 0;
+        left: -90%;
+        opacity: 0.2;
         padding: 0;
         background-color: #092327;
-        
         
         &.active {
           left: 0;
