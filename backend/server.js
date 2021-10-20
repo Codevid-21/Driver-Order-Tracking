@@ -20,7 +20,7 @@ server.listen(process.env.PORT, () =>
   console.log(`server listening on port ${process.env.PORT}`)
 );
 
-var whitelist = ['http://localhost:3000', 'http://localhost:3001']
+var whitelist = ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:2005']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -49,7 +49,7 @@ server.get("/auth", checkAuth, async function (req, res, next) {
   try {
     const token = req.cookies;
     console.log("auth token", token)
-    res.json({result: token});
+    res.json({ result: token });
   } catch (error) {
     next(error);
   }
