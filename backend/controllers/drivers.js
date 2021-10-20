@@ -31,6 +31,7 @@ export default {
       else {
         const user = await User.create(req.body);
         const userID = user._id;
+        console.log("burasi img", req.body.img);
         const result = await Driver.create(userID, req.body.img);
         return res.json({ result });
       }
