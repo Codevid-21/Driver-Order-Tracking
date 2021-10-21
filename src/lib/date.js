@@ -20,3 +20,5 @@ const getLocalDate = (date) => {
   // return date.toISOString();
   return localDate;
 };
+
+export default { getLocalDate };
