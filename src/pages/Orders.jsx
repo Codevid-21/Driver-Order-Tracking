@@ -7,7 +7,7 @@ dotenv.config();
 function Orders() {
   const [orderInfo, setOrderInfo] = useState([]);
 
-  const url = `${process.env.API_SERVER}/orders`;
+  const url = `${process.env.REACT_APP_API_SERVER}/orders`;
 
   useEffect(() => {
     api.fetchDataFromDB(url).then((result) => {

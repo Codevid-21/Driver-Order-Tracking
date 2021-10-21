@@ -52,7 +52,7 @@ function NewUser({ newUser }) {
 
     try {
       const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
-      const url = `${process.env.API_SERVER}/${fetchUrl}`;
+      const url = `${process.env.REACT_APP_API_SERVER}/${fetchUrl}`;
       
       if (!isUser && !imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;

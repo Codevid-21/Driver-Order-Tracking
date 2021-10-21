@@ -7,7 +7,7 @@ dotenv.config();
 function IsDriverWorking({ drivers, isWorking, setDrivers, callTheDriversApi }) {
 
   const handleWorkingSituation = (value, i) => {
-    const url = `${process.env.API_SERVER}/drivers/${value._id}`;
+    const url = `${process.env.REACT_APP_API_SERVER}/drivers/${value._id}`;
     const options = {
       method: "PUT",
       body: JSON.stringify({ ...value, isWorking: !isWorking }),

@@ -9,7 +9,7 @@ function Login({ setIsLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const url = `${process.env.API_SERVER}/users/login`;
+  const url = `${process.env.REACT_APP_API_SERVER}/users/login`;
   const options = {
     method: "POST",
     body: JSON.stringify({ email, password }),
