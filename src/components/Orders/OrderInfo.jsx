@@ -1,4 +1,5 @@
 import React from 'react'
+import date from "../../lib/date.js";
 
 function OrderInfo({order, setOrderModalShow, setSelectedOrder}) {
 
@@ -26,7 +27,7 @@ function OrderInfo({order, setOrderModalShow, setSelectedOrder}) {
         <div className="orderInfo" onClick={selectOrderFunc}>
             <h4>Order Information</h4>
             <p>Foods: {makeFood(order)}</p>
-            <p className="date">{order.date}</p>
+            <p className="date">{date.getLocalDate(order.date)}</p>
             {/* <p>Price: {order.total}€</p> */}
             <p>{order.total}€</p>
         </div>
