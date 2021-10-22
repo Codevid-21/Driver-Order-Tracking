@@ -8,7 +8,7 @@ function Home({ click }) {
   const [orderInfo, setOrderInfo] = useState([]);
 
   const callTheApi = () => {
-    const url = `${process.env.REACT_APP_API_SERVER}/orders`;
+    const url = `http://localhost:2005/orders`;
 
     api.fetchDataFromDB(url).then((result) => {
       const deliveredOrders = result.filter(

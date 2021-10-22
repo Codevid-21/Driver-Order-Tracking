@@ -12,7 +12,8 @@ function App() {
   });
 
   const checkAuth = async () => {
-    const url = `${process.env.REACT_APP_API_SERVER}/auth`;
+    const url = `http://localhost:2005/auth`;
+    
     const options = {
       credentials: "include",
     };

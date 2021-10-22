@@ -8,7 +8,7 @@ dotenv.config();
 function Summary() {
   const [drivers, setDrivers] = useState([]);
 
-  const url = `${process.env.REACT_APP_API_SERVER}/drivers`;
+  const url = `http://localhost:2005/drivers`;
 
   useEffect(() => {
     api.fetchDataFromDB(url).then((result) => {
