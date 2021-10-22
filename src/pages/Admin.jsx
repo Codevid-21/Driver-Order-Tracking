@@ -13,6 +13,7 @@ import { MenuItems } from "../components/MenuItems.jsx";
 function Admin({ setIsLogin }) {
     const [click, setClick] = useState(false);
 
+    // buraya dev branchi altindan yorum ekledim deneme icin
     return (
         <BrowserRouter>
             <NavBar
