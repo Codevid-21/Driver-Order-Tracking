@@ -26,10 +26,12 @@
       order: -2;
       font-size: 18px;
     }
+
     p {
       margin: 0;
       font-size: 14px;
     }
+
     .date {
       font-size: 12px;
       text-align: right;
@@ -48,6 +50,7 @@
     &:hover {
       cursor: pointer;
     }
+
     p {
       &:last-child {
         text-align: right;
@@ -68,16 +71,20 @@
 
     &:hover {
       cursor: pointer;
+
       .img {
         color: $second-color;
       }
     }
+
     .img {
       margin-bottom: 2vh;
+
       * {
         font-size: 50px; // desktop icin 40 30 olacak
       }
     }
+
     p {
       text-decoration: underline;
     }
@@ -97,6 +104,7 @@
     .clientInfo {
       flex: 1;
       width: 100%;
+
       h4 {
         margin: 0 0 5vh 0;
       }
@@ -104,6 +112,7 @@
 
     .orderInfo {
       order: 1;
+
       p {
         &:last-child {
           text-align: right;
@@ -121,11 +130,13 @@
       padding: 3vh;
       flex: 76vw; // desktop 1
       order: -1; // burasi 0 olacak
+
       .img {
         * {
           font-size: 50px; // desktop icin 40 30 olacak
         }
       }
+
       p {
         text-decoration: underline;
       }
@@ -142,6 +153,7 @@
 
     .orderInfo {
       order: 1;
+
       p {
         &:last-child {
           font-size: 1rem;
@@ -152,16 +164,34 @@
     .driverInfo {
       flex: 1;
       order: 2;
+
       .img {
         * {
           font-size: 50px;
         }
       }
-      p {
+
+      h5 {
         font-size: 0.9rem;
         text-align: center;
         text-decoration: underline;
       }
     }
+  }
+}
+
+
+
+
+
+.noOrdersToDisplay {
+
+  text-align: center;
+  margin: 50px 0;
+
+  img {
+    display: block;
+    width: 400px;
+    margin: 20px auto;
   }
 }

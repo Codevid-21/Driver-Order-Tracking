@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import OrderCard from "../components/Orders/OrderCard.jsx";
 import api from "../api/fetchDataFromDB.js";
 import dotenv from "dotenv";
+import NoOrdersToDisplay from "../components/NoOrdersToDisplay.jsx";
 dotenv.config();
 
 function Home({ click }) {
@@ -24,14 +25,11 @@ function Home({ click }) {
 
   return (
     <div className={!click ? "hideOrder" : "displayOrder"}>
-      {orderInfo.length === 1
-        ?
-        "orderInfo bos buraya bos komponent eklenecek"
-        :
-        (
-          <OrderCard orderInfo={orderInfo} callTheApi={callTheApi} />
-        )
-      }
+      {orderInfo.length === 0 ? (
+        <NoOrdersToDisplay/>
+      ) : (
+        <OrderCard orderInfo={orderInfo} callTheApi={callTheApi} />
+      )}
     </div>
   );
 }

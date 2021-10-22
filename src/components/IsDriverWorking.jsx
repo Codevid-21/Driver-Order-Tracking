@@ -4,8 +4,12 @@ import "react-toastify/dist/ReactToastify.css";
 import dotenv from "dotenv";
 dotenv.config();
 
-function IsDriverWorking({ drivers, isWorking, setDrivers, callTheDriversApi }) {
-
+function IsDriverWorking({
+  drivers,
+  isWorking,
+  setDrivers,
+  callTheDriversApi,
+}) {
   const handleWorkingSituation = (value, i) => {
     const url = `http://localhost:2005/drivers/${value._id}`;
     const options = {
@@ -27,17 +31,21 @@ function IsDriverWorking({ drivers, isWorking, setDrivers, callTheDriversApi }) 
       });
   };
 
-  const filteredDrivers = drivers.filter(driver => driver.isWorking === isWorking);
+  const filteredDrivers = drivers.filter(
+    (driver) => driver.isWorking === isWorking
+  );
   const lengthOfFilteredDrivers = filteredDrivers.length >= 1;
   return (
     <>
       <div className="workingDrivers">
         <div className="workingDrivers__card">
           <div className="header">
-            <h2>{isWorking ? "Working" : "Not Working"} Drivers</h2>
+            <h2>
+              {isWorking ? "Working" : "Not Working"} <br /> Drivers
+            </h2>
           </div>
           <div className="workingDrivers__info">
-            {lengthOfFilteredDrivers ?
+            {lengthOfFilteredDrivers ? (
               filteredDrivers.map((value, i) => {
                 return (
                   <p key={i} onClick={() => handleWorkingSituation(value, i)}>
@@ -45,12 +53,12 @@ function IsDriverWorking({ drivers, isWorking, setDrivers, callTheDriversApi }) 
                   </p>
                 );
               })
-              :
+            ) : (
               <>
-                <img src="./images/nodriver" alt="no driver"/>
-                <p>No <span>{isWorking ? "Working" : "Not Working"}</span> drivers are listed here.</p>
+                <p>No drivers are listed here.</p>
+                <img src="./images/no_driver.svg" alt="no driver" />
               </>
-            }
+            )}
           </div>
         </div>
       </div>
@@ -66,7 +74,7 @@ function IsDriverWorking({ drivers, isWorking, setDrivers, callTheDriversApi }) 
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      // limit={1}
+        // limit={1}
       />
     </>
   );

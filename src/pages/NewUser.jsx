@@ -88,7 +88,7 @@ function NewUser({ newUser }) {
       <form onSubmit={addANewUser} autoComplete="off">
         <h2>Add a new {newUser.name}</h2>
         {isUser ? (
-          <div
+          <div className="newDriver__userType"
             onChange={(e) =>
               setNewUsersInfo({ ...newUsersInfo, type: e.target.value })
             }
