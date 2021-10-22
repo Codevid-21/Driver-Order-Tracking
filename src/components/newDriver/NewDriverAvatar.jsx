@@ -21,13 +21,13 @@ function NewDriverAvatar({ onImageSelect }) {
             onChange={onImageChange}
           />
           <label htmlFor="imageUpload">
-            <FiUpload fontSize="20px"  />
+            <FiUpload fontSize="20px" />
           </label>
         </div>
 
         <div className="avatar-preview">
           <div id="imagePreview">
-            <img src={file ?? "/avatar.jpeg"} alt="" />
+            <img src={file ?? "/images/avatar.jpeg"} alt="" />
           </div>
         </div>
       </div>
