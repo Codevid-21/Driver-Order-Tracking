@@ -25,4 +25,4 @@ const getLocalDate = (date) => {
   return result;
 };
 
-export default { getLocalDate };
+export default getLocalDate;

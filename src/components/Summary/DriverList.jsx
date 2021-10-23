@@ -1,12 +1,14 @@
 import React from 'react'
 import DeliveryDetail from "./DeliveryDetail.jsx";
 import DriverDetail from './DriverDetail.jsx';
+import { io } from "socket.io-client";
 
 function DriverList({ drivers, setDrivers }) {
-
     const showDetailsOfDriver = (driver, i) => {
+        let socket = io();
         driver.show = driver.show === "none" ? "block" : "none";
         const newDrivers = [...drivers];
+        socket.emit("driver", "was");
         setDrivers(newDrivers);
     };
 
