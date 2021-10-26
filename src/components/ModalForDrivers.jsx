@@ -13,6 +13,7 @@ function ModalForDrivers(props) {
   
   const callTheDriversApi = () => {
     const url = `${process.env.REACT_APP_API_SERVER}/drivers`;
+    // const url = `${process.env.REACT_APP_API_SERVER}/drivers`;
     api.fetchDataFromDB(url).then((result) => {
       console.log("callthedriversapi", result)
       const workingDrivers = result.filter(
@@ -28,6 +29,7 @@ function ModalForDrivers(props) {
   const addDrivertoOrder = (driver) => {
     // Burada hem driver hem de order güncelleniyor.
     const url = `${process.env.REACT_APP_API_SERVER}/orders/${props.selectedOrder._id}/${driver._id}`;
+    // const url = `${process.env.REACT_APP_API_SERVER}/orders/${props.selectedOrder._id}/${driver._id}`;
     const options = {
       method: "PUT",
       headers: {
