@@ -39,16 +39,10 @@ function Home({ click }) {
 
   return (
     <div className={!click ? "hideOrder" : "displayOrder"}>
-<<<<<<< HEAD
-      {orderInfo.length === 0 ? (
-        <NoOrdersToDisplay/>
-      ) : (
-        <OrderCard orderInfo={orderInfo} callTheApi={callTheApi} />
-      )}
-=======
-      {orderInfo.length === 1
-        ?
-        "orderInfo bos buraya bos komponent eklenecek"
+      {orderInfo.length === 0 ? 
+      (
+        <NoOrdersToDisplay />
+      )
         :
         (
           <OrderCard orderInfo={orderInfo} callTheApi={callTheApi} />
@@ -67,7 +61,6 @@ function Home({ click }) {
         pauseOnHover
         limit={1}
       />
->>>>>>> feature/socket.io
     </div>
   );
 }
