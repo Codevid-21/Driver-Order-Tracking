@@ -8,12 +8,12 @@
   padding: 2vh;
 
   .workingDrivers {
-    border: 1px solid $first-color;
-    padding: 5vh;
-    width: 100%;
-    margin: 2vh auto;
-
+    // width: 100%;
+    margin: 1vh auto;
+    // background-color: red;
+    
     .workingDrivers__card {
+      // background-color: darkred;
       min-height: 40vh;
 
       .header {
@@ -22,8 +22,7 @@
         margin-bottom: 2vh;
 
         h2 {
-          padding: 0;
-          margin: 0;
+          padding: 2vh 0;
           color: $first-color;
           text-align: center;
         }
@@ -31,14 +30,10 @@
 
       .workingDrivers__info {
         p {
-          box-sizing: border-box;
-          //   border: 1px solid $third-color;
-          padding: 10px;
           cursor: pointer;
-          margin: 1vh 0;
+          margin: 1vh 4vh;
+          padding: 1vh 0;
           text-align: center;
-
-
 
           &:hover {
             background-color: $second-color;
@@ -46,10 +41,18 @@
           }
         }
 
-        img {
+        span {
+          display: block;
+          margin: 1vh 0;
+          text-align: center;
+          text-decoration: underline;
+        }
 
-          width: 100%;
-          margin-top: 20px;
+        img {
+          display: block;
+          margin: 5vh auto;
+          width: 50%;
+          padding-bottom: 5vh;
         }
       }
     }
@@ -59,9 +62,22 @@
 // TABLET
 @media screen and (min-width: 480px) and (max-width: 959px) {
   .allDrivers__container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
     .workingDrivers {
-      // z-index: 1;
+      padding: 2vh;
+      border: 1px solid $first-color;
+      margin: 4vh 1vh 0;
+      // box-shadow: 6px 6px black;
+      z-index: 1;
+      height: 100%;
       width: 400px;
+
+      .workingDrivers__card {
+        min-height: 70vh;
+      }
     }
   }
 }
@@ -70,10 +86,17 @@
 @media screen and (min-width: 960px) {
   .allDrivers__container {
     flex-direction: row;
+    align-items: center;
 
     .workingDrivers {
-      // z-index: 1;
+      padding: 2vh;
       width: 425px;
+      border: 1px solid $first-color;
+      box-shadow: 6px 6px black;
+
+      .workingDrivers__card {
+        min-height: 70vh;
+      }
     }
   }
 }

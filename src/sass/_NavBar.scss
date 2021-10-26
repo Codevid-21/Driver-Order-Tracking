@@ -41,6 +41,7 @@ nav {
     flex-direction: row;
     margin: 0;
     transition: all 0.5s ease;
+    z-index: 1;
 
     // &.active {
     //   border: 1px solid white;
@@ -98,7 +99,6 @@ nav {
           left: 0;
           opacity: 1;
           transition: all 0.5s ease;
-          z-index: 1;
         }
         
         li {

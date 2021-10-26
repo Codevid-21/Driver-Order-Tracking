@@ -50,13 +50,13 @@ function NewUser({ newUser }) {
 
     try {
       const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
-      
+
       // MAIN
       // const url = `/${fetchUrl}`;
-      
+
       // DEV
       const url = `http://localhost:2005/${fetchUrl}`;
-      
+
       if (!isUser && !imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;
       }
@@ -86,23 +86,17 @@ function NewUser({ newUser }) {
   };
 
   return (
-    <div className="newDriver__container">
+    <div className="newUser__container">
       <form onSubmit={addANewUser} autoComplete="off">
         <h2>Add a new {newUser.name}</h2>
         {isUser ? (
-          <div className="newDriver__userType"
+          <div className="newUser__userType"
             onChange={(e) =>
               setNewUsersInfo({ ...newUsersInfo, type: e.target.value })
             }
           >
             User type:
-            <input
-              type="radio"
-              value="Staff"
-              name="newUser"
-              defaultChecked
-            />{" "}
-            Staff
+            <input type="radio" value="Staff" name="newUser" defaultChecked /> Staff
             <input type="radio" value="Admin" name="newUser" /> Admin
           </div>
         ) : (
@@ -189,6 +183,15 @@ function NewUser({ newUser }) {
           <input type="submit" value="Submit" />
         </label>
       </form>
+      <div className="newUser__image">
+        {
+          isUser ?
+            <img src="./images/people.png" alt="addUser" />
+            :
+            <img src="./images/car.png" alt="addDriver" />
+        }
+
+      </div>
       <ToastContainer
         theme="colored"
         position="top-center"
