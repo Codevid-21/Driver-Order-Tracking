@@ -13,7 +13,7 @@ function Login({ setIsLogin }) {
   const url = `/users/login`;
 
   // DEV
-  // const url = `http://localhost:2005/users/login`;
+  const url = `http://localhost:2005/users/login`;
   const options = {
     method: "POST",
     body: JSON.stringify({ email, password }),

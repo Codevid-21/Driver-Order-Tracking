@@ -12,7 +12,7 @@ function SelectDrivers() {
     const url = `/drivers`;
 
     // DEV
-    // const url = `http://localhost:2005/drivers`;
+    const url = `http://localhost:2005/drivers`;
 
     api.fetchDataFromDB(url).then((result) => {
       setDrivers(result);

@@ -16,7 +16,7 @@ function App() {
     const url = `/auth`;
     
     // DEV
-    // const url = `http://localhost:2005/auth`;
+    const url = `http://localhost:2005/auth`;
 
     const options = {
       credentials: "include",

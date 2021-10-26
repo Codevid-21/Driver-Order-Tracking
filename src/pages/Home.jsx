@@ -16,7 +16,7 @@ function Home({ click }) {
     const url = `/orders`;
 
     // DEV
-    // const url = `http://localhost:2005/orders`;
+    const url = `http://localhost:2005/orders`;
 
     api.fetchDataFromDB(url).then((result) => {
       const deliveredOrders = result.filter(
@@ -30,9 +30,15 @@ function Home({ click }) {
     callTheApi();
   }, []);
 
+<<<<<<< HEAD
   // let socket = io("http://localhost:2006");
   // let socket = io("https://order-driver-tracking.herokuapp.com:2006");
   let socket = io();
+=======
+  let socket = io("http://localhost:2006");
+  // let socket = io("https://order-driver-tracking.herokuapp.com:2006");
+  // let socket = io();
+>>>>>>> 99a5ecba (url)
 
   socket.on('cart', function (order) {
     setOrderInfo([order, ...orderInfo]);

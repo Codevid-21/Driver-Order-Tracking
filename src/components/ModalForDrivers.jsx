@@ -14,10 +14,14 @@ function ModalForDrivers(props) {
   const callTheDriversApi = () => {
     
     // MAIN
+<<<<<<< HEAD
     const url = `/drivers`;
+=======
+    // const url = `${process.env.REACT_APP_API_SERVER}/drivers`;
+>>>>>>> 99a5ecba (url)
     
     // DEV
-    // const url = `http://localhost:2005/drivers`;
+    const url = `http://localhost:2005/drivers`;
     
     api.fetchDataFromDB(url).then((result) => {
       const workingDrivers = result.filter(
@@ -36,7 +40,7 @@ function ModalForDrivers(props) {
     const url = `/orders/${props.selectedOrder._id}/${driver._id}`;
     
     // DEV
-    // const url = `http://localhost:2005/orders/${props.selectedOrder._id}/${driver._id}`;
+    const url = `http://localhost:2005/orders/${props.selectedOrder._id}/${driver._id}`;
     const options = {
       method: "PUT",
       headers: {

@@ -11,7 +11,7 @@ function Orders() {
   const url = `/orders`;
 
   // DEV
-  // const url = `http://localhost:2005/orders`;
+  const url = `http://localhost:2005/orders`;
 
   useEffect(() => {
     api.fetchDataFromDB(url).then((result) => {

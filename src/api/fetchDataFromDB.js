@@ -38,7 +38,7 @@ const putDataFromDB = async function (email) {
     const url = `/users/${email}`;
     
     // DEV
-    // const url = `http://localhost:2005/users/${email}`;
+    const url = `http://localhost:2005/users/${email}`;
     const options = {
       method: "PUT",
       body: "",

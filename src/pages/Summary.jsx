@@ -12,7 +12,7 @@ function Summary() {
   const url = `/drivers`;
   
   // DEV
-  // const url = `http://localhost:2005/drivers`;
+  const url = `http://localhost:2005/drivers`;
 
   useEffect(() => {
     api.fetchDataFromDB(url).then((result) => {
