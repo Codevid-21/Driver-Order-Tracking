@@ -16,7 +16,6 @@ function App() {
     return lcSt ? lcSt : false;
   });
 
-  console.log("pro", process.env);
   const checkAuth = async () => {
 
     // const url = `http://localhost:2005/auth`;

@@ -1,7 +1,7 @@
 import React from 'react'
 import date from "../../lib/date.js";
 
-function OrderInfo({order, setOrderModalShow, setSelectedOrder}) {
+function OrderInfo({ order, setOrderModalShow, setSelectedOrder }) {
 
     const selectOrderFunc = () => {
         setOrderModalShow(true);
@@ -13,7 +13,6 @@ function OrderInfo({order, setOrderModalShow, setSelectedOrder}) {
         order.foods.map(item => {
             return food.push(item.name);
         })
-        console.log("food", food);
 
         let result = food.join(", ");
         if (result.length > 40) {

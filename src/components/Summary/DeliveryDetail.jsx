@@ -1,4 +1,5 @@
 import React from 'react'
+import date from "../../lib/date.js";
 
 function DeliveryDetail({driver}) {
     return (
@@ -19,7 +20,7 @@ function DeliveryDetail({driver}) {
                             <td>{i + 1}.</td>
                             <td>{value._id.customerId.user.name} {value._id.customerId.user.surname}</td>
                             <td>{value._id.customerId.user.address}</td>
-                            <td>{value._id.date}</td>
+                            <td>{date.getLocalDate(value._id.date)}</td>
                             <td>{value._id.total}€</td>
                         </tr>
                     )

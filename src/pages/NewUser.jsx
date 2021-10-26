@@ -41,11 +41,9 @@ function NewUser({ newUser }) {
     );
 
     if (isUser && (isFieldsMissing || password === "")) {
-      console.log("burasi mi");
       toast.error(" All fields are required...");
       return;
     } else if (!isUser && (isFieldsMissing || !selectedImg)) {
-      console.log("burasi mi veya");
       toast.error(" All fields are required...");
       return;
     }
@@ -67,7 +65,7 @@ function NewUser({ newUser }) {
         // isUser ?
         //   api.putDataFromDB(result.email)
         //   :
-        console.log(result);
+        // console.log(result);
       });
 
       toast.success(`New ${newUser.name} added successfully..`);
