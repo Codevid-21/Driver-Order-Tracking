@@ -34,8 +34,11 @@ const postDataFromDB = async function (url, body) {
 
 const putDataFromDB = async function (email) {
   try {
+    // MAIN
     const url = `${process.env.REACT_APP_API_SERVER}/users/${email}`;
-    // const url = `${process.env.REACT_APP_API_SERVER}/users/${email}`;
+    
+    // DEV
+    // const url = `http://localhost:2005/users/${email}`;
     const options = {
       method: "PUT",
       body: "",

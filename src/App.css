@@ -277,12 +277,22 @@ nav ul li a:hover {
   .orderCard .driverInfo .img * {
     font-size: 50px;
   }
-  .orderCard .driverInfo p {
+  .orderCard .driverInfo h5 {
     font-size: 0.9rem;
     text-align: center;
     text-decoration: underline;
   }
 }
+.noOrdersToDisplay {
+  text-align: center;
+  margin: 50px 0;
+}
+.noOrdersToDisplay img {
+  display: block;
+  width: 400px;
+  margin: 20px auto;
+}
+
 .driverCard {
   border: 3px solid #092327;
   background-color: #F87060;
@@ -314,7 +324,7 @@ nav ul li a:hover {
   padding: 2vh;
 }
 .allDrivers__container .workingDrivers {
-  border: 2px solid #092327;
+  border: 1px solid #092327;
   padding: 5vh;
   width: 100%;
   margin: 2vh auto;
@@ -340,11 +350,12 @@ nav ul li a:hover {
   margin: 1vh 0;
   text-align: center;
 }
-.allDrivers__container .workingDrivers .workingDrivers__card .workingDrivers__info p span {
-  text-decoration: underline;
-}
 .allDrivers__container .workingDrivers .workingDrivers__card .workingDrivers__info p:hover {
   background-color: #F87060;
+}
+.allDrivers__container .workingDrivers .workingDrivers__card .workingDrivers__info img {
+  width: 100%;
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 480px) and (max-width: 959px) {
@@ -360,8 +371,12 @@ nav ul li a:hover {
     width: 425px;
   }
 }
-.newDriver__container {
-  height: 79vh;
+.newDriver__container .newDriver__userType {
+  text-align: center;
+  margin: 20px auto 10px auto;
+}
+.newDriver__container .newDriver__userType input {
+  margin-left: 15px;
 }
 .newDriver__container form {
   max-width: 600px;
@@ -369,9 +384,9 @@ nav ul li a:hover {
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  margin: 4% auto;
+  margin: 2% auto;
   padding: 2% 0;
-  border: 3px solid #092327;
+  border: 1px solid #092327;
 }
 .newDriver__container form h2 {
   margin: 0 auto;
@@ -407,8 +422,8 @@ nav ul li a:hover {
 
 .container {
   max-width: 960px;
-  margin: 30px auto;
-  padding: 20px;
+  margin: 20px auto;
+  padding: 10px;
 }
 
 .design-name {
@@ -453,8 +468,6 @@ nav ul li a:hover {
 }
 
 .avatar-upload .avatar-edit input + label:after {
-  content: "\f040";
-  font-family: "FontAwesome";
   color: #F6B21B;
   position: absolute;
   top: 10px;

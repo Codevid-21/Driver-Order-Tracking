@@ -19,9 +19,14 @@ const getLocalDate = (date) => {
   // console.log(date.toISOString())
 
   // return date.toISOString();
-  let hour24 = localDate.slice(12,14);
+  let hour24 = localDate.slice(12, 14);
   let hour = hour24 === "24" ? "00" : hour24;
-  let result = localDate.slice(3,6) + localDate.slice(0,3) + localDate.slice(6,12) +  hour + localDate.slice(14, -3);
+  let result =
+    localDate.slice(3, 6) +
+    localDate.slice(0, 3) +
+    localDate.slice(6, 12) +
+    hour +
+    localDate.slice(14, -3);
   return result;
 };
 

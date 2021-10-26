@@ -8,28 +8,17 @@ function Register() {
     const [password, setPassword] = useState("");
 
     let history = useHistory();
+    const newUser = {
+        password: password,
+        isAdmin: true,
+    }
 
-    //req.body.name, req.body.surname, req.body.email, req.body.tel, req.body.address, req.body.city
-
-const newUser = {
-    password: password,
-    isAdmin: true,
-}
-// const newUser = {
-//     name: "Ali",
-//     surname: "Veli",
-//     email: email,
-//     password: password,
-//     tel: "1341234",
-//     address: "Zuhause",
-//     city: "Hamburg",
-//     isAdmin: true,
-//     // tip: "kitchen"
-// }
-
-
+    // MAIN
     const url = `${process.env.REACT_APP_API_SERVER}/users/${email}`;
-    // const url = `${process.env.REACT_APP_API_SERVER}/users/${email}`;
+
+    // DEV
+    // const url = `http://localhost:2005/users/${email}`;
+
     const options = {
         method: "PUT",
         body: JSON.stringify(newUser),
@@ -37,6 +26,7 @@ const newUser = {
             "Content-type": "application/json", // The type of data you're sending
         }
     };
+
     const isAdmin = () => {
         fetch(url, options).then(result => {
             if (result.ok) {

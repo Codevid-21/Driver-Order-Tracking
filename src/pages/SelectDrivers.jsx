@@ -8,8 +8,11 @@ function SelectDrivers() {
   const [drivers, setDrivers] = useState([]);
 
   const callTheDriversApi = () => {
+    // MAIN
     const url = `${process.env.REACT_APP_API_SERVER}/drivers`;
-    // const url = `${process.env.REACT_APP_API_SERVER}/drivers`;
+
+    // DEV
+    // const url = `http://localhost:2005/drivers`;
 
     api.fetchDataFromDB(url).then((result) => {
       setDrivers(result);

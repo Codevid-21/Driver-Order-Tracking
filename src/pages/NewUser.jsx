@@ -41,19 +41,21 @@ function NewUser({ newUser }) {
     );
 
     if (isUser && (isFieldsMissing || password === "")) {
-      console.log("burasi mi");
       toast.error(" All fields are required...");
       return;
     } else if (!isUser && (isFieldsMissing || !selectedImg)) {
-      console.log("burasi mi veya");
       toast.error(" All fields are required...");
       return;
     }
 
     try {
       const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
+      
+      // MAIN
       const url = `${process.env.REACT_APP_API_SERVER}/${fetchUrl}`;
-      // const url = `${process.env.REACT_APP_API_SERVER}/${fetchUrl}`;
+      
+      // DEV
+      // const url = `http://localhost:2005/${fetchUrl}`;
       
       if (!isUser && !imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;
@@ -67,7 +69,7 @@ function NewUser({ newUser }) {
         // isUser ?
         //   api.putDataFromDB(result.email)
         //   :
-        console.log(result);
+        // console.log(result);
       });
 
       toast.success(`New ${newUser.name} added successfully..`);
@@ -88,7 +90,7 @@ function NewUser({ newUser }) {
       <form onSubmit={addANewUser} autoComplete="off">
         <h2>Add a new {newUser.name}</h2>
         {isUser ? (
-          <div
+          <div className="newDriver__userType"
             onChange={(e) =>
               setNewUsersInfo({ ...newUsersInfo, type: e.target.value })
             }

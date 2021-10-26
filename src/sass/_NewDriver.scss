@@ -5,11 +5,22 @@ $fourthColor : #092327;
 $fifth-color: #B3A394;
 
 .newDriver__container {
-    height: 79vh;
+    // height: 85vh;
+
 
     // justify-content: center;
     // padding: 20px;
     // margin: 50px;
+
+
+    .newDriver__userType {
+        text-align: center;
+        margin: 20px auto 10px auto;
+
+        input {
+            margin-left: 15px;
+        }
+    }
 
     form {
         max-width: 600px;
@@ -17,9 +28,9 @@ $fifth-color: #B3A394;
         flex-direction: column;
         align-items: stretch;
         justify-content: center;
-        margin: 4% auto;
+        margin: 2% auto;
         padding: 2% 0;
-        border: 3px solid $fourthColor;
+        border: 1px solid $fourthColor;
 
 
         h2 {

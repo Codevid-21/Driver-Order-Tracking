@@ -12,7 +12,12 @@ function App() {
   });
 
   const checkAuth = async () => {
+    // MAIN
     const url = `${process.env.REACT_APP_API_SERVER}/auth`;
+    
+    // DEV
+    // const url = `http://localhost:2005/auth`;
+
     const options = {
       credentials: "include",
     };
@@ -38,7 +43,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" >
       {isLogin ? (
         <Admin setIsLogin={setIsLogin} />
       ) : (

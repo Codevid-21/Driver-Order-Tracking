@@ -12,7 +12,6 @@ function OrderCard({ orderInfo, callTheApi }) {
   const [selectedOrder, setSelectedOrder] = useState(INITIAL_ORDER);
   
   const [orderModalShow, setOrderModalShow] = useState(false);
-  console.log("orderinfo",orderInfo)
   return (
     <>
       {orderInfo
