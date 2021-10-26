@@ -30,7 +30,8 @@ function Home({ click }) {
     callTheApi();
   }, []);
 
-  let socket = io("http://localhost:2006");
+  // let socket = io("http://localhost:2006");
+  let socket = io();
 
   socket.on('cart', function (order) {
     setOrderInfo([order, ...orderInfo]);
