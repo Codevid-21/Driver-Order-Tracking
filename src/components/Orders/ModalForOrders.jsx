@@ -4,7 +4,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function ModalForOrders(props) {
-  console.log("ne secildi", props.selectedOrder);
   return (
     <>
       <Modal

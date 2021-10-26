@@ -12,8 +12,10 @@ function App() {
   });
 
   const checkAuth = async () => {
+
+    // const url = `http://localhost:2005/auth`;
     const url = `http://localhost:2005/auth`;
-    
+
     const options = {
       credentials: "include",
     };
@@ -39,7 +41,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" >
       {isLogin ? (
         <Admin setIsLogin={setIsLogin} />
       ) : (

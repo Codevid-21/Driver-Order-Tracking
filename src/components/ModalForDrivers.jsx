@@ -14,7 +14,6 @@ function ModalForDrivers(props) {
   const callTheDriversApi = () => {
     const url = `http://localhost:2005/drivers`;
     api.fetchDataFromDB(url).then((result) => {
-      console.log("callthedriversapi", result)
       const workingDrivers = result.filter(
         (value, index) => value.isWorking === true
       );
@@ -43,7 +42,7 @@ function ModalForDrivers(props) {
         toast.success(" Driver Has Assigned to Order...", {
           toastId: customId,
         });
-        console.log(result);
+        // console.log(result);
       });
     props.onHide();
   };

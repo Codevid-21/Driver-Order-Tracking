@@ -3,7 +3,6 @@ import DeliveryDetail from "./DeliveryDetail.jsx";
 import DriverDetail from './DriverDetail.jsx';
 
 function DriverList({ drivers, setDrivers }) {
-
     const showDetailsOfDriver = (driver, i) => {
         driver.show = driver.show === "none" ? "block" : "none";
         const newDrivers = [...drivers];
