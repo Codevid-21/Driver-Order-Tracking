@@ -9,7 +9,7 @@ function SelectDrivers() {
 
   const callTheDriversApi = () => {
     // MAIN
-    const url = `${process.env.REACT_APP_API_SERVER}/drivers`;
+    const url = `/drivers`;
 
     // DEV
     // const url = `http://localhost:2005/drivers`;

@@ -13,7 +13,7 @@ function Home({ click }) {
 
   const callTheApi = () => {
     // MAIN
-    const url = `${process.env.REACT_APP_API_SERVER}/orders`;
+    const url = `/orders`;
 
     // DEV
     // const url = `http://localhost:2005/orders`;
@@ -31,7 +31,7 @@ function Home({ click }) {
   }, []);
 
   // let socket = io("http://localhost:2006");
-  let socket = io("https://order-driver-tracking.herokuapp.com:2006");
+  // let socket = io("https://order-driver-tracking.herokuapp.com:2006");
   let socket = io();
 
   socket.on('cart', function (order) {

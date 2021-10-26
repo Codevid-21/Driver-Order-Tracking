@@ -52,7 +52,7 @@ function NewUser({ newUser }) {
       const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
       
       // MAIN
-      const url = `${process.env.REACT_APP_API_SERVER}/${fetchUrl}`;
+      const url = `/${fetchUrl}`;
       
       // DEV
       // const url = `http://localhost:2005/${fetchUrl}`;
