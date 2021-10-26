@@ -31,6 +31,7 @@ function Home({ click }) {
   }, []);
 
   // let socket = io("http://localhost:2006");
+  let socket = io("https://order-driver-tracking.herokuapp.com:2006");
   let socket = io();
 
   socket.on('cart', function (order) {
