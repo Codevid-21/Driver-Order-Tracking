@@ -90,9 +90,8 @@ nav {
         text-align: center;
         position: relative;
         height: 100%;
-        left: -90%;
-        opacity: 0.2;
-        padding: 0;
+        left: -100%;
+        opacity: 0;
         background-color: #092327;
         
         &.active {
@@ -103,8 +102,7 @@ nav {
         }
         
         li {
-          padding: 3rem;
-
+          padding: 3vh;
         }
       }
     }
