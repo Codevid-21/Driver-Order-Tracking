@@ -182,9 +182,12 @@ nav ul li a:hover {
 .orderCard .clientInfo {
   flex: 2;
   width: 100%;
+  height: 100%;
 }
-.orderCard .orderInfo:hover {
+.orderCard .orderInfo:hover,
+.orderCard .clientInfo:hover {
   cursor: pointer;
+  background-color: rgba(205, 215, 214, 0.1);
 }
 .orderCard .orderInfo p:last-child {
   text-align: right;
@@ -403,7 +406,6 @@ nav ul li a:hover {
 }
 .newUser__container form .newUser__userType input[type=radio] {
   margin: 1vh 0 5vh 15px;
-  background-color: slateblue;
 }
 .newUser__container form label {
   width: 80%;
@@ -548,8 +550,6 @@ nav ul li a:hover {
 .login .logo {
   display: flex;
   justify-content: center;
-  width: 30%;
-  height: 20%;
   margin-bottom: 3vh;
 }
 .login .logo img {
@@ -587,43 +587,23 @@ nav ul li a:hover {
 
 @media screen and (min-width: 480px) and (max-width: 959px) {
   .login {
-    width: 70vw;
-    justify-content: space-evenly;
-  }
-  .login .logo {
-    display: flex;
-    justify-content: center;
-    width: 45%;
-    height: 20%;
-  }
-  .login .logo img {
-    width: 200px;
-  }
-  .login form {
-    width: 90%;
+    max-width: 450px;
+    height: 80vh;
+    margin-top: 10vh;
   }
 }
 @media screen and (min-width: 960px) {
   .login {
-    justify-content: space-evenly;
     margin: 10vh auto;
-    width: 45vw;
+    width: 550px;
     height: 80vh;
     border: 1px solid #7c807c;
-    box-shadow: 5px 5px 0px #092327;
-    padding: 2vh 5vh;
-  }
-  .login .logo {
-    display: flex;
-    justify-content: center;
-    width: 45%;
-    height: 20%;
-  }
-  .login .logo img {
-    width: 200px;
+    box-shadow: 6px 6px 0px #092327;
   }
   .login form {
+    background-color: #fff;
     width: 75%;
+    flex: 0;
   }
 }
 .summary__container {
