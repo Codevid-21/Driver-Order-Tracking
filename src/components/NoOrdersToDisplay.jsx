@@ -2,9 +2,9 @@ import React from "react";
 
 function NoOrdersToDisplay() {
   return (
-    <div className=" noOrdersToDisplay ">
+    <div className="noOrdersToDisplay">
       <h5> There are currently no orders to display... </h5>
-      <img src="/images/noData.jpg" alt="" />
+      <img src="/images/noData.jpg" alt="noOrder" />
     </div>
   );
 }
