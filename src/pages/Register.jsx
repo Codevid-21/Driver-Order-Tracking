@@ -14,7 +14,7 @@ function Register() {
     }
 
     // MAIN
-    const url = `/users/${email}`;
+    // const url = `/users/${email}`;
 
     // DEV
     const url = `http://localhost:2005/users/${email}`;

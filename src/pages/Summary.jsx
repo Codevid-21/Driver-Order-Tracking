@@ -9,7 +9,7 @@ function Summary() {
   const [drivers, setDrivers] = useState([]);
 
   // MAIN
-  const url = `/drivers`;
+  // const url = `/drivers`;
   
   // DEV
   const url = `http://localhost:2005/drivers`;

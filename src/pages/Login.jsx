@@ -10,7 +10,7 @@ function Login({ setIsLogin }) {
   const [password, setPassword] = useState("");
 
   // MAIN
-  const url = `/users/login`;
+  // const url = `/users/login`;
 
   // DEV
   const url = `http://localhost:2005/users/login`;
