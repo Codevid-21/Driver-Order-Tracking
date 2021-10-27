@@ -136,14 +136,15 @@ nav ul li a:hover {
   }
 }
 .orderCard {
-  border: 1px solid #0b5351;
-  width: 100%;
-  margin: 1vh auto;
-  padding: 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70vh;
+  min-height: 60vh;
+  width: 90%;
+  border: 1px solid #CDD7D6;
+  box-sizing: border-box;
+  margin: 3vh auto;
+  padding: 0 10px;
 }
 .orderCard .orderInfo,
 .orderCard .clientInfo,
@@ -189,6 +190,9 @@ nav ul li a:hover {
   cursor: pointer;
   background-color: rgba(205, 215, 214, 0.1);
 }
+.orderCard .orderInfo {
+  order: 1;
+}
 .orderCard .orderInfo p:last-child {
   text-align: right;
   color: #092327;
@@ -221,66 +225,47 @@ nav ul li a:hover {
 
 @media screen and (min-width: 480px) and (max-width: 959px) {
   .orderCard {
-    width: 90%;
-    flex-direction: row;
+    border-color: #092327;
+    max-width: 70%;
     flex-wrap: wrap;
+    flex-direction: row;
     align-items: flex-start;
-    height: 40vh;
+    min-height: 40vh;
   }
   .orderCard .orderInfo,
 .orderCard .clientInfo {
-    flex: 1;
-    width: 100%;
-  }
-  .orderCard .orderInfo h4,
-.orderCard .clientInfo h4 {
-    margin: 0 0 5vh 0;
-  }
-  .orderCard .orderInfo {
-    order: 1;
-  }
-  .orderCard .orderInfo p:last-child {
-    text-align: right;
-    color: #092327;
-    font-size: 1.1rem;
+    padding: 2vh 1vh;
+    min-width: 300px;
   }
   .orderCard .driverInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 3vh;
-    flex: 76vw;
-    order: -1;
+    flex-basis: 100%;
+    padding: 2vh 1vh 0;
   }
   .orderCard .driverInfo .img * {
-    font-size: 50px;
-  }
-  .orderCard .driverInfo p {
-    text-decoration: underline;
+    font-size: 40px;
   }
 }
 @media screen and (min-width: 960px) {
   .orderCard {
-    width: 60%;
+    border-color: #092327;
+    max-width: 60vw;
     flex-direction: row;
+    min-height: 25vh;
+  }
+  .orderCard .orderInfo,
+.orderCard .clientInfo,
+.orderCard .driverInfo {
     height: 25vh;
-  }
-  .orderCard .orderInfo {
-    order: 1;
-  }
-  .orderCard .orderInfo p:last-child {
-    font-size: 1rem;
   }
   .orderCard .driverInfo {
     flex: 1;
     order: 2;
   }
   .orderCard .driverInfo .img * {
-    font-size: 50px;
+    font-size: 40px;
   }
-  .orderCard .driverInfo h5 {
-    font-size: 0.9rem;
+  .orderCard .driverInfo p {
+    font-size: 13px;
     text-align: center;
     text-decoration: underline;
   }

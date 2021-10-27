@@ -15,8 +15,9 @@ function OrderInfo({ order, setOrderModalShow, setSelectedOrder }) {
         })
 
         let result = food.join(", ");
-        if (result.length > 40) {
-            result = result.slice(0, 40) + " ..."
+        if (result.length > 20) {
+            result = result.slice(0, 20) + "...";
+            console.log("make food result", result)
             return result
         }
         return result

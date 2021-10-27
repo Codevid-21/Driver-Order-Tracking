@@ -1,13 +1,14 @@
 // MOBILE
 .orderCard {
-  border: 1px solid #0b5351;
-  width: 100%;
-  margin: 1vh auto;
-  padding: 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70vh;
+  min-height: 60vh;
+  width: 90%;
+  border: 1px solid $third-color;
+  box-sizing: border-box;
+  margin: 3vh auto;
+  padding: 0 10px;
 
   .orderInfo,
   .clientInfo,
@@ -49,10 +50,10 @@
       cursor: pointer;
       background-color: rgba(205, 215, 214, 0.1);
     }
-
   }
 
   .orderInfo {
+    order: 1;
     p {
       &:last-child {
         text-align: right;
@@ -96,51 +97,27 @@
 // TABLET
 @media screen and (min-width: 480px) and (max-width: 959px) {
   .orderCard {
-    width: 90%; // %60
-    flex-direction: row; // row
+    border-color: $first-color;
+    max-width: 70%;
     flex-wrap: wrap;
+    flex-direction: row;
     align-items: flex-start;
-    height: 40vh;
+    min-height: 40vh;
 
     .orderInfo,
     .clientInfo {
-      flex: 1;
-      width: 100%;
-
-      h4 {
-        margin: 0 0 5vh 0;
-      }
-    }
-
-    .orderInfo {
-      order: 1;
-
-      p {
-        &:last-child {
-          text-align: right;
-          color: $first-color;
-          font-size: 1.1rem;
-        }
-      }
+      padding: 2vh 1vh;
+      min-width: 300px;
     }
 
     .driverInfo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
-      padding: 3vh;
-      flex: 76vw; // desktop 1
-      order: -1; // burasi 0 olacak
+      flex-basis: 100%;
+      padding: 2vh 1vh 0;
 
       .img {
         * {
-          font-size: 50px; // desktop icin 40 30 olacak
+          font-size: 40px;
         }
-      }
-
-      p {
-        text-decoration: underline;
       }
     }
   }
@@ -149,18 +126,16 @@
 // DESKTOP
 @media screen and (min-width: 960px) {
   .orderCard {
-    width: 60%;
+    border-color: $first-color;
+    max-width: 60vw;
     flex-direction: row;
-    height: 25vh;
-
-    .orderInfo {
-      order: 1;
-
-      p {
-        &:last-child {
-          font-size: 1rem;
-        }
-      }
+    min-height: 25vh;
+    // padding: 0;
+    
+    .orderInfo,
+    .clientInfo,
+    .driverInfo {
+      height: 25vh;
     }
 
     .driverInfo {
@@ -169,12 +144,12 @@
 
       .img {
         * {
-          font-size: 50px;
+          font-size: 40px;
         }
       }
 
-      h5 {
-        font-size: 0.9rem;
+      p {
+        font-size: 13px;
         text-align: center;
         text-decoration: underline;
       }
