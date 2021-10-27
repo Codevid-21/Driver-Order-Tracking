@@ -11,6 +11,7 @@ import Register from "../pages/Register.jsx";
 import { MenuItems } from "../components/MenuItems.jsx";
 
 function Admin({ setIsLogin }) {
+    console.log("admin hat sich gerendert");
     const [click, setClick] = useState(false);
 
     return (

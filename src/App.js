@@ -13,7 +13,7 @@ function App() {
 
   const checkAuth = async () => {
     // MAIN
-    const url = `/auth`;
+    // const url = `/auth`;
     
     // DEV
     const url = `http://localhost:2005/auth`;

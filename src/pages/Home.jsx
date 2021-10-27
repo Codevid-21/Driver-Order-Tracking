@@ -8,10 +8,23 @@ import "react-toastify/dist/ReactToastify.css";
 import { io } from "socket.io-client";
 dotenv.config();
 
-let socket = io();
+let socket = io("http://localhost:2005");
+// let socket = io();
 
 function Home({ click }) {
-  const [orderInfo, setOrderInfo] = useState([]);
+  console.log("home hat sich gerendert");
+  const [orderInfo, setOrderInfo] = useState(() => INITIAL_OBJEKT);
+
+  const socketFunc = (order) => {
+    console.log("order on socket", order)
+    console.log("orderInfo on socket", orderInfo)
+    console.log("setorder", [order, ...orderInfo])
+    setOrderInfo([order, ...orderInfo]);
+    const customId = "custom-id-newOrder";
+    toast.info("You have a new Order..", {
+      toastId: customId,
+    });
+  }
 
   const socketFunc = (order) => {
     setOrderInfo((prevOrderInfo) => [order, ...prevOrderInfo]);
@@ -37,6 +50,7 @@ function Home({ click }) {
   };
 
   useEffect(() => {
+    console.log("useeffect")
     callTheApi();
   }, []);
 

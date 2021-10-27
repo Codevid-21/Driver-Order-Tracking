@@ -12,7 +12,7 @@ function IsDriverWorking({
 }) {
   const handleWorkingSituation = (value, i) => {
     // MAIN
-    const url = `/drivers/${value._id}`;
+    // const url = `/drivers/${value._id}`;
     
     // DEV
     const url = `http://localhost:2005/drivers/${value._id}`;
