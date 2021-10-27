@@ -13,7 +13,7 @@ let socket = io("http://localhost:2005");
 
 function Home({ click }) {
   console.log("home hat sich gerendert");
-  const [orderInfo, setOrderInfo] = useState(() => INITIAL_OBJEKT);
+  const [orderInfo, setOrderInfo] = useState([]);
 
   const socketFunc = (order) => {
     console.log("order on socket", order)
