@@ -22,14 +22,6 @@ function Home({ click }) {
     });
   }
 
-  const socketFunc = (order) => {
-    setOrderInfo((prevOrderInfo) => [order, ...prevOrderInfo]);
-    const customId = "custom-id-newOrder";
-    toast.info("You have a new Order..", {
-      toastId: customId,
-    });
-  }
-
   const callTheApi = () => {
     // MAIN
     // const url = `/orders`;
