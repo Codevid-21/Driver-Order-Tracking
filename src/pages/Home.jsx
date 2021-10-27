@@ -23,10 +23,10 @@ function Home({ click }) {
 
   const callTheApi = () => {
     // MAIN
-    const url = `/orders`;
+    // const url = `/orders`;
 
     // DEV
-    // const url = `http://localhost:2005/orders`;
+    const url = `http://localhost:2005/orders`;
 
     api.fetchDataFromDB(url).then((result) => {
       const deliveredOrders = result.filter(

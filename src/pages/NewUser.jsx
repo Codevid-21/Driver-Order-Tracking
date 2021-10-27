@@ -52,10 +52,10 @@ function NewUser({ newUser }) {
       const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
       
       // MAIN
-      const url = `/${fetchUrl}`;
+      // const url = `/${fetchUrl}`;
       
       // DEV
-      // const url = `http://localhost:2005/${fetchUrl}`;
+      const url = `http://localhost:2005/${fetchUrl}`;
       
       if (!isUser && !imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;
