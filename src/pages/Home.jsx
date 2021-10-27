@@ -12,7 +12,6 @@ let socket = io("http://localhost:2005");
 // let socket = io();
 
 function Home({ click }) {
-  console.log("home hat sich gerendert");
   const [orderInfo, setOrderInfo] = useState([]);
 
   const socketFunc = (order) => {
@@ -47,6 +46,7 @@ function Home({ click }) {
   };
 
   useEffect(() => {
+    console.log("useeffect")
     callTheApi();
   }, []);
 
