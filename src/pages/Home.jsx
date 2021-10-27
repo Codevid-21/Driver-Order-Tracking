@@ -19,7 +19,7 @@ function Home({ click }) {
     console.log("order on socket", order)
     console.log("orderInfo on socket", orderInfo)
     console.log("setorder", [order, ...orderInfo])
-    setOrderInfo([order, ...orderInfo]);
+    setOrderInfo((prevOrderInfo) => [order, ...prevOrderInfo]);
     const customId = "custom-id-newOrder";
     toast.info("You have a new Order..", {
       toastId: customId,
