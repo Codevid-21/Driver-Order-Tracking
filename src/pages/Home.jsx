@@ -16,9 +16,6 @@ function Home({ click }) {
   const [orderInfo, setOrderInfo] = useState([]);
 
   const socketFunc = (order) => {
-    console.log("order on socket", order)
-    console.log("orderInfo on socket", orderInfo)
-    console.log("setorder", [order, ...orderInfo])
     setOrderInfo((prevOrderInfo) => [order, ...prevOrderInfo]);
     const customId = "custom-id-newOrder";
     toast.info("You have a new Order..", {
@@ -50,7 +47,6 @@ function Home({ click }) {
   };
 
   useEffect(() => {
-    console.log("useeffect")
     callTheApi();
   }, []);
 
