@@ -17,7 +17,7 @@ function ModalForOrders(props) {
             Order Detail
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{minHeight:"40vh"}}>
           <table>
             <tr>
               <th>No</th>
@@ -46,11 +46,6 @@ function ModalForOrders(props) {
             }
           </table>
         </Modal.Body>
-        <Modal.Footer>
-          <Button size="lg" onClick={props.onHide}>
-            Done
-          </Button>
-        </Modal.Footer>
       </Modal>
 
       <ToastContainer

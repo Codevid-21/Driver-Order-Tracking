@@ -271,25 +271,34 @@ nav ul li a:hover {
   }
 }
 .driverCard {
-  border: 3px solid #092327;
-  background-color: #F87060;
-  color: #FFF;
-  margin: 10px;
+  border: 2px solid #092327;
+  margin: 1vh 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .driverCard:hover {
-  border: 3px solid #F87060;
-  background-color: #0B5351;
-  color: #FFF;
+  cursor: pointer;
+  border: 2px solid #F87060;
 }
-.driverCard * {
-  margin: 10px 20px;
+.driverCard .driverPhoto,
+.driverCard .info {
+  margin: 2vh 0;
 }
-.driverCard img {
+.driverCard .info {
+  flex: 2;
+}
+.driverCard .info p {
+  padding: 0;
+  margin: 0;
+}
+.driverCard .driverPhoto {
+  flex: 1;
+}
+.driverCard .driverPhoto img {
+  display: block;
+  margin: 0 auto;
   border-radius: 20%;
-  border: 2px solid white;
+  border: 2px solid rgba(205, 215, 214, 0.1);
 }
 
 .allDrivers__container {

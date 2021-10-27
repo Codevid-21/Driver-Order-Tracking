@@ -10,15 +10,15 @@ dotenv.config();
 function ModalForDrivers(props) {
   const [drivers, setDrivers] = useState([]);
 
-  
+
   const callTheDriversApi = () => {
-    
+
     // MAIN
     // const url = `/drivers`;
-    
+
     // DEV
     const url = `http://localhost:2005/drivers`;
-    
+
     api.fetchDataFromDB(url).then((result) => {
       const workingDrivers = result.filter(
         (value, index) => value.isWorking === true
@@ -34,7 +34,7 @@ function ModalForDrivers(props) {
     // Burada hem driver hem de order güncelleniyor.
     // MAIN
     // const url = `/orders/${props.selectedOrder._id}/${driver._id}`;
-    
+
     // DEV
     const url = `http://localhost:2005/orders/${props.selectedOrder._id}/${driver._id}`;
     const options = {
@@ -70,20 +70,10 @@ function ModalForDrivers(props) {
             Select a Driver
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          {props.selectedOrder.driver == null
-            ? drivers.map((driver, i) => {
-              return (
-                <DriverCard
-                  driver={driver}
-                  key={i}
-                  addDrivertoOrder={addDrivertoOrder}
-                />
-              );
-            })
-            : drivers
-              .filter((value) => value._id !== props.selectedOrder.driver._id)
-              .map((driver, i) => {
+        {drivers.length !== 0 ?
+          <Modal.Body  style={{minHeight:"40vh"}}>
+            {props.selectedOrder.driver == null
+              ? drivers.map((driver, i) => {
                 return (
                   <DriverCard
                     driver={driver}
@@ -91,13 +81,24 @@ function ModalForDrivers(props) {
                     addDrivertoOrder={addDrivertoOrder}
                   />
                 );
-              })}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button size="lg" onClick={props.onHide}>
-            Done
-          </Button>
-        </Modal.Footer>
+              })
+              : drivers
+                .filter((value) => value._id !== props.selectedOrder.driver._id)
+                .map((driver, i) => {
+                  return (
+                    <DriverCard
+                      driver={driver}
+                      key={i}
+                      addDrivertoOrder={addDrivertoOrder}
+                    />
+                  );
+                })}
+          </Modal.Body>
+          :
+          <Modal.Body  style={{minHeight:"25vh"}}>
+            <p style={{textAlign:"center"}}>There are no drivers yet.</p>
+          </Modal.Body>
+        }
       </Modal>
 
       <ToastContainer
