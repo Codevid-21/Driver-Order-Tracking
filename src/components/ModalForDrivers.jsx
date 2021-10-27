@@ -14,11 +14,7 @@ function ModalForDrivers(props) {
   const callTheDriversApi = () => {
     
     // MAIN
-<<<<<<< HEAD
-    const url = `/drivers`;
-=======
-    // const url = `${process.env.REACT_APP_API_SERVER}/drivers`;
->>>>>>> 99a5ecba (url)
+    // const url = `/drivers`;
     
     // DEV
     const url = `http://localhost:2005/drivers`;
@@ -37,7 +33,7 @@ function ModalForDrivers(props) {
   const addDrivertoOrder = (driver) => {
     // Burada hem driver hem de order güncelleniyor.
     // MAIN
-    const url = `/orders/${props.selectedOrder._id}/${driver._id}`;
+    // const url = `/orders/${props.selectedOrder._id}/${driver._id}`;
     
     // DEV
     const url = `http://localhost:2005/orders/${props.selectedOrder._id}/${driver._id}`;
