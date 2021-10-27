@@ -865,5 +865,42 @@ nav ul li a:hover {
     width: 400px;
   }
 }
+@media screen and (max-width: 480px) {
+  .search__container {
+    min-width: 70%;
+  }
+}
+.search__container {
+  margin: 30px auto;
+  position: relative;
+  border: 1px solid;
+  border-radius: 50px;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  min-width: 300px;
+  max-width: 30vw;
+}
+.search__container:hover {
+  outline: 2px solid #F87060;
+  border: 1px solid white;
+}
+.search__container input {
+  border-radius: 120px;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  padding: 0 28px;
+  font-size: 1;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  outline: none;
+  flex: 10;
+  width: 100px;
+}
+.search__container i {
+  flex: 1;
+  margin: 4px;
+}
 
 /*# sourceMappingURL=App.css.map */
