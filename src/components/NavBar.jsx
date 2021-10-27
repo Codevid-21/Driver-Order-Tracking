@@ -33,7 +33,7 @@ function Navbar({ click, setClick, isLogin, setIsLogin }) {
         </div>
 
         <div className="menu">
-          <ul className={click ? "active" : ""}>
+          <ul className={click && "active"}>
             <li>
               <Link to="/" onClick={closeMobileMenu}>
                 Home
@@ -65,7 +65,8 @@ function Navbar({ click, setClick, isLogin, setIsLogin }) {
               (
                 <>
                   <li onClick={toggleDropdown}>
-                    <Link to="#" onClick={closeMobileMenu}>
+                    {/* <Link to="#" onClick={closeMobileMenu}> */}
+                    <Link to="#" >
                       <i className="fas fa-user-plus"></i>
                     </Link>
                     <div className="dropdown" >

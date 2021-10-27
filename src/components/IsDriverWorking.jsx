@@ -45,7 +45,7 @@ function IsDriverWorking({
         <div className="workingDrivers__card">
           <div className="header">
             <h2>
-              {isWorking ? "Working" : "Not Working"} <br /> Drivers
+              {isWorking ? "Working" : "Not Working"} Drivers
             </h2>
           </div>
           <div className="workingDrivers__info">
@@ -58,10 +58,10 @@ function IsDriverWorking({
                 );
               })
             ) : (
-              <>
-                <p>No drivers are listed here.</p>
+              <div>
+                <span >No drivers are listed here.</span>
                 <img src="./images/no_driver.svg" alt="no driver" />
-              </>
+              </div>
             )}
           </div>
         </div>

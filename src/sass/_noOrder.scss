@@ -1,0 +1,36 @@
+// MOBILE
+.noOrdersToDisplay {
+  margin: 0;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h5 {
+      margin-bottom: 5vh;
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+  }
+}
+
+// TABLET
+@media screen and (min-width: 480px) and (max-width: 959px) {
+  .noOrdersToDisplay {
+    img {
+        width: 300px;
+    }
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 960px) {
+  .noOrdersToDisplay {
+    img {
+        width: 400px;
+    }
+  }
+}

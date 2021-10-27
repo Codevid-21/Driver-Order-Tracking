@@ -41,6 +41,7 @@ nav {
     flex-direction: row;
     margin: 0;
     transition: all 0.5s ease;
+    z-index: 1;
 
     // &.active {
     //   border: 1px solid white;
@@ -90,21 +91,18 @@ nav {
         text-align: center;
         position: relative;
         height: 100%;
-        left: -90%;
-        opacity: 0.2;
-        padding: 0;
+        left: -100%;
+        opacity: 0;
         background-color: #092327;
         
         &.active {
           left: 0;
           opacity: 1;
           transition: all 0.5s ease;
-          z-index: 1;
         }
         
         li {
-          padding: 3rem;
-
+          padding: 3vh;
         }
       }
     }

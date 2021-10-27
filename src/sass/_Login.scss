@@ -7,15 +7,11 @@
   margin: 2vh auto;
   width: 98vw;
   height: 96vh;
-  // border: 1px solid rgb(124, 128, 124);
-  // box-shadow: 5px 5px 0px $first-color;
   padding: 2vh 5vh;
 
   .logo {
     display: flex;
     justify-content: center;
-    width: 30%; // 40%
-    height: 20%; // 30% resme göre degistirilebilir
     margin-bottom: 3vh;
 
     img {
@@ -61,47 +57,25 @@
 // TABLET
 @media screen and (min-width: 480px) and (max-width: 959px) {
   .login {
-    width: 70vw;
-    justify-content: space-evenly;
-    .logo {
-      display: flex;
-      justify-content: center;
-      width: 45%; // 40%
-      height: 20%; // 30% resme göre degistirilebilir
-      img {
-        width: 200px;
-      }
-    }
-    form {
-      width: 90%;
-    }
+    max-width: 450px;
+    height: 80vh;
+    margin-top: 10vh;
   }
 }
 
 // DESKTOP
 @media screen and (min-width: 960px) {
   .login {
-    justify-content: space-evenly;
     margin: 10vh auto;
-    width: 45vw;
+    width: 550px;
     height: 80vh;
     border: 1px solid rgb(124, 128, 124);
-    box-shadow: 5px 5px 0px $first-color;
-    padding: 2vh 5vh;
-
-    .logo {
-      display: flex;
-      justify-content: center;
-      width: 45%; // 40%
-      height: 20%; // 30% resme göre degistirilebilir
-
-      img {
-        width: 200px;
-      }
-    }
-
+    box-shadow: 6px 6px 0px $first-color;
+    
     form {
+      background-color: #fff;
       width: 75%;
+      flex: 0;
     }
   }
 }

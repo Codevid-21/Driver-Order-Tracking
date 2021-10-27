@@ -62,6 +62,7 @@ nav ul {
   flex-direction: row;
   margin: 0;
   transition: all 0.5s ease;
+  z-index: 1;
 }
 nav ul li {
   list-style-type: none;
@@ -100,19 +101,17 @@ nav ul li a:hover {
     text-align: center;
     position: relative;
     height: 100%;
-    left: -90%;
-    opacity: 0.2;
-    padding: 0;
+    left: -100%;
+    opacity: 0;
     background-color: #092327;
   }
   nav .menu ul.active {
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
-    z-index: 1;
   }
   nav .menu ul li {
-    padding: 3rem;
+    padding: 3vh;
   }
 }
 .dropdown {
@@ -183,9 +182,12 @@ nav ul li a:hover {
 .orderCard .clientInfo {
   flex: 2;
   width: 100%;
+  height: 100%;
 }
-.orderCard .orderInfo:hover {
+.orderCard .orderInfo:hover,
+.orderCard .clientInfo:hover {
   cursor: pointer;
+  background-color: rgba(205, 215, 214, 0.1);
 }
 .orderCard .orderInfo p:last-child {
   text-align: right;
@@ -283,16 +285,6 @@ nav ul li a:hover {
     text-decoration: underline;
   }
 }
-.noOrdersToDisplay {
-  text-align: center;
-  margin: 50px 0;
-}
-.noOrdersToDisplay img {
-  display: block;
-  width: 400px;
-  margin: 20px auto;
-}
-
 .driverCard {
   border: 3px solid #092327;
   background-color: #F87060;
@@ -324,10 +316,7 @@ nav ul li a:hover {
   padding: 2vh;
 }
 .allDrivers__container .workingDrivers {
-  border: 1px solid #092327;
-  padding: 5vh;
-  width: 100%;
-  margin: 2vh auto;
+  margin: 1vh auto;
 }
 .allDrivers__container .workingDrivers .workingDrivers__card {
   min-height: 40vh;
@@ -338,137 +327,181 @@ nav ul li a:hover {
   margin-bottom: 2vh;
 }
 .allDrivers__container .workingDrivers .workingDrivers__card .header h2 {
-  padding: 0;
-  margin: 0;
+  padding: 2vh 0;
   color: #092327;
   text-align: center;
 }
 .allDrivers__container .workingDrivers .workingDrivers__card .workingDrivers__info p {
-  box-sizing: border-box;
-  padding: 10px;
   cursor: pointer;
-  margin: 1vh 0;
+  margin: 1vh 4vh;
+  padding: 1vh 0;
   text-align: center;
 }
 .allDrivers__container .workingDrivers .workingDrivers__card .workingDrivers__info p:hover {
   background-color: #F87060;
 }
+.allDrivers__container .workingDrivers .workingDrivers__card .workingDrivers__info span {
+  display: block;
+  margin: 1vh 0;
+  text-align: center;
+  text-decoration: underline;
+}
 .allDrivers__container .workingDrivers .workingDrivers__card .workingDrivers__info img {
-  width: 100%;
-  margin-top: 20px;
+  display: block;
+  margin: 5vh auto;
+  width: 50%;
+  padding-bottom: 5vh;
 }
 
 @media screen and (min-width: 480px) and (max-width: 959px) {
+  .allDrivers__container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .allDrivers__container .workingDrivers {
+    padding: 2vh;
+    border: 1px solid #092327;
+    margin: 4vh 1vh 0;
+    z-index: 1;
+    height: 100%;
     width: 400px;
+  }
+  .allDrivers__container .workingDrivers .workingDrivers__card {
+    min-height: 70vh;
   }
 }
 @media screen and (min-width: 960px) {
   .allDrivers__container {
     flex-direction: row;
+    align-items: center;
   }
   .allDrivers__container .workingDrivers {
+    padding: 2vh;
     width: 425px;
+    border: 1px solid #092327;
+    box-shadow: 6px 6px black;
+  }
+  .allDrivers__container .workingDrivers .workingDrivers__card {
+    min-height: 70vh;
   }
 }
-.newDriver__container .newDriver__userType {
-  text-align: center;
-  margin: 20px auto 10px auto;
+.newUser__container {
+  height: 90vh;
 }
-.newDriver__container .newDriver__userType input {
-  margin-left: 15px;
-}
-.newDriver__container form {
-  max-width: 600px;
+.newUser__container form {
+  max-width: 550px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  margin: 2% auto;
-  padding: 2% 0;
-  border: 1px solid #092327;
 }
-.newDriver__container form h2 {
-  margin: 0 auto;
+.newUser__container form h2 {
+  text-align: center;
 }
-.newDriver__container form label {
-  display: flex;
-  flex-direction: column;
+.newUser__container form .newUser__userType {
+  text-align: center;
+  margin: 2vh;
+}
+.newUser__container form .newUser__userType input[type=radio] {
+  margin: 1vh 0 5vh 15px;
+}
+.newUser__container form label {
   width: 80%;
-  color: #092327;
-  margin: 10px auto;
-  line-height: 30px;
+  margin: 5px auto;
 }
-.newDriver__container form label input {
+.newUser__container form label input {
+  width: 100%;
   line-height: 30px;
   display: block;
-  padding: 5px;
-  border: 1px solid #0B5351;
+  padding: 2px;
+  border: 1px solid #CDD7D6;
 }
-.newDriver__container form label input:focus {
-  outline: 3px solid #F87060;
+.newUser__container form label input:focus {
+  outline: 2px solid #F87060;
 }
-.newDriver__container form label input[type=submit] {
+.newUser__container form label input[type=submit] {
   width: 50%;
-  margin: 5% auto 0 auto;
-  background-color: #0B5351;
-  border-radius: 3px;
+  margin: 1vh auto 0;
+  background-color: #092327;
   color: #fff;
 }
-.newDriver__container form label input[type=submit]:hover {
+.newUser__container form label input[type=submit]:hover {
   background-color: #F87060;
   color: #092327;
 }
+.newUser__container .newUser__image {
+  display: none;
+}
 
+@media screen and (min-width: 480px) and (max-width: 959px) {
+  .newUser__container form {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 960px) {
+  .newUser__container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  form {
+    flex: 1;
+    background-color: rgba(205, 215, 214, 0.1);
+  }
+  form label {
+    width: 80%;
+  }
+
+  .newUser__image {
+    flex: 1;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .newUser__image img {
+    width: 75%;
+  }
+}
 .container {
-  max-width: 960px;
-  margin: 20px auto;
-  padding: 10px;
+  max-width: 600px;
+  margin: 2vh auto;
 }
-
-.design-name {
-  color: red;
-}
-
-.avatar-upload {
+.container .avatar-upload {
   position: relative;
   max-width: 205px;
   margin: 0 auto;
 }
-
-.avatar-upload .avatar-edit {
+.container .avatar-upload .avatar-edit {
   position: absolute;
   right: 12px;
   z-index: 1;
   top: 10px;
 }
-
-.avatar-upload .avatar-edit input {
+.container .avatar-upload .avatar-edit input {
   display: none;
 }
-
-.avatar-upload .avatar-edit input + label {
+.container .avatar-upload .avatar-edit label {
   text-align: center;
   display: inline-block;
   width: 34px;
   height: 34px;
   margin-bottom: 0;
   border-radius: 100%;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid transparent;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   font-weight: normal;
   transition: all 0.2s ease-in-out;
 }
-
-.avatar-upload .avatar-edit input + label:hover {
+.container .avatar-upload .avatar-edit label:hover {
   background: #f1f1f1;
   border-color: #d6d6d6;
 }
-
-.avatar-upload .avatar-edit input + label:after {
-  color: #F6B21B;
+.container .avatar-upload .avatar-edit label::after {
   position: absolute;
   top: 10px;
   left: 0;
@@ -476,8 +509,7 @@ nav ul li a:hover {
   text-align: center;
   margin: auto;
 }
-
-.avatar-upload .avatar-preview {
+.container .avatar-upload .avatar-preview {
   width: 192px;
   height: 192px;
   position: relative;
@@ -488,22 +520,21 @@ nav ul li a:hover {
   background-repeat: no-repeat;
   background-position: center;
 }
-.avatar-upload .avatar-preview img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  position: relative;
-  z-index: -1;
-  object-fit: cover;
-}
-
-.avatar-upload .avatar-preview > div {
+.container .avatar-upload .avatar-preview div#imagePreview {
   width: 100%;
   height: 100%;
   border-radius: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+.container .avatar-upload .avatar-preview div#imagePreview img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  position: relative;
+  z-index: -1;
+  object-fit: cover;
 }
 
 .login {
@@ -519,8 +550,6 @@ nav ul li a:hover {
 .login .logo {
   display: flex;
   justify-content: center;
-  width: 30%;
-  height: 20%;
   margin-bottom: 3vh;
 }
 .login .logo img {
@@ -558,43 +587,23 @@ nav ul li a:hover {
 
 @media screen and (min-width: 480px) and (max-width: 959px) {
   .login {
-    width: 70vw;
-    justify-content: space-evenly;
-  }
-  .login .logo {
-    display: flex;
-    justify-content: center;
-    width: 45%;
-    height: 20%;
-  }
-  .login .logo img {
-    width: 200px;
-  }
-  .login form {
-    width: 90%;
+    max-width: 450px;
+    height: 80vh;
+    margin-top: 10vh;
   }
 }
 @media screen and (min-width: 960px) {
   .login {
-    justify-content: space-evenly;
     margin: 10vh auto;
-    width: 45vw;
+    width: 550px;
     height: 80vh;
     border: 1px solid #7c807c;
-    box-shadow: 5px 5px 0px #092327;
-    padding: 2vh 5vh;
-  }
-  .login .logo {
-    display: flex;
-    justify-content: center;
-    width: 45%;
-    height: 20%;
-  }
-  .login .logo img {
-    width: 200px;
+    box-shadow: 6px 6px 0px #092327;
   }
   .login form {
+    background-color: #fff;
     width: 75%;
+    flex: 0;
   }
 }
 .summary__container {
@@ -833,6 +842,34 @@ nav ul li a:hover {
 .modal-body table tr td:nth-child(5),
 .modal-body table tr td:nth-child(6) {
   text-align: center;
+}
+
+.noOrdersToDisplay {
+  margin: 0;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.noOrdersToDisplay h5 {
+  margin-bottom: 5vh;
+}
+.noOrdersToDisplay img {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+}
+
+@media screen and (min-width: 480px) and (max-width: 959px) {
+  .noOrdersToDisplay img {
+    width: 300px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .noOrdersToDisplay img {
+    width: 400px;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */
