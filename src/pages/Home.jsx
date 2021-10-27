@@ -8,8 +8,18 @@ import "react-toastify/dist/ReactToastify.css";
 import { io } from "socket.io-client";
 dotenv.config();
 
+let socket = io();
+
 function Home({ click }) {
   const [orderInfo, setOrderInfo] = useState([]);
+
+  const socketFunc = (order) => {
+    setOrderInfo((prevOrderInfo) => [order, ...prevOrderInfo]);
+    const customId = "custom-id-newOrder";
+    toast.info("You have a new Order..", {
+      toastId: customId,
+    });
+  }
 
   const callTheApi = () => {
     // MAIN
@@ -30,25 +40,22 @@ function Home({ click }) {
     callTheApi();
   }, []);
 
-  // let socket = io("http://localhost:2006");
-  // let socket = io("https://order-driver-tracking.herokuapp.com:2006");
-  let socket = io();
-
-  socket.on('cart', function (order) {
-    setOrderInfo([order, ...orderInfo]);
-    const customId = "custom-id-newOrder";
-    console.log("socket socket");
-    toast.info("You have a new Order..", {
-      toastId: customId,
+  useEffect(() => {
+    socket.on("test", (data) => {
+      console.log("test data", data);
+    })
+    socket.on('cart', (order) => {
+      socketFunc(order);
+      console.log("socket socket");
     });
-  });
+  }, []);
 
   return (
     <div className={!click ? "hideOrder" : "displayOrder"}>
-      {orderInfo.length === 0 ? 
-      (
-        <NoOrdersToDisplay />
-      )
+      {orderInfo.length === 0 ?
+        (
+          <NoOrdersToDisplay />
+        )
         :
         (
           <OrderCard orderInfo={orderInfo} callTheApi={callTheApi} />
