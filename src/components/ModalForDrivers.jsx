@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import DriverCard from "./DriverCard";
 import api from "../api/fetchDataFromDB";
 import { ToastContainer, toast } from "react-toastify";

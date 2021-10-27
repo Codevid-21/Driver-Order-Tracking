@@ -28,7 +28,7 @@ function Login({ setIsLogin }) {
       if (result.ok) {
         setIsLogin(true);
         localStorage.setItem("isLoggedIn", JSON.stringify(true));
-        <Redirect to="/" />;
+        <Redirect to="/selectdrivers" />;
       } else if (result.status === 401) {
         setIsLogin(false);
         toast.error("Username or password is incorrect.");

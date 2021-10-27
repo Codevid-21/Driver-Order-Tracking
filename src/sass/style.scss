@@ -37,6 +37,10 @@ a:hover {
     outline: none;
 }
 
+.hide {
+    display: none;
+  }
+
 @import "_NavBar.scss";
 @import "_Dropdown.scss";
 @import "_OrderCard.scss";

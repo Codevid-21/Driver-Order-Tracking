@@ -6,7 +6,7 @@ import SearchSomething from "../components/SearchSomething.jsx";
 import dotenv from "dotenv";
 dotenv.config();
 
-function Orders() {
+function Orders({click}) {
   const [orderInfo, setOrderInfo] = useState([]);
   const [searchItem, setSearchItem] = useState("");
 
@@ -16,14 +16,18 @@ function Orders() {
   // DEV
   const url = `http://localhost:2005/orders`;
 
-  useEffect(() => {
+  const getOrderData = () => {
     api.fetchDataFromDB(url).then((result) => {
       const deliveredOrders = result.filter(
         (value, index) => value.isDelivered === true
       );
       setOrderInfo(deliveredOrders);
     });
-  }, [url]);
+
+  }
+  useEffect(() => {
+    getOrderData();
+  }, []);
 
   useEffect(() => {
     if (searchItem !== "") {
@@ -33,23 +37,15 @@ function Orders() {
           .toLowerCase()
           .includes(searchItem.toLowerCase());
       });
-
       setOrderInfo(filteredOrders);
-
-      console.log(filteredOrders);
     } 
     else {
-      api.fetchDataFromDB(url).then((result) => {
-        const deliveredOrders = result.filter(
-          (value, index) => value.isDelivered === true
-        );
-        setOrderInfo(deliveredOrders);
-      });
+      getOrderData();
     }
   }, [searchItem]);
 
   return (
-    <div>
+    <div className={click && "hide"}>
       <SearchSomething searchItem={searchItem} setSearchItem={setSearchItem} />
       {orderInfo.length === 0 ?
         (

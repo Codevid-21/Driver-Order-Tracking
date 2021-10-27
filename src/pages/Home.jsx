@@ -53,7 +53,7 @@ function Home({ click }) {
   }, []);
 
   return (
-    <div className={!click ? "hideOrder" : "displayOrder"}>
+    <div className={click && "hide"}>
       {orderInfo.length === 0 ?
         (
           <NoOrdersToDisplay />

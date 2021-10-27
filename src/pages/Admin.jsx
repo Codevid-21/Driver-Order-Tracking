@@ -27,7 +27,7 @@ function Admin({ setIsLogin }) {
                     <Home click={click} />
                 </Route>
                 <Route path="/orders">
-                    <Orders />
+                    <Orders click={click} />
                 </Route>
                 <Route path="/newuser">
                     <NewUser newUser={MenuItems[0]} />
@@ -36,10 +36,10 @@ function Admin({ setIsLogin }) {
                     <NewUser newUser={MenuItems[1]} />
                 </Route>
                 <Route path="/selectdrivers">
-                    <SelectDrivers />
+                    {!click && <SelectDrivers />}
                 </Route>
                 <Route path="/summary">
-                    <Summary />
+                    {!click && <Summary />}
                 </Route>
                 <Route path="/login">
                     <Login setIsLogin={setIsLogin} />

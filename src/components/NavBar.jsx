@@ -33,7 +33,7 @@ function Navbar({ click, setClick, isLogin, setIsLogin }) {
         </div>
 
         <div className="menu">
-          <ul className={click && "active"}>
+          <ul className={click ? "menu__ul active" : "menu__ul"}>
             <li>
               <Link to="/" onClick={closeMobileMenu}>
                 Home

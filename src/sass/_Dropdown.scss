@@ -2,17 +2,20 @@
   color: #fff;
   // display: none;
   position: absolute;
-  
+
   ul {
     left: 0 !important;
     opacity: 1 !important;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     background-color: #092327;
     padding: 0;
+    margin: 0;
 
     li {
-      padding: 1rem !important;
+      min-width: 150px;
+      padding: 2vh 2vh !important;
     }
   }
 }
@@ -20,5 +23,10 @@
 @media screen and (max-width: 960px) {
   .dropdown {
     position: relative;
+    ul {
+      li {
+        flex: 100%;
+      }
+    }
   }
 }
