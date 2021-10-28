@@ -8,12 +8,9 @@
   padding: 2vh;
 
   .workingDrivers {
-    // width: 100%;
     margin: 1vh auto;
-    // background-color: red;
     
     .workingDrivers__card {
-      // background-color: darkred;
       min-height: 40vh;
 
       .header {
@@ -29,6 +26,7 @@
       }
 
       .workingDrivers__info {
+        // width: 80vw;
         p {
           cursor: pointer;
           margin: 1vh 4vh;

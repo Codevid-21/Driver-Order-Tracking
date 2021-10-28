@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import OrderCard from "../components/Orders/OrderCard.jsx";
 import api from "../api/fetchDataFromDB.js";
-import dotenv from "dotenv";
 import NoOrdersToDisplay from "../components/NoOrdersToDisplay.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { io } from "socket.io-client";
-dotenv.config();
 
-let socket = io("http://localhost:2005");
-// let socket = io();
+// let socket = io("http://localhost:2005");
+let socket = io();
 
 function Home({ click }) {
   const [orderInfo, setOrderInfo] = useState([]);
@@ -24,10 +22,10 @@ function Home({ click }) {
 
   const callTheApi = () => {
     // MAIN
-    // const url = `/orders`;
+    const url = `/orders`;
 
     // DEV
-    const url = `http://localhost:2005/orders`;
+    // const url = `http://localhost:2005/orders`;
 
     api.fetchDataFromDB(url).then((result) => {
       const deliveredOrders = result.filter(
@@ -38,7 +36,6 @@ function Home({ click }) {
   };
 
   useEffect(() => {
-    console.log("useeffect")
     callTheApi();
   }, []);
 

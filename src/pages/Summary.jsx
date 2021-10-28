@@ -2,17 +2,15 @@ import React, { useState, useEffect } from "react";
 import api from "../api/fetchDataFromDB.js";
 import AllDayInfo from "../components/Summary/AllDayInfo.jsx";
 import DriverList from "../components/Summary/DriverList.jsx";
-import dotenv from "dotenv";
-dotenv.config();
 
 function Summary() {
   const [drivers, setDrivers] = useState([]);
 
   // MAIN
-  // const url = `/drivers`;
+  const url = `/drivers`;
   
   // DEV
-  const url = `http://localhost:2005/drivers`;
+  // const url = `http://localhost:2005/drivers`;
 
   useEffect(() => {
     api.fetchDataFromDB(url).then((result) => {
@@ -21,7 +19,6 @@ function Summary() {
         return value.deliveries.length > 0;
       });
       setDrivers(workedDrivers);
-      console.log("useeffect summary.jsx");
     });
   }, [url]);
 

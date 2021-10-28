@@ -4,20 +4,17 @@ import DriverCard from "./DriverCard";
 import api from "../api/fetchDataFromDB";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import dotenv from "dotenv";
-dotenv.config();
 
 function ModalForDrivers(props) {
   const [drivers, setDrivers] = useState([]);
 
-
   const callTheDriversApi = () => {
 
     // MAIN
-    // const url = `/drivers`;
+    const url = `/drivers`;
 
     // DEV
-    const url = `http://localhost:2005/drivers`;
+    // const url = `http://localhost:2005/drivers`;
 
     api.fetchDataFromDB(url).then((result) => {
       const workingDrivers = result.filter(
@@ -26,6 +23,7 @@ function ModalForDrivers(props) {
       setDrivers(workingDrivers);
     });
   }
+
   useEffect(() => {
     callTheDriversApi();
   }, []);
@@ -33,10 +31,10 @@ function ModalForDrivers(props) {
   const addDrivertoOrder = (driver) => {
     // Burada hem driver hem de order güncelleniyor.
     // MAIN
-    // const url = `/orders/${props.selectedOrder._id}/${driver._id}`;
+    const url = `/orders/${props.selectedOrder._id}/${driver._id}`;
 
     // DEV
-    const url = `http://localhost:2005/orders/${props.selectedOrder._id}/${driver._id}`;
+    // const url = `http://localhost:2005/orders/${props.selectedOrder._id}/${driver._id}`;
     const options = {
       method: "PUT",
       headers: {
@@ -71,7 +69,7 @@ function ModalForDrivers(props) {
           </Modal.Title>
         </Modal.Header>
         {drivers.length !== 0 ?
-          <Modal.Body  style={{minHeight:"40vh"}}>
+          <Modal.Body style={{ minHeight: "40vh" }}>
             {props.selectedOrder.driver == null
               ? drivers.map((driver, i) => {
                 return (
@@ -95,8 +93,8 @@ function ModalForDrivers(props) {
                 })}
           </Modal.Body>
           :
-          <Modal.Body  style={{minHeight:"25vh"}}>
-            <p style={{textAlign:"center"}}>There are no drivers yet.</p>
+          <Modal.Body style={{ minHeight: "25vh" }}>
+            <p style={{ textAlign: "center" }}>There are no drivers yet.</p>
           </Modal.Body>
         }
       </Modal>

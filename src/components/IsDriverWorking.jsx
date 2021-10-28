@@ -1,8 +1,6 @@
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import dotenv from "dotenv";
-dotenv.config();
 
 function IsDriverWorking({
   drivers,
@@ -12,10 +10,10 @@ function IsDriverWorking({
 }) {
   const handleWorkingSituation = (value, i) => {
     // MAIN
-    // const url = `/drivers/${value._id}`;
+    const url = `/drivers/${value._id}`;
     
     // DEV
-    const url = `http://localhost:2005/drivers/${value._id}`;
+    // const url = `http://localhost:2005/drivers/${value._id}`;
     const options = {
       method: "PUT",
       body: JSON.stringify({ ...value, isWorking: !isWorking }),
@@ -30,7 +28,6 @@ function IsDriverWorking({
         drivers[i] = result;
         setDrivers(drivers);
         callTheDriversApi();
-        // const customId = "custom-id-status";
         toast.info(`${value.user.name}'s Work Status Changed... `);
       });
   };

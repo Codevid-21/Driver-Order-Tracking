@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import Login from "./pages/Login.jsx";
 import Admin from "./pages/Admin.jsx";
 import "./App.css";
-import dotenv from "dotenv";
-dotenv.config();
 
 function App() {
   const [isLogin, setIsLogin] = useState(() => {
@@ -13,10 +11,10 @@ function App() {
 
   const checkAuth = async () => {
     // MAIN
-    // const url = `/auth`;
+    const url = `/auth`;
     
     // DEV
-    const url = `http://localhost:2005/auth`;
+    // const url = `http://localhost:2005/auth`;
 
     const options = {
       credentials: "include",

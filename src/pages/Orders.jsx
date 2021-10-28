@@ -3,18 +3,16 @@ import OrderCard from "../components/Orders/OrderCard.jsx";
 import api from "../api/fetchDataFromDB.js";
 import NoOrdersToDisplay from "../components/NoOrdersToDisplay.jsx";
 import SearchSomething from "../components/SearchSomething.jsx";
-import dotenv from "dotenv";
-dotenv.config();
 
 function Orders({click}) {
   const [orderInfo, setOrderInfo] = useState([]);
   const [searchItem, setSearchItem] = useState("");
 
   // MAIN
-  // const url = `/orders`;
+  const url = `/orders`;
 
   // DEV
-  const url = `http://localhost:2005/orders`;
+  // const url = `http://localhost:2005/orders`;
 
   const getOrderData = () => {
     api.fetchDataFromDB(url).then((result) => {

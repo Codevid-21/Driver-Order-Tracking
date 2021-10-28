@@ -4,8 +4,6 @@ import NewDriverAvatar from "../components/newDriver/NewDriverAvatar";
 import Axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import dotenv from "dotenv";
-dotenv.config();
 
 const INITIAL_USER = {
   name: "",
@@ -52,10 +50,10 @@ function NewUser({ newUser }) {
       const fetchUrl = newUser.name === "Driver" ? "drivers" : newUsersInfo.type === "Admin" ? "users/admin" : "users/register";
 
       // MAIN
-      // const url = `/${fetchUrl}`;
+      const url = `/${fetchUrl}`;
       
       // DEV
-      const url = `http://localhost:2005/${fetchUrl}`;
+      // const url = `http://localhost:2005/${fetchUrl}`;
 
       if (!isUser && !imgRef.current) {
         imgRef.current = (await uploadImg(selectedImg)).data.url;

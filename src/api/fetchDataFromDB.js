@@ -1,6 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 const fetchDataFromDB = async function (url) {
   try {
     const options = {
@@ -35,10 +32,10 @@ const postDataFromDB = async function (url, body) {
 const putDataFromDB = async function (email) {
   try {
     // MAIN
-    // const url = `/users/${email}`;
+    const url = `/users/${email}`;
     
     // DEV
-    const url = `http://localhost:2005/users/${email}`;
+    // const url = `http://localhost:2005/users/${email}`;
     const options = {
       method: "PUT",
       body: "",
