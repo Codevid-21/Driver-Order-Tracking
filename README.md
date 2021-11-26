@@ -25,10 +25,10 @@
 4. Öffne localhost:3000 im Browser
 
 
-### Login;
+#### Login;
 
-#### username : test@admin
-#### password : 123
+/username : test@admin
+/password : 123
 
 
 ## Wie kann ich die Website anzeigen?
