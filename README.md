@@ -27,8 +27,9 @@
 
 #### Login;
 
-/username : test@admin
-/password : 123
+username : test@admin
+
+password : 123
 
 
 ## Wie kann ich die Website anzeigen?
